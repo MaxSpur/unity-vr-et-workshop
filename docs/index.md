@@ -1,36 +1,19 @@
-# Welcome to the VR and Eye Tracking Workshop!
+# Welcome to the Unity VR and Eye Tracking Workshop!
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Hello and thank you for participating in this workshop! Here you'll learn about the basics of the [Unity game engine](https://unity.com):
 
-## Commands
+* How to create and run a first 3D environment
+* How to interact with 3D objects and how to animate them, and
+* How to script them with more complex behaviors.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+More specifically for a use-case in psychological/perceptual research, it will also teach you about:
 
-## Project layout
+* Setting up a VR environment with eye tracking (specifically the HTC Vive Pro Eye),
+* Recording and outputting eye tracking data from players or participants, and
+* How to interpret these results.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+In order to condense the workshop and save time, we have already prepared the computers you'll be working on with all necessary software and editing environments. If you want to repeat the process on your own equipment or in your lab, the page on [Installation and Setup](#installing-unity) will lead you to our recommended setup, but for now you can directly start with the [first part](page-0.md), which will teach you about creating your first unity project with a simple 3D object. You can navigate with the buttons below, or using the links in the table of contents on the left (or behind the menu icon).
 
-## Testing a new text and code block
+Feel free to ask you tutors about any issues you might be having at any point, they are here to help you.
 
-This should be just plain text. Look normal and all.
-
-    And now if I'm right, this should be code, like:
-    if (TRUE)
-        do SMTHNG
-    end
-
-## Now we add another chapter
-
-Just to add some space here and there.
-
-Let's see.
-
-## Testing deployment to github
-
-We changed something just to change something
+We hope you'll enjoy the journey!
