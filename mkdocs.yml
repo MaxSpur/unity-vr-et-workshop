@@ -8,6 +8,11 @@ markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - footnotes
+  - attr_list
+  - md_in_html
 
 theme:
   features:
@@ -19,7 +24,7 @@ theme:
     - navigation.indexes
     - toc.follow
     # - toc.integrate
-    - navigation.top
+    # - navigation.top
     - header.autohide
   name: material
   font:
