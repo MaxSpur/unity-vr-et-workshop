@@ -45,3 +45,4 @@ theme:
         name: Switch to bright mode
 
   logo: assets/sfb-x.png
+  favicon: assets/favicon.png
