@@ -78,6 +78,10 @@ You can keep playing around with the cube's Transform component to move it aroun
 
 All we did so far is not much different than using any basic 3D creation software. Where a game engine like Unity differs, is its ability of freely *scripting* the objects we place in scenes, using programming languages.
 
+Let's try this out by making a script that will constantly rotate our cube. The easiest way to do this is by clicking the __Add Component__ button at the bottom of the cube's Inspector and just starting to type the name of the script we want to create in the search field, in this case let's name it `Rotating`. It will automatically understand that we want to create a new script, so select that option and then confirm by pressing __Create and Add__.
+
+![Creating a script](page-1/12-making-script.png "Naming and creating a script")
+
 ``` csharp title="Rotating.cs"
 using UnityEngine;
 
