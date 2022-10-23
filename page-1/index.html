@@ -286,6 +286,47 @@
     Animating an object
   </a>
   
+    <nav class="md-nav" aria-label="Animating an object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-first-script-file" class="md-nav__link">
+    Creating a first script file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-newly-created-script-c" class="md-nav__link">
+    The newly created script — C#!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-script" class="md-nav__link">
+    Running the script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editing-the-script-constant-rotation-around-a-fixed-axis" class="md-nav__link">
+    Editing the script — constant rotation around a fixed axis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-the-script-interactive" class="md-nav__link">
+    Making the script interactive
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -370,6 +411,47 @@
     Animating an object
   </a>
   
+    <nav class="md-nav" aria-label="Animating an object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-first-script-file" class="md-nav__link">
+    Creating a first script file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-newly-created-script-c" class="md-nav__link">
+    The newly created script — C#!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-script" class="md-nav__link">
+    Running the script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editing-the-script-constant-rotation-around-a-fixed-axis" class="md-nav__link">
+    Editing the script — constant rotation around a fixed axis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-the-script-interactive" class="md-nav__link">
+    Making the script interactive
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -436,20 +518,70 @@
 </details>
 <h2 id="animating-an-object">Animating an object</h2>
 <p>All we did so far is not much different than using any basic 3D creation software. Where a game engine like Unity differs, is its ability of freely <em>scripting</em> the objects we place in scenes, using programming languages.</p>
-<div class="highlight"><span class="filename">Rotating.cs</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Rotating</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Units per second&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="p">;</span><span class="w"> </span><span class="c1">// Set to 180 in editor</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Axis to rotate around&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">axis</span><span class="p">;</span><span class="w"> </span><span class="c1">// Set to (1,0,0) in editor</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"></span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span><span class="w"></span>
+<h3 id="creating-a-first-script-file">Creating a first script file</h3>
+<p>Let's try this out by making a script that will constantly rotate our cube. The easiest way to do this is by clicking the <strong>Add Component</strong> button at the bottom of the cube's Inspector and just starting to type the name of the script we want to create in the search field, in this case let's name it <code>Rotating</code>. It will automatically understand that we want to create a new script, so select that option and then confirm by pressing <strong>Create and Add</strong>.</p>
+<p><img alt="Creating a script" src="12-making-script.png" title="Naming and creating a script" /></p>
+<p>After a bit of waiting, the Unity editor will have created a new file inside its Assets folder, which you can see inside the <em>Project View</em> by clicking on the new Script component in the cube's Inspector.</p>
+<p><img alt="Script file location" src="13-script-location.png" title="The new file's location" /></p>
+<h3 id="the-newly-created-script-c">The newly created script — C#!</h3>
+<p>Double-clicking the Script field in the cube's Script component, or on the script's icon in the Project view will bring up a text editor (Visual Studio Code in this case, if everything is set up properly) with the script file, named <code>Rotating.cs</code> already opened. With the editor you can now make changes to the script! The Unity editor will take all changes into account every time you save your changes in the text editor and switch focus back to the Unity editor.</p>
+<p>Every script you create using the above way will be a <strong><em>C#</em></strong>, or <em>C Sharp</em> script, as can be seen by its ".cs" ending. Unity will always create a new script file with a basic structure pre-written, looking like this:</p>
+<div class="highlight"><span class="filename">Rotating.cs</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Rotating</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="c1">// Start is called before the first frame update</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<p>The first three lines (beginning with <code>using</code>) tell Unity which <em>Software Libraries</em> to load before executing any of the code, which allow it to access e.g. Unity's built-in functionalities and data types, or anything else you might want to include.</p>
+<p>The next block, surrounded by the curly brackets <code>{ }</code> of <code>public class Rotating : MonoBehaviour</code> encompass all functionality of this script, in the simplest case. It tells Unity that this block defines a <code>MonoBehavior</code> object, which is the kind of script object that one can attach to GameObjects in the Unity's hierarchy.</p>
+<p>Within the curly brackets there are already the outlines of two standard functions that many scripts use: <code>void Start()</code> and <code>void Update()</code>. As already explained by the comments above them (any lines that start with <code>//</code> are disregarded by Unity and are only there for the programmer to read), the code within the curly brackets of <code>Start()</code> will be executed only once, at the very start of each run of the "game," while the contents of <code>Update()</code> will be called every time the screen refreshes. The empty round brackets <code>( )</code> following the names of these <em>functions</em> mean that they don't accept any input variables, and <code>void</code> before their names signifies that they don't output anything, either.</p>
+<h3 id="running-the-script">Running the script</h3>
+<p>As all this code is still basically empty, running it won't change anything — you can try this by pressing the <strong>Play</strong> button at the top middle of the Unity editor, which will <em>compile</em> any scripts you might have changed, switch to the Game view (the view of our main camera), and execute all scripts that are attached to GameObjects within the hierarchy.</p>
+<p><img alt="First run" src="14-first-run.png" title="A boring view of a static cube. Pixels on screen." /></p>
+<p>As expected, the game view shows the main camera's perspective on a static cube. You can still access the cube's inspector by clicking on it in the hierarchy, where you can make changes to its transform by e.g. clicking and dragging the desired coordinates.</p>
+<div style='position:relative; padding-bottom:calc(70.80% + 33px)'><iframe src='https://gfycat.com/ifr/fantasticflimsycuscus?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe></div>
+
+<p>Exiting the Play mode by again pressing the play button will reset any changes that we made in the hierarchy and inspector back to how they were before, and will again show the scene view by default.</p>
+<h3 id="editing-the-script-constant-rotation-around-a-fixed-axis">Editing the script — constant rotation around a fixed axis</h3>
+<p>Let's edit the <code>Rotating.cs</code> script so that it actually does something when the game runs.</p>
+<p>What we want to happen is to change something about the cube's transform every time the screen refreshes. This can be accomplished by adding one line of code inside the given <code>void Update()</code> function, so that it looks like this:</p>
+<div class="highlight"><span class="filename">Rotating.cs</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="p">,</span><span class="w"> </span><span class="m">30.0f</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>What this does it to call the <code>Rotate()</code> function of the GameObject's <code>transform</code> component with the parameters <code>Vector3.up</code> for the rotation axis, and <code>30.0f * Time.deltaTime</code> for the rotation angle — for every frame that the game runs. If you type this yourself in the code editor instead of copying and pasting, you might see <em>code completion</em> kicking in, which offers suggestions and explanations of each of these <em>fields.</em></p>
+<p><code>Vector3.up</code> is short for a three-dimensional vector that points straight up, and <code>Time.deltaTime</code> is the time that has passed since the last frame before the current one is called. <code>30.0f</code> is the simply a convention of writing <code>f</code>loating point numbers, as opposed to integers. If we save this script file, go back to Unity and hit the Play button, we will once again see the camera's view in the Game view, with the cube steadily rotating around its vertical axis, at 30 degrees per second.</p>
+<div style='position:relative; padding-bottom:calc(70.80% + 33px)'><iframe src='https://gfycat.com/ifr/coldsmallelver?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe></div>
+
+<h3 id="making-the-script-interactive">Making the script interactive</h3>
+<p>For now, this rotation is fixed — while you can still manually change the transform in the game view as above, the cube keeps rotating. You can try move it around or rotate it around the X or Z axes to see its automatic rotation change direction relative to the world, but staying constant relative to the cube.</p>
+<p>To make the automatic rotation more interactive, we can edit our script to include variables, which need to be placed <em>outside</em> the <code>Update()</code> method, but still <em>within</em> the curly brackets of the <code>Rotating</code> <em>class.</em> Let's change these parts of the script to look like this:</p>
+<div class="highlight"><span class="filename">Rotating.cs</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Rotating</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Rotation angle per second&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">30.0f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Vector of the rotation axis&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">axis</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><em>Variables</em> are introduced by stating their <em>type</em> first, then their <em>name,</em> like <code>float speed</code> — a floating point number that we reference by the name "speed." If we want to make a variable accessible to scripts outside the its current <em>scope</em> (the Rotating MonoBehavior in this case), we need to prefix them with <code>public</code>. Like this we can also directly see their current value in the Unity's inspector, as parameters of the cube's script component.</p>
+<p>It is often necessary, and usually a good practice to <em>initialize</em> new variables with a certain default value, which is assigned with the equals sign <code>=</code> and a following value. Here we can give them exactly what we had previously put in to the parameters for the <code>Rotate()</code> function: <code>30.0f</code> for <code>speed</code>, and <code>Vector3.up</code> for <code>axis</code>.</p>
+<p>Finally, we need to replace the fixed values in the <code>transform.Rotate()</code> call with our new variables: <code>transform.Rotate(axis, speed * Time.deltaTime);</code> does that. Optionally, we can make these parameters that are now exposed in the inspector even more legible by adding the tooltips in the format shown above, before the <code>public</code> definitions of the variables.</p>
+<div style='position:relative; padding-bottom:calc(70.80% + 33px)'><iframe src='https://gfycat.com/ifr/unitedcandidindianringneckparakeet?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe></div>
 
 
 
