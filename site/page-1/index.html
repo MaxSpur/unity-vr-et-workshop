@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#first-unity-project" class="md-skip">
+        <a href="#first-unity-project-getting-to-know-the-editors" class="md-skip">
           Skip to content
         </a>
       
@@ -254,8 +254,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-a-project-using-the-hub" class="md-nav__link">
-    Create A Project Using The Hub
+  <a href="#create-a-first-project-using-the-unity-hub" class="md-nav__link">
+    Create a first project using the Unity Hub
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-the-editor" class="md-nav__link">
+    Setting up the Editor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scene-hierarchy-and-camera-views-inspector" class="md-nav__link">
+    Scene, Hierarchy, and Camera Views + Inspector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-first-object" class="md-nav__link">
+    Creating a first object
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animating-an-object" class="md-nav__link">
+    Animating an object
   </a>
   
 </li>
@@ -310,8 +338,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-a-project-using-the-hub" class="md-nav__link">
-    Create A Project Using The Hub
+  <a href="#create-a-first-project-using-the-unity-hub" class="md-nav__link">
+    Create a first project using the Unity Hub
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-the-editor" class="md-nav__link">
+    Setting up the Editor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scene-hierarchy-and-camera-views-inspector" class="md-nav__link">
+    Scene, Hierarchy, and Camera Views + Inspector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-first-object" class="md-nav__link">
+    Creating a first object
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animating-an-object" class="md-nav__link">
+    Animating an object
   </a>
   
 </li>
@@ -331,11 +387,11 @@
                   
 
 
-<h1 id="first-unity-project">First Unity Project</h1>
+<h1 id="first-unity-project-getting-to-know-the-editors">First Unity Project — getting to know the Editors</h1>
 <p><img src="0-hub-app.png" alt="Iconic" width="200"/></p>
 <!-- ![Unity Hub Desktop Icon](assets/page-1/0-hub-app.png "Iconic") -->
 
-<h2 id="create-a-project-using-the-hub">Create A Project Using The Hub</h2>
+<h2 id="create-a-first-project-using-the-unity-hub">Create a first project using the Unity Hub</h2>
 <p>If not already running on your computer, start the Unity Hub (see the icon above). Depending on previous use there may be already projects listed in its window — if so, disregard them for now and just click the <strong>New project</strong> button.</p>
 <p><img alt="The Unity Hub" src="0-hub-new.png" title="The Unity Hub" /></p>
 <p>You will be presented with a dialog to configure the project. Usually it's already all set up correctly, but to make sure just verify the following points:</p>
@@ -347,6 +403,53 @@
 <p><img alt="Creating a new project" src="1-hub-create.png" title="My first Unity Project" /></p>
 <p>Pushing the <strong>Create project</strong> button will open the <em>Unity Editor</em> and tell it create a new project with the above parameters. This may take some time…</p>
 <p><img alt="Now Printing" src="2-wait.png" title="なうぷりんてぃんぐ" /></p>
+<h2 id="setting-up-the-editor">Setting up the Editor</h2>
+<p>Once this process is complete, you will see a the Unity Editor in its default configuration, showing a blank <em>scene.</em></p>
+<p><img alt="Raw Unity" src="3-raw-unity.png" title="Blank and raw" /></p>
+<p>You can leave this as is, or drag the tab handles and section dividers around to create a more comfortable working environment. One particularly important change would be to permanently reveal the <em>Console</em> window by dragging the <em>Project</em> window it's being obscured by to a new location. Below is our suggested arrangement with new placements of the <em>Hierarchy,</em> <em>Project,</em> and <em>Console</em> windows.</p>
+<p><img alt="Comfortable Unity" src="4-better-unity.png" title="That's better." /></p>
+<p>The biggest part should show you the <em><strong>Scene</strong> View,</em> where you can freely navigate using common 3D software controls, like zooming in and out with the mouse wheel, rotating by holding the right mouse button, and translating your position by holding the middle mouse button. See the <a href="https://docs.unity3d.com/Manual/SceneViewNavigation.html">official Unity manual</a> on more information on this.</p>
+<h2 id="scene-hierarchy-and-camera-views-inspector">Scene, Hierarchy, and Camera Views + Inspector</h2>
+<p>The Scene View shows you the contents of your currently open <em>Scene</em> — a kind of super <em>Object</em> that holds all other objects. A full overview of all objects and their relationships is shown in the <em><strong>Hierarchy</strong> window</em> — as you can see, it currently only contains our only Scene (<strong>SampleScene</strong>), which holds a simple <em>Directional Light</em> for illuminating the world and the <em>Main Camera</em> that lets a player see it. Let's select that camera by clicking on it in the <em>Hierarchy</em> or on its <em>Gizmo</em> (camera icon) in the <em>Scene</em> view:</p>
+<p><img alt="Selected Camera" src="5-select-camera.png" title="Inspecting the camera" /></p>
+<p>It is now highlighted in both <em>Scene</em> and <em>Hierarchy</em> views, as shown by a highlight and the appearance of arrows pointing in the cardinal directions around the object. In addition, a view from this camera now shows up in the Scene view as a floating window: this is what a player of this game will see if we run it. The same view is visible in a full window by selecting the <em>Game</em> tab in the Scene window.</p>
+<p>Another thing that happens when we select a <em>Game Object</em> like this camera in the editor is the appearance of this object's <em><strong>Inspector</strong></em> in its previously empty window to the top right. This window allows us to view and change every single aspect of any Game Object, which may differ by their type. One <em>Component</em> all possible objects, be they cameras, lights, or dinosaur models share is their <em>Transform:</em> a grid that contains the coordinates of their position, rotation vector, and its scale.</p>
+<details class="info">
+<summary>Transforms and Hierarchies</summary>
+<p>In the case of the camera and light and any other objects directly under the <strong>SampleScene</strong> Scene object, these coordinates are equivalent to their "world" coordinates. For any object that sits below another in the Hierarchy, these coordinates are basically offset by those of their <em>Parent.</em> See Unity's documentation on the <a href="https://docs.unity3d.com/Manual/Hierarchy.html">Hierarchy</a> and <a href="https://docs.unity3d.com/Manual/class-Transform.html">Transforms</a> for more details.</p>
+</details>
+<p>Let's set the camera's Position to the <em>origin</em> and rotate it to point in the blue arrow's (the Z-axis) direction by editing its Transform Component accordingly: set Position <code>X=0, Y=0, Z=0</code> and Rotation <code>X=0, Y=90, Z=0</code>.</p>
+<p><img alt="Moved Camera" src="6-camera-transform.png" title="Moved the camera" /></p>
+<h2 id="creating-a-first-object">Creating a first object</h2>
+<p>Let's bring a cube into the scene.</p>
+<p>While you can go to the main menu under <em>GameObject</em> and select what you want to create, a more precise way is to right-click on an empty part of the Hierarchy and selecting <strong>3D Object → Cube</strong>. This will create a basic cube <em>GameObject</em> inside our Scene, with a default Transform. If we had right-clicked on any existing object in the scene instead of on an empty space, we would have created a <em>child</em> object that would be tied to its <em>parent,</em> and this is not what we want in this case.</p>
+<p><img alt="Adding a cube" src="7-create-box.png" title="Basic Box" /></p>
+<p>If you double-click on the new Cube object in the hierarchy, the scene view will fully zoom into it, showing that it basically swallowed our camera. If you select our camera object again, its view (or the Game View) won't show the cube — the way most 3D engines work, objects are transparent from the inside.</p>
+<p><img alt="Big box" src="8-big-box.png" title="Big Box" /></p>
+<p>Let's move the box to a position where the camera can see it, and also try making it smaller by setting its transform component to Position <code>X=2, Y=0, Z=0</code> and Scale <code>X=0.2, Y=0.2, Z=0.2</code>.</p>
+<p>Selecting our camera again, we can now see a small box appearing at the center of its view. If the cube is now gone from our scene view, just zoom out a bit, or double-click it again in the hierarchy.</p>
+<p><img alt="Small box" src="9-small-box.png" title="smol box" /></p>
+<p>You can keep playing around with the cube's Transform component to move it around and scale it, or also use the handles in the scene view: dragging one of the three arrows or the squares between them will also change the transform accordingly.</p>
+<details class="info">
+<summary>More on Positioning</summary>
+<p>There are many more ways to change the transform with the mouse. You can switch transform modes by pressing <strong>W</strong>, <strong>E</strong>, <strong>R</strong>, or by selecting the different icons in the little floating window in the scene view to move, rotate, scale an object, respectively. See the <a href="https://docs.unity3d.com/Manual/PositioningGameObjects.html">Unity Documentation</a> for more details on this.</p>
+</details>
+<h2 id="animating-an-object">Animating an object</h2>
+<p>All we did so far is not much different than using any basic 3D creation software. Where a game engine like Unity differs, is its ability of freely <em>scripting</em> the objects we place in scenes, using programming languages.</p>
+<div class="highlight"><span class="filename">Rotating.cs</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Rotating</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Units per second&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="p">;</span><span class="w"> </span><span class="c1">// Set to 180 in editor</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Axis to rotate around&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">axis</span><span class="p">;</span><span class="w"> </span><span class="c1">// Set to (1,0,0) in editor</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 
 
@@ -358,11 +461,6 @@
           
           
         </div>
-        
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </a>
         
       </main>
       
@@ -425,7 +523,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "navigation.instant", "navigation.indexes", "toc.follow", "navigation.top", "header.autohide"], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "navigation.instant", "navigation.indexes", "toc.follow", "header.autohide"], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.078830c0.min.js"></script>

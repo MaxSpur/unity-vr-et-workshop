@@ -1,4 +1,4 @@
-# First Unity Project — getting to know the Editor
+# First Unity Project — getting to know the Editors
 
 <img src="0-hub-app.png" alt="Iconic" width="200"/>
 <!-- ![Unity Hub Desktop Icon](assets/page-1/0-hub-app.png "Iconic") -->
@@ -65,3 +65,31 @@ If you double-click on the new Cube object in the hierarchy, the scene view will
 Let's move the box to a position where the camera can see it, and also try making it smaller by setting its transform component to Position `X=2, Y=0, Z=0` and Scale `X=0.2, Y=0.2, Z=0.2`.
 
 Selecting our camera again, we can now see a small box appearing at the center of its view. If the cube is now gone from our scene view, just zoom out a bit, or double-click it again in the hierarchy.
+
+![Small box](page-1/9-small-box.png "smol box")
+
+You can keep playing around with the cube's Transform component to move it around and scale it, or also use the handles in the scene view: dragging one of the three arrows or the squares between them will also change the transform accordingly.
+
+??? info "More on Positioning"
+    There are many more ways to change the transform with the mouse. You can switch transform modes by pressing __W__, __E__, __R__, or by selecting the different icons in the little floating window in the scene view to move, rotate, scale an object, respectively. See the [Unity Documentation](https://docs.unity3d.com/Manual/PositioningGameObjects.html) for more details on this.
+
+
+## Animating an object
+
+All we did so far is not much different than using any basic 3D creation software. Where a game engine like Unity differs, is its ability of freely *scripting* the objects we place in scenes, using programming languages.
+
+``` csharp title="Rotating.cs"
+using UnityEngine;
+
+public class Rotating : MonoBehaviour
+{
+    [Tooltip("Units per second")] public float speed; // Set to 180 in editor
+    [Tooltip("Axis to rotate around")] public Vector3 axis; // Set to (1,0,0) in editor
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.Rotate(axis, speed * Time.deltaTime);
+    }
+}
+```
