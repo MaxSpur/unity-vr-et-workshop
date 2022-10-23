@@ -12,7 +12,7 @@ More specifically for a use-case in psychological/perceptual research, it will a
 * Recording and outputting eye tracking data from players or participants, and
 * How to interpret these results.
 
-In order to condense the workshop and save time, we have already prepared the computers you'll be working on with all necessary software and editing environments. If you want to repeat the process on your own equipment or in your lab, the page on [Installation and Setup](#installing-unity) will lead you to our recommended setup, but for now you can directly start with the [first part](page-0.md), which will teach you about creating your first unity project with a simple 3D object.
+In order to condense the workshop and save time, we have already prepared the computers you'll be working on with all necessary software and editing environments. If you want to repeat the process on your own equipment or in your lab, the page on [Installation and Setup](page-0.md) will lead you to our recommended setup, but for now you can directly start with the [first part](1-first-project.md), which will teach you about creating your first unity project with a simple 3D object.
 
 You can navigate the page with the buttons below, or using the links in the directory on the left (or behind the menu icon).
 

@@ -373,3 +373,5 @@ We can see the cube now moving from side to side and always facing the camera if
 </div></div>
 
 If everything works and you've understood every part, you should have now have the basics of Unity down, congratulations!
+
+Now [onwards to some actual VR](2-vr-interaction.md) — expect less handholding from now on ;)

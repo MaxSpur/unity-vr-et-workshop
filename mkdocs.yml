@@ -1,7 +1,8 @@
 site_name: Unity VR and Eye Tracking Workshop
 nav:
   - Welcome: index.md
-  - First Unity Project: 1-first-project.md
+  - 1 • First Unity Project: 1-first-project.md
+  - 2 • Interaction in VR: 2-vr-interaction.md
   - Installation and Setup: page-0.md
 
 markdown_extensions:
