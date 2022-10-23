@@ -282,11 +282,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#animating-an-object" class="md-nav__link">
-    Animating an object
+  <a href="#a-first-animation" class="md-nav__link">
+    A first animation
   </a>
   
-    <nav class="md-nav" aria-label="Animating an object">
+    <nav class="md-nav" aria-label="A first animation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -407,11 +407,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#animating-an-object" class="md-nav__link">
-    Animating an object
+  <a href="#a-first-animation" class="md-nav__link">
+    A first animation
   </a>
   
-    <nav class="md-nav" aria-label="Animating an object">
+    <nav class="md-nav" aria-label="A first animation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -516,7 +516,7 @@
 <summary>More on Positioning</summary>
 <p>There are many more ways to change the transform with the mouse. You can switch transform modes by pressing <strong>W</strong>, <strong>E</strong>, <strong>R</strong>, or by selecting the different icons in the little floating window in the scene view to move, rotate, scale an object, respectively. See the <a href="https://docs.unity3d.com/Manual/PositioningGameObjects.html">Unity Documentation</a> for more details on this.</p>
 </details>
-<h2 id="animating-an-object">Animating an object</h2>
+<h2 id="a-first-animation">A first animation</h2>
 <p>All we did so far is not much different than using any basic 3D creation software. Where a game engine like Unity differs, is its ability of freely <em>scripting</em> the objects we place in scenes, using programming languages.</p>
 <h3 id="creating-a-first-script-file">Creating a first script file</h3>
 <p>Let's try this out by making a script that will constantly rotate our cube. The easiest way to do this is by clicking the <strong>Add Component</strong> button at the bottom of the cube's Inspector and just starting to type the name of the script we want to create in the search field, in this case let's name it <code>Rotating</code>. It will automatically understand that we want to create a new script, so select that option and then confirm by pressing <strong>Create and Add</strong>.</p>
@@ -551,8 +551,10 @@
 <p>As all this code is still basically empty, running it won't change anything — you can try this by pressing the <strong>Play</strong> button at the top middle of the Unity editor, which will <em>compile</em> any scripts you might have changed, switch to the Game view (the view of our main camera), and execute all scripts that are attached to GameObjects within the hierarchy.</p>
 <p><img alt="First run" src="14-first-run.png" title="A boring view of a static cube. Pixels on screen." /></p>
 <p>As expected, the game view shows the main camera's perspective on a static cube. You can still access the cube's inspector by clicking on it in the hierarchy, where you can make changes to its transform by e.g. clicking and dragging the desired coordinates.</p>
+<!-- <div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-bottom:-223px; margin-top:-16px;padding-bottom:calc(70.80% + 33px); clip-path: inset(16px 0 223px 0)'> -->
 <div style='border-color: #018281; border-style: solid;'>
-<div style='overflow: hidden; position:relative; margin-bottom:-223px; margin-top:-16px;padding-bottom:calc(70.80% + 33px); clip-path: inset(16px 0 223px 0)'>
+<div style='overflow: hidden; position:relative; margin-top:-2.4%; margin-bottom:-33%;padding-bottom:calc(70.80% + 33px); clip-path: inset(3.3% 0 43.5% 0)'>
 <iframe src='https://gfycat.com/ifr/fantasticflimsycuscus?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
 
@@ -567,7 +569,7 @@
 <p>What this does it to call the <code>Rotate()</code> function of the GameObject's <a href="https://docs.unity3d.com/ScriptReference/Transform.html"><code>transform</code> component</a> with the parameters <code>Vector3.up</code> for the rotation axis, and <code>30.0f * Time.deltaTime</code> for the rotation angle — for every frame that the game runs. If you type this yourself in the code editor instead of copying and pasting, you might see <em>code completion</em> kicking in, which offers suggestions and explanations of each of these <em>fields.</em></p>
 <p><code>Vector3.up</code> is short for a <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">three-dimensional vector</a> that points straight up, and <code>Time.deltaTime</code> is the <a href="https://docs.unity3d.com/ScriptReference/Time.html">time</a> that has passed since the last frame before the current one is called. <code>30.0f</code> is the simply a convention of writing <code>f</code>loating point numbers, as opposed to integers. If we save this script file, go back to Unity and hit the Play button, we will once again see the camera's view in the Game view, with the cube steadily rotating around its vertical axis, at 30 degrees per second.</p>
 <div style='border-color: #018281; border-style: solid;'>
-<div style='overflow: hidden; position:relative; margin-bottom:-223px; margin-top:-16px;padding-bottom:calc(70.80% + 33px); clip-path: inset(16px 0 223px 0)'>
+<div style='overflow: hidden; position:relative; margin-top:-2.4%; margin-bottom:-33%;padding-bottom:calc(70.80% + 33px); clip-path: inset(3.3% 0 43.5% 0)'>
 <iframe src='https://gfycat.com/ifr/coldsmallelver?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
 
@@ -588,7 +590,7 @@
 <p>It is often necessary, and usually a good practice to <em>initialize</em> new variables with a certain default value, which is assigned with the equals sign <code>=</code> and a following value. Here we can give them exactly what we had previously put in to the parameters for the <code>Rotate()</code> function: <code>30.0f</code> for <code>speed</code>, and <code>Vector3.up</code> for <code>axis</code>.</p>
 <p>Finally, we need to replace the fixed values in the <code>transform.Rotate()</code> call with our new variables: <code>transform.Rotate(axis, speed * Time.deltaTime);</code> does that. Optionally, we can make these parameters that are now exposed in the inspector even more legible by adding the tooltips in the format shown above, before the <code>public</code> definitions of the variables.</p>
 <div style='border-color: #018281; border-style: solid;'>
-<div style='overflow: hidden; position:relative; margin-bottom:-223px; margin-top:-16px;padding-bottom:calc(70.80% + 33px); clip-path: inset(16px 0 223px 0)'>
+<div style='overflow: hidden; position:relative; margin-top:-2.4%; margin-bottom:-33%;padding-bottom:calc(70.80% + 33px); clip-path: inset(3.3% 0 43.5% 0)'>
 <iframe src='https://gfycat.com/ifr/unitedcandidindianringneckparakeet?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
 
