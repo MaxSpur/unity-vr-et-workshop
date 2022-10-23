@@ -198,7 +198,9 @@ Like before, changes in the inspector that happen while the game is running will
 !!! warning
     Always make sure that the game is __not playing__ while you make changes you want to __keep__, especially when adding/removing objects and components!
 
-## A more complex animation
+## Combining animations
+
+### A second script to move it
 
 To practice more with animating an object, let's create a new script for the cube as we did before, by adding a new script component and naming it `Moving`. As before, we can keep the pre-build structure and just add to it.
 
@@ -219,3 +221,155 @@ public class Moving : MonoBehaviour
 ```
 
 The main difference is how we're defining new Vectors now for `startPoint` and `endPoing`: we're initializing them with their coordinates. Save this code, and make sure that the this new component appears in the cube's inspector with the correct values we gave it in the code. If not, you can change the speed and points to their values right there.
+
+![Moving component](1-first-project/15-rotate-move.png "A moving component")
+
+### Interpolation
+
+To move between these two points, we need to *interpolate* between them as time passes. For that, let's add another variable that will keep track of where in between the two points the cube should be. This time we keep it `private` — it will not be accessible by outside scripts, as want to only change it internally. We can still display its value in the inspector though by adding a line above its declaration to make it a ["serialized field:"](https://docs.unity3d.com/Manual/script-Serialization.html)
+
+``` csharp title="Moving.cs"
+public class Moving : MonoBehaviour
+{
+    [Tooltip("Units per second")] public float speed = 1.0f;    
+    [Tooltip("Starting position in 3D space")] public Vector3 startPoint = new Vector3(2, 0, -1);
+    [Tooltip("End position in 3D space")] public Vector3 endPoint = new Vector3(2, 0, 1);
+
+    [SerializeField]
+    private float interpolator = -1.0f;
+
+    // Update is called once per frame
+    void Update() {
+
+    }
+```
+
+We set it to `-1` initially, and want to constantly increase it. This is accomplished by the `+=` operation in the `Update()` loop: we take its current value and add to it the time since the last frame multiplied by the speed, as before.
+
+When it reaches or exceeds `1` we will reset it back to `-1`, so that it will loop forever between these values. This is done by testing it inside an `if()` statement: if the contents of its round brackets `()` are true (is the interpolator greater than or equal to one?), then the contents within its curly brackets `{}` are executed: {set the interpolator back to -1}.
+
+``` csharp title="Moving.cs"
+public class Moving : MonoBehaviour
+{
+    [Tooltip("Units per second")] public float speed = 1.0f;    
+    [Tooltip("Starting position in 3D space")] public Vector3 startPoint = new Vector3(2, 0, -1);
+    [Tooltip("End position in 3D space")] public Vector3 endPoint = new Vector3(2, 0, 1);
+
+    [SerializeField]
+    private float interpolator = -1.0f;
+
+    // Update is called once per frame
+    void Update() {
+
+        interpolator += speed * Time.deltaTime;
+        
+        if (interpolator >= 1)
+        {
+            interpolator = -1;
+        }
+    }
+```
+
+To translate this into a movement for the cube, we need this interpolator to affect the `position` part of its transform. For that we can use the [`Lerp()` function](https://docs.unity3d.com/ScriptReference/Vector3.Lerp.html) of `Vector3`: it takes a starting and and ending point, and a value between zero and one that lets it calculate a new point in between.
+
+Since our interpolator goes between -1 and 1, we need to alter it slightly before we give to this `Lerp()` function, which we can do directly inside its parameter field:
+
+``` csharp title="Moving.cs" hl_lines="20"
+public class Moving : MonoBehaviour
+{
+    [Tooltip("Units per second")] public float speed = 1.0f;    
+    [Tooltip("Starting position in 3D space")] public Vector3 startPoint = new Vector3(2, 0, -1);
+    [Tooltip("End position in 3D space")] public Vector3 endPoint = new Vector3(2, 0, 1);
+
+    [SerializeField]
+    private float interpolator = -1.0f;
+
+    // Update is called once per frame
+    void Update() {
+
+        interpolator += speed * Time.deltaTime;
+        
+        if (interpolator >= 1)
+        {
+            interpolator = -1;
+        }
+
+        transform.position = Vector3.Lerp(startPoint, endPoint, interpolator < 0 ? -interpolator : interpolator);
+    }
+```
+
+!!! info "?: or Ternary Conditional Operator"
+    The structure with the form `x < y ? a : b` is a [handy shortcut](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator): we test if `x` is smaller than `y` (or any other comparison we need here), and return `a` if true and `b` if false.
+
+Here give the `Lerp()` function the *negative* of `interpolator` if it's smaller than zero, thus making it actually positive again. If `interpolator` already is positive, it is directly given to `Lerp()`. Enter this code, save it, and run the game:
+
+
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-2.4%; margin-bottom:-33%;padding-bottom:calc(70.80% + 33px); clip-path: inset(3.3% 0 43.5% 0)'>
+<iframe src='https://gfycat.com/ifr/coordinatedscholarlybarebirdbat?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+### Interplay
+
+You can now see the cube moving from side to side, while still spinning from its `Rotating` script! As before, you can play around with the parameters to change the speed (of both the rotation and translation) and with the starting and end points. You can also disable any of the two scripts at any time during the game by clicking their checkmark, which will freeze their execution and stop them influencing the cube.
+
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-2.4%; margin-bottom:-33%;padding-bottom:calc(70.80% + 33px); clip-path: inset(3.3% 0 43.5% 0)'>
+<iframe src='https://gfycat.com/ifr/decentdefinitivealaskankleekai?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+## Connecting objects
+
+Instead of this mad spinning, let's make this cube rotate face the camera at all times instead.
+
+### Looking at
+
+First, deactivate the `Rotating` component while outside the game mode, so that this change sticks. Then, let's add two lines to our `Moving` script:
+
+``` csharp title="Moving.cs" hl_lines="7 24"
+public class Moving : MonoBehaviour
+{
+    [Tooltip("Units per second")] public float speed = 1.0f;    
+    [Tooltip("Starting position in 3D space")] public Vector3 startPoint = new Vector3(2, 0, -1);
+    [Tooltip("End position in 3D space")] public Vector3 endPoint = new Vector3(2, 0, 1);
+
+    [Tooltip("Object to face")] public Transform targetObject;
+
+    [SerializeField]
+    private float interpolator = -1.0f;
+
+    // Update is called once per frame
+    void Update() {
+
+        interpolator += speed * Time.deltaTime;
+        
+        if (interpolator >= 1)
+        {
+            interpolator = -1;
+        }
+
+        transform.position = Vector3.Lerp(startPoint, endPoint, interpolator < 0 ? -interpolator : interpolator);
+
+        transform.LookAt(targetObject);
+    }
+```
+
+We now gave it a new variable (`targetObject`), this time a `Transform`. This lets us reference any other GameObject's transform, and therefore e.g. its position. The new last line within the `Update()` loop uses the [`LookAt()` method](https://docs.unity3d.com/ScriptReference/Transform.LookAt.html) from the `transform` class, which will orient the current GameObject's transform to… *look at,* or face in the direction of another transform that we give it.
+
+### Referencing objects
+
+Note how we did not initialize this variable in the code; we will instead assign it from the inspector. One way to do it is to click the target icon that now sits in the new variable field in the cube's inspector and select the __Main Camera__ object from the list that appears, or simply drag the Main Camera from the hierarchy into the field:
+
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-2.4%; margin-bottom:-33%;padding-bottom:calc(70.80% + 33px); clip-path: inset(3.3% 0 43.5% 0)'>
+<iframe src='https://gfycat.com/ifr/perkyunnaturalballoonfish?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+We can see the cube now moving from side to side and always facing the camera if we play it, but to display this new behavior more clearly we can arrange our Unity editor to show the scene and game views at the same time to have an external view. Changing the starting and end points, or the position of the camera will not hinder from `lookAt` always adjusting the cube's position correctly:
+
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-2.4%; margin-bottom:-33%;padding-bottom:calc(70.80% + 33px); clip-path: inset(3.3% 0 43.5% 0)'>
+<iframe src='https://gfycat.com/ifr/spitefulfirmboto?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+If everything works and you've understood every part, you should have now have the basics of Unity down, congratulations!

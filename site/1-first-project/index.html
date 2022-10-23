@@ -324,6 +324,74 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#onlineoffline-editing-of-values" class="md-nav__link">
+    Online/offline editing of values
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combining-animations" class="md-nav__link">
+    Combining animations
+  </a>
+  
+    <nav class="md-nav" aria-label="Combining animations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-second-script-to-move-it" class="md-nav__link">
+    A second script to move it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpolation" class="md-nav__link">
+    Interpolation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interplay" class="md-nav__link">
+    Interplay
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-objects" class="md-nav__link">
+    Connecting objects
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#looking-at" class="md-nav__link">
+    Looking at
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#referencing-objects" class="md-nav__link">
+    Referencing objects
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -449,6 +517,74 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#onlineoffline-editing-of-values" class="md-nav__link">
+    Online/offline editing of values
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combining-animations" class="md-nav__link">
+    Combining animations
+  </a>
+  
+    <nav class="md-nav" aria-label="Combining animations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-second-script-to-move-it" class="md-nav__link">
+    A second script to move it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpolation" class="md-nav__link">
+    Interpolation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interplay" class="md-nav__link">
+    Interplay
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-objects" class="md-nav__link">
+    Connecting objects
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#looking-at" class="md-nav__link">
+    Looking at
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#referencing-objects" class="md-nav__link">
+    Referencing objects
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -562,9 +698,10 @@
 <h3 id="editing-the-script-constant-rotation-around-a-fixed-axis">Editing the script — constant rotation around a fixed axis</h3>
 <p>Let's edit the <code>Rotating.cs</code> script so that it actually does something when the game runs.</p>
 <p>What we want to happen is to change something about the cube's transform every time the screen refreshes. This can be accomplished by adding one line of code inside the given <code>void Update()</code> function, so that it looks like this:</p>
-<div class="highlight"><span class="filename">Rotating.cs</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="p">,</span><span class="w"> </span><span class="m">30.0f</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">Rotating.cs</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="p">,</span><span class="w"> </span><span class="m">30.0f</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>What this does it to call the <code>Rotate()</code> function of the GameObject's <a href="https://docs.unity3d.com/ScriptReference/Transform.html"><code>transform</code> component</a> with the parameters <code>Vector3.up</code> for the rotation axis, and <code>30.0f * Time.deltaTime</code> for the rotation angle — for every frame that the game runs. If you type this yourself in the code editor instead of copying and pasting, you might see <em>code completion</em> kicking in, which offers suggestions and explanations of each of these <em>fields.</em></p>
 <p><code>Vector3.up</code> is short for a <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">three-dimensional vector</a> that points straight up, and <code>Time.deltaTime</code> is the <a href="https://docs.unity3d.com/ScriptReference/Time.html">time</a> that has passed since the last frame before the current one is called. <code>30.0f</code> is the simply a convention of writing <code>f</code>loating point numbers, as opposed to integers. If we save this script file, go back to Unity and hit the Play button, we will once again see the camera's view in the Game view, with the cube steadily rotating around its vertical axis, at 30 degrees per second.</p>
@@ -576,23 +713,174 @@
 <h3 id="making-the-script-interactive">Making the script interactive</h3>
 <p>For now, this rotation is fixed — while you can still manually change the transform in the game view as above, the cube keeps rotating. You can try move it around or rotate it around the X or Z axes to see its automatic rotation change direction relative to the world, but staying constant relative to the cube.</p>
 <p>To make the automatic rotation more interactive, we can edit our script to include variables, which need to be placed <em>outside</em> the <code>Update()</code> method, but still <em>within</em> the curly brackets of the <code>Rotating</code> <em>class.</em> Let's change these parts of the script to look like this:</p>
-<div class="highlight"><span class="filename">Rotating.cs</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Rotating</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Rotation angle per second&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">30.0f</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Vector of the rotation axis&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">axis</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">Rotating.cs</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Rotating</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Rotation angle per second&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">30.0f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Vector of the rotation axis&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">axis</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p><em>Variables</em> are introduced by stating their <em>type</em> first, then their <em>name,</em> like <code>float speed</code> — a floating point number that we reference by the name "speed." If we want to make a variable accessible to scripts outside the its current <em>scope</em> (the Rotating MonoBehavior in this case), we need to prefix them with <code>public</code>. Like this we can also directly see their current value in the Unity's inspector, as parameters of the cube's script component.</p>
 <p>It is often necessary, and usually a good practice to <em>initialize</em> new variables with a certain default value, which is assigned with the equals sign <code>=</code> and a following value. Here we can give them exactly what we had previously put in to the parameters for the <code>Rotate()</code> function: <code>30.0f</code> for <code>speed</code>, and <code>Vector3.up</code> for <code>axis</code>.</p>
 <p>Finally, we need to replace the fixed values in the <code>transform.Rotate()</code> call with our new variables: <code>transform.Rotate(axis, speed * Time.deltaTime);</code> does that. Optionally, we can make these parameters that are now exposed in the inspector even more legible by adding the tooltips in the format shown above, before the <code>public</code> definitions of the variables.</p>
+<p>Try it out: save the script, go back to the Unity editor, hit Play. You see the same rotation going on, but can now directly edit the rotation's parameters the same way you can interact with the cube's transform!</p>
 <div style='border-color: #018281; border-style: solid;'>
 <div style='overflow: hidden; position:relative; margin-top:-2.4%; margin-bottom:-33%;padding-bottom:calc(70.80% + 33px); clip-path: inset(3.3% 0 43.5% 0)'>
 <iframe src='https://gfycat.com/ifr/unitedcandidindianringneckparakeet?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
+
+<h3 id="onlineoffline-editing-of-values">Online/offline editing of values</h3>
+<p>Like before, changes in the inspector that happen while the game is running will be reverted to their default when you stop, but will stay if you make them while it's not running. If you change the axis or rotation speed while the game is off, the new values will override what you have as initial values in the code. If you go back to the code and put in new initial values and save, then these will overwrite anything currently set in the inspector.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always make sure that the game is <strong>not playing</strong> while you make changes you want to <strong>keep</strong>, especially when adding/removing objects and components!</p>
+</div>
+<h2 id="combining-animations">Combining animations</h2>
+<h3 id="a-second-script-to-move-it">A second script to move it</h3>
+<p>To practice more with animating an object, let's create a new script for the cube as we did before, by adding a new script component and naming it <code>Moving</code>. As before, we can keep the pre-build structure and just add to it.</p>
+<p>With the new script, we want to move the cube between two specified points in space, at a certain speed. Let's add these variables to the <code>Moving</code> MonoBehavior, similar to how we did it above:</p>
+<div class="highlight"><span class="filename">Moving.cs</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Moving</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Units per second&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">1.0f</span><span class="p">;</span><span class="w">    </span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Starting position in 3D space&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">startPoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="p">-</span><span class="m">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="na">[Tooltip(&quot;End position in 3D space&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">endPoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>The main difference is how we're defining new Vectors now for <code>startPoint</code> and <code>endPoing</code>: we're initializing them with their coordinates. Save this code, and make sure that the this new component appears in the cube's inspector with the correct values we gave it in the code. If not, you can change the speed and points to their values right there.</p>
+<p><img alt="Moving component" src="15-rotate-move.png" title="A moving component" /></p>
+<h3 id="interpolation">Interpolation</h3>
+<p>To move between these two points, we need to <em>interpolate</em> between them as time passes. For that, let's add another variable that will keep track of where in between the two points the cube should be. This time we keep it <code>private</code> — it will not be accessible by outside scripts, as want to only change it internally. We can still display its value in the inspector though by adding a line above its declaration to make it a <a href="https://docs.unity3d.com/Manual/script-Serialization.html">"serialized field:"</a></p>
+<div class="highlight"><span class="filename">Moving.cs</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Moving</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Units per second&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">1.0f</span><span class="p">;</span><span class="w">    </span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Starting position in 3D space&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">startPoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="p">-</span><span class="m">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="na">[Tooltip(&quot;End position in 3D space&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">endPoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="na">[SerializeField]</span><span class="w"></span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">interpolator</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">-</span><span class="m">1.0f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>We set it to <code>-1</code> initially, and want to constantly increase it. This is accomplished by the <code>+=</code> operation in the <code>Update()</code> loop: we take its current value and add to it the time since the last frame multiplied by the speed, as before.</p>
+<p>When it reaches or exceeds <code>1</code> we will reset it back to <code>-1</code>, so that it will loop forever between these values. This is done by testing it inside an <code>if()</code> statement: if the contents of its round brackets <code>()</code> are true (is the interpolator greater than or equal to one?), then the contents within its curly brackets <code>{}</code> are executed: {set the interpolator back to -1}.</p>
+<div class="highlight"><span class="filename">Moving.cs</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Moving</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Units per second&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">1.0f</span><span class="p">;</span><span class="w">    </span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Starting position in 3D space&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">startPoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="p">-</span><span class="m">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="na">[Tooltip(&quot;End position in 3D space&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">endPoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="na">[SerializeField]</span><span class="w"></span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">interpolator</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">-</span><span class="m">1.0f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="n">interpolator</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">interpolator</span><span class="w"> </span><span class="p">&gt;=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">            </span><span class="n">interpolator</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">-</span><span class="m">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>To translate this into a movement for the cube, we need this interpolator to affect the <code>position</code> part of its transform. For that we can use the <a href="https://docs.unity3d.com/ScriptReference/Vector3.Lerp.html"><code>Lerp()</code> function</a> of <code>Vector3</code>: it takes a starting and and ending point, and a value between zero and one that lets it calculate a new point in between.</p>
+<p>Since our interpolator goes between -1 and 1, we need to alter it slightly before we give to this <code>Lerp()</code> function, which we can do directly inside its parameter field:</p>
+<div class="highlight"><span class="filename">Moving.cs</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Moving</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Units per second&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">1.0f</span><span class="p">;</span><span class="w">    </span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Starting position in 3D space&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">startPoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="p">-</span><span class="m">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="na">[Tooltip(&quot;End position in 3D space&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">endPoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="na">[SerializeField]</span><span class="w"></span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">interpolator</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">-</span><span class="m">1.0f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">        </span><span class="n">interpolator</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">interpolator</span><span class="w"> </span><span class="p">&gt;=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">            </span><span class="n">interpolator</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">-</span><span class="m">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="hll"><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">startPoint</span><span class="p">,</span><span class="w"> </span><span class="n">endPoint</span><span class="p">,</span><span class="w"> </span><span class="n">interpolator</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="p">-</span><span class="n">interpolator</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">interpolator</span><span class="p">);</span><span class="w"></span>
+</span><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">?: or Ternary Conditional Operator</p>
+<p>The structure with the form <code>x &lt; y ? a : b</code> is a <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator">handy shortcut</a>: we test if <code>x</code> is smaller than <code>y</code> (or any other comparison we need here), and return <code>a</code> if true and <code>b</code> if false.</p>
+</div>
+<p>Here give the <code>Lerp()</code> function the <em>negative</em> of <code>interpolator</code> if it's smaller than zero, thus making it actually positive again. If <code>interpolator</code> already is positive, it is directly given to <code>Lerp()</code>. Enter this code, save it, and run the game:</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-2.4%; margin-bottom:-33%;padding-bottom:calc(70.80% + 33px); clip-path: inset(3.3% 0 43.5% 0)'>
+<iframe src='https://gfycat.com/ifr/coordinatedscholarlybarebirdbat?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<h3 id="interplay">Interplay</h3>
+<p>You can now see the cube moving from side to side, while still spinning from its <code>Rotating</code> script! As before, you can play around with the parameters to change the speed (of both the rotation and translation) and with the starting and end points. You can also disable any of the two scripts at any time during the game by clicking their checkmark, which will freeze their execution and stop them influencing the cube.</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-2.4%; margin-bottom:-33%;padding-bottom:calc(70.80% + 33px); clip-path: inset(3.3% 0 43.5% 0)'>
+<iframe src='https://gfycat.com/ifr/decentdefinitivealaskankleekai?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<h2 id="connecting-objects">Connecting objects</h2>
+<p>Instead of this mad spinning, let's make this cube rotate face the camera at all times instead.</p>
+<h3 id="looking-at">Looking at</h3>
+<p>First, deactivate the <code>Rotating</code> component while outside the game mode, so that this change sticks. Then, let's add two lines to our <code>Moving</code> script:</p>
+<div class="highlight"><span class="filename">Moving.cs</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Moving</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Units per second&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">1.0f</span><span class="p">;</span><span class="w">    </span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Starting position in 3D space&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">startPoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="p">-</span><span class="m">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="na">[Tooltip(&quot;End position in 3D space&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">endPoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="hll"><span class="w">    </span><span class="na">[Tooltip(&quot;Object to face&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">targetObject</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="na">[SerializeField]</span><span class="w"></span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">interpolator</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">-</span><span class="m">1.0f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="n">interpolator</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">interpolator</span><span class="w"> </span><span class="p">&gt;=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">            </span><span class="n">interpolator</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">-</span><span class="m">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">startPoint</span><span class="p">,</span><span class="w"> </span><span class="n">endPoint</span><span class="p">,</span><span class="w"> </span><span class="n">interpolator</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="p">-</span><span class="n">interpolator</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">interpolator</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="hll"><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">LookAt</span><span class="p">(</span><span class="n">targetObject</span><span class="p">);</span><span class="w"></span>
+</span><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>We now gave it a new variable (<code>targetObject</code>), this time a <code>Transform</code>. This lets us reference any other GameObject's transform, and therefore e.g. its position. The new last line within the <code>Update()</code> loop uses the <a href="https://docs.unity3d.com/ScriptReference/Transform.LookAt.html"><code>LookAt()</code> method</a> from the <code>transform</code> class, which will orient the current GameObject's transform to… <em>look at,</em> or face in the direction of another transform that we give it.</p>
+<h3 id="referencing-objects">Referencing objects</h3>
+<p>Note how we did not initialize this variable in the code; we will instead assign it from the inspector. One way to do it is to click the target icon that now sits in the new variable field in the cube's inspector and select the <strong>Main Camera</strong> object from the list that appears, or simply drag the Main Camera from the hierarchy into the field:</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-2.4%; margin-bottom:-33%;padding-bottom:calc(70.80% + 33px); clip-path: inset(3.3% 0 43.5% 0)'>
+<iframe src='https://gfycat.com/ifr/perkyunnaturalballoonfish?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<p>We can see the cube now moving from side to side and always facing the camera if we play it, but to display this new behavior more clearly we can arrange our Unity editor to show the scene and game views at the same time to have an external view. Changing the starting and end points, or the position of the camera will not hinder from <code>lookAt</code> always adjusting the cube's position correctly:</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-2.4%; margin-bottom:-33%;padding-bottom:calc(70.80% + 33px); clip-path: inset(3.3% 0 43.5% 0)'>
+<iframe src='https://gfycat.com/ifr/spitefulfirmboto?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<p>If everything works and you've understood every part, you should have now have the basics of Unity down, congratulations!</p>
 
 
 
