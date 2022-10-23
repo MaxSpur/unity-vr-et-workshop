@@ -37,7 +37,7 @@ The biggest part should show you the *__Scene__ View,* where you can freely navi
 
 The Scene View shows you the contents of your currently open *Scene* — a kind of super *Object* that holds all other objects. A full overview of all objects and their relationships is shown in the *__Hierarchy__ window* — as you can see, it currently only contains our only Scene (__SampleScene__), which holds a simple *Directional Light* for illuminating the world and the *Main Camera* that lets a player see it. Let's select that camera by clicking on it in the *Hierarchy* or on its *Gizmo* (camera icon) in the *Scene* view:
 
-![Selected Camera](page-1/5-select%20camera.png "Inspecting the camera")
+![Selected Camera](page-1/5-select-camera.png "Inspecting the camera")
 
 It is now highlighted in both *Scene* and *Hierarchy* views, as shown by a highlight and the appearance of arrows pointing in the cardinal directions around the object. In addition, a view from this camera now shows up in the Scene view as a floating window: this is what a player of this game will see if we run it. The same view is visible in a full window by selecting the *Game* tab in the Scene window.
 
@@ -46,6 +46,22 @@ Another thing that happens when we select a *Game Object* like this camera in th
 ??? info "Transforms and Hierarchies"
     In the case of the camera and light and any other objects directly under the __SampleScene__ Scene object, these coordinates are equivalent to their "world" coordinates. For any object that sits below another in the Hierarchy, these coordinates are basically offset by those of their *Parent.* See Unity's documentation on the [Hierarchy](https://docs.unity3d.com/Manual/Hierarchy.html) and [Transforms](https://docs.unity3d.com/Manual/class-Transform.html) for more details.
 
-Let's set the camera's Position to the *origin* and rotate it to point in the blue arrow's (the Z-axis) direction by editing its Transform Component accordingly: Position `X=0, Y=0, Z=0` and Rotation `X=0, Y=90, Z=0`.
+Let's set the camera's Position to the *origin* and rotate it to point in the blue arrow's (the Z-axis) direction by editing its Transform Component accordingly: set Position `X=0, Y=0, Z=0` and Rotation `X=0, Y=90, Z=0`.
+
+![Moved Camera](page-1/6-camera-transform.png "Moved the camera")
 
 ## Creating a first object
+
+Let's bring a cube into the scene.
+
+While you can go to the main menu under *GameObject* and select what you want to create, a more precise way is to right-click on an empty part of the Hierarchy and selecting __3D Object → Cube__. This will create a basic cube *GameObject* inside our Scene, with a default Transform. If we had right-clicked on any existing object in the scene instead of on an empty space, we would have created a *child* object that would be tied to its *parent,* and this is not what we want in this case.
+
+![Adding a cube](page-1/7-create-box.png "Basic Box")
+
+If you double-click on the new Cube object in the hierarchy, the scene view will fully zoom into it, showing that it basically swallowed our camera. If you select our camera object again, its view (or the Game View) won't show the cube — the way most 3D engines work, objects are transparent from the inside.
+
+![Big box](page-1/8-big-box.png "Big Box")
+
+Let's move the box to a position where the camera can see it, and also try making it smaller by setting its transform component to Position `X=2, Y=0, Z=0` and Scale `X=0.2, Y=0.2, Z=0.2`.
+
+Selecting our camera again, we can now see a small box appearing at the center of its view. If the cube is now gone from our scene view, just zoom out a bit, or double-click it again in the hierarchy.
