@@ -471,7 +471,7 @@
 
 <h1 id="first-unity-project-getting-to-know-the-editors">First Unity Project — getting to know the Editors</h1>
 <p><img src="0-hub-app.png" alt="Iconic" width="200"/></p>
-<!-- ![Unity Hub Desktop Icon](assets/page-1/0-hub-app.png "Iconic") -->
+<!-- ![Unity Hub Desktop Icon](assets/1-first-project/0-hub-app.png "Iconic") -->
 
 <h2 id="create-a-first-project-using-the-unity-hub">Create a first project using the Unity Hub</h2>
 <p>If not already running on your computer, start the Unity Hub (see the icon above). Depending on previous use there may be already projects listed in its window — if so, disregard them for now and just click the <strong>New project</strong> button.</p>
@@ -504,7 +504,7 @@
 <p><img alt="Moved Camera" src="6-camera-transform.png" title="Moved the camera" /></p>
 <h2 id="creating-a-first-object">Creating a first object</h2>
 <p>Let's bring a cube into the scene.</p>
-<p>While you can go to the main menu under <em>GameObject</em> and select what you want to create, a more precise way is to right-click on an empty part of the Hierarchy and selecting <strong>3D Object → Cube</strong>. This will create a basic cube <em>GameObject</em> inside our Scene, with a default Transform. If we had right-clicked on any existing object in the scene instead of on an empty space, we would have created a <em>child</em> object that would be tied to its <em>parent,</em> and this is not what we want in this case.</p>
+<p>While you can go to the main menu under <em>GameObject</em> and select what you want to create, a more precise way is to right-click on an empty part of the Hierarchy and selecting <strong>3D Object → Cube</strong>. This will create a basic cube <a href="https://docs.unity3d.com/ScriptReference/GameObject.html"><em>GameObject</em></a> inside our Scene, with a default Transform. If we had right-clicked on any existing object in the scene instead of on an empty space, we would have created a <em>child</em> object that would be tied to its <em>parent,</em> and this is not what we want in this case.</p>
 <p><img alt="Adding a cube" src="7-create-box.png" title="Basic Box" /></p>
 <p>If you double-click on the new Cube object in the hierarchy, the scene view will fully zoom into it, showing that it basically swallowed our camera. If you select our camera object again, its view (or the Game View) won't show the cube — the way most 3D engines work, objects are transparent from the inside.</p>
 <p><img alt="Big box" src="8-big-box.png" title="Big Box" /></p>
@@ -545,13 +545,16 @@
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>The first three lines (beginning with <code>using</code>) tell Unity which <em>Software Libraries</em> to load before executing any of the code, which allow it to access e.g. Unity's built-in functionalities and data types, or anything else you might want to include.</p>
-<p>The next block, surrounded by the curly brackets <code>{ }</code> of <code>public class Rotating : MonoBehaviour</code> encompass all functionality of this script, in the simplest case. It tells Unity that this block defines a <code>MonoBehavior</code> object, which is the kind of script object that one can attach to GameObjects in the Unity's hierarchy.</p>
+<p>The next block, surrounded by the curly brackets <code>{ }</code> of <code>public class Rotating : MonoBehaviour</code> encompass all functionality of this script, in the simplest case. It tells Unity that this block defines a <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.html"><code>MonoBehavior</code> object</a>, which is the kind of script object that one can attach to GameObjects in the Unity's hierarchy.</p>
 <p>Within the curly brackets there are already the outlines of two standard functions that many scripts use: <code>void Start()</code> and <code>void Update()</code>. As already explained by the comments above them (any lines that start with <code>//</code> are disregarded by Unity and are only there for the programmer to read), the code within the curly brackets of <code>Start()</code> will be executed only once, at the very start of each run of the "game," while the contents of <code>Update()</code> will be called every time the screen refreshes. The empty round brackets <code>( )</code> following the names of these <em>functions</em> mean that they don't accept any input variables, and <code>void</code> before their names signifies that they don't output anything, either.</p>
 <h3 id="running-the-script">Running the script</h3>
 <p>As all this code is still basically empty, running it won't change anything — you can try this by pressing the <strong>Play</strong> button at the top middle of the Unity editor, which will <em>compile</em> any scripts you might have changed, switch to the Game view (the view of our main camera), and execute all scripts that are attached to GameObjects within the hierarchy.</p>
 <p><img alt="First run" src="14-first-run.png" title="A boring view of a static cube. Pixels on screen." /></p>
 <p>As expected, the game view shows the main camera's perspective on a static cube. You can still access the cube's inspector by clicking on it in the hierarchy, where you can make changes to its transform by e.g. clicking and dragging the desired coordinates.</p>
-<div style='position:relative; padding-bottom:calc(70.80% + 33px)'><iframe src='https://gfycat.com/ifr/fantasticflimsycuscus?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe></div>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-bottom:-223px; margin-top:-16px;padding-bottom:calc(70.80% + 33px); clip-path: inset(16px 0 223px 0)'>
+<iframe src='https://gfycat.com/ifr/fantasticflimsycuscus?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
 
 <p>Exiting the Play mode by again pressing the play button will reset any changes that we made in the hierarchy and inspector back to how they were before, and will again show the scene view by default.</p>
 <h3 id="editing-the-script-constant-rotation-around-a-fixed-axis">Editing the script — constant rotation around a fixed axis</h3>
@@ -561,9 +564,12 @@
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="p">,</span><span class="w"> </span><span class="m">30.0f</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>What this does it to call the <code>Rotate()</code> function of the GameObject's <code>transform</code> component with the parameters <code>Vector3.up</code> for the rotation axis, and <code>30.0f * Time.deltaTime</code> for the rotation angle — for every frame that the game runs. If you type this yourself in the code editor instead of copying and pasting, you might see <em>code completion</em> kicking in, which offers suggestions and explanations of each of these <em>fields.</em></p>
-<p><code>Vector3.up</code> is short for a three-dimensional vector that points straight up, and <code>Time.deltaTime</code> is the time that has passed since the last frame before the current one is called. <code>30.0f</code> is the simply a convention of writing <code>f</code>loating point numbers, as opposed to integers. If we save this script file, go back to Unity and hit the Play button, we will once again see the camera's view in the Game view, with the cube steadily rotating around its vertical axis, at 30 degrees per second.</p>
-<div style='position:relative; padding-bottom:calc(70.80% + 33px)'><iframe src='https://gfycat.com/ifr/coldsmallelver?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe></div>
+<p>What this does it to call the <code>Rotate()</code> function of the GameObject's <a href="https://docs.unity3d.com/ScriptReference/Transform.html"><code>transform</code> component</a> with the parameters <code>Vector3.up</code> for the rotation axis, and <code>30.0f * Time.deltaTime</code> for the rotation angle — for every frame that the game runs. If you type this yourself in the code editor instead of copying and pasting, you might see <em>code completion</em> kicking in, which offers suggestions and explanations of each of these <em>fields.</em></p>
+<p><code>Vector3.up</code> is short for a <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">three-dimensional vector</a> that points straight up, and <code>Time.deltaTime</code> is the <a href="https://docs.unity3d.com/ScriptReference/Time.html">time</a> that has passed since the last frame before the current one is called. <code>30.0f</code> is the simply a convention of writing <code>f</code>loating point numbers, as opposed to integers. If we save this script file, go back to Unity and hit the Play button, we will once again see the camera's view in the Game view, with the cube steadily rotating around its vertical axis, at 30 degrees per second.</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-bottom:-223px; margin-top:-16px;padding-bottom:calc(70.80% + 33px); clip-path: inset(16px 0 223px 0)'>
+<iframe src='https://gfycat.com/ifr/coldsmallelver?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
 
 <h3 id="making-the-script-interactive">Making the script interactive</h3>
 <p>For now, this rotation is fixed — while you can still manually change the transform in the game view as above, the cube keeps rotating. You can try move it around or rotate it around the X or Z axes to see its automatic rotation change direction relative to the world, but staying constant relative to the cube.</p>
@@ -581,7 +587,10 @@
 <p><em>Variables</em> are introduced by stating their <em>type</em> first, then their <em>name,</em> like <code>float speed</code> — a floating point number that we reference by the name "speed." If we want to make a variable accessible to scripts outside the its current <em>scope</em> (the Rotating MonoBehavior in this case), we need to prefix them with <code>public</code>. Like this we can also directly see their current value in the Unity's inspector, as parameters of the cube's script component.</p>
 <p>It is often necessary, and usually a good practice to <em>initialize</em> new variables with a certain default value, which is assigned with the equals sign <code>=</code> and a following value. Here we can give them exactly what we had previously put in to the parameters for the <code>Rotate()</code> function: <code>30.0f</code> for <code>speed</code>, and <code>Vector3.up</code> for <code>axis</code>.</p>
 <p>Finally, we need to replace the fixed values in the <code>transform.Rotate()</code> call with our new variables: <code>transform.Rotate(axis, speed * Time.deltaTime);</code> does that. Optionally, we can make these parameters that are now exposed in the inspector even more legible by adding the tooltips in the format shown above, before the <code>public</code> definitions of the variables.</p>
-<div style='position:relative; padding-bottom:calc(70.80% + 33px)'><iframe src='https://gfycat.com/ifr/unitedcandidindianringneckparakeet?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe></div>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-bottom:-223px; margin-top:-16px;padding-bottom:calc(70.80% + 33px); clip-path: inset(16px 0 223px 0)'>
+<iframe src='https://gfycat.com/ifr/unitedcandidindianringneckparakeet?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
 
 
 
