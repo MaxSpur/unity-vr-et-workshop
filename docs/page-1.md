@@ -82,17 +82,52 @@ Let's try this out by making a script that will constantly rotate our cube. The 
 
 ![Creating a script](page-1/12-making-script.png "Naming and creating a script")
 
+After a bit of waiting, the Unity editor will have created a new file inside its Assets folder, which you can see inside the *Project View* by clicking on the new Script component in the cube's Inspector.
+
+![Script file location](page-1/13-script-location.png "The new file's location")
+
+Double-clicking the Script field in the cube's Script component, or on the script's icon in the Project view will bring up a text editor (Visual Studio Code in this case, if everything is set up properly) with the script file, named `Rotating.cs` already opened. With the editor you can now make changes to the script! The Unity editor will take all changes into account every time you save your changes in the text editor and switch focus back to the Unity editor.
+
+Every script you create using the above way will be a __*C#*__, or *C Sharp* script, as can be seen by its ".cs" ending. Unity will always create a new script file with a basic structure pre-written, looking like this:
+
 ``` csharp title="Rotating.cs"
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Rotating : MonoBehaviour
 {
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+```
+
+The first three lines (beginning with `using`) tell Unity which *Software Libraries* to load before executing any of the code, which allow it to access e.g. Unity's built-in functionalities and data types, or anything else you might want to include.
+
+The next block, surrounded by the curly brackets `{ }` of `public class Rotating : MonoBehaviour` encompass all functionality of this script, in the simplest case. It tells Unity that this block defines a `MonoBehavior` object, which is the kind of script object that one can attach to GameObjects in the Unity's hierarchy.
+
+Within the curly brackets there are already the outlines of two standard functions that many scripts use: `void Start()` and `void Update()`. As already explained by the comments above them (any lines that start with `//` are disregarded by Unity and are only there for the programmer to read), the code within the curly brackets of `Start()` will be executed only once, at the very start of each run of the "game," while the contents of `Update()` will be called every time the screen refreshes. The empty round brackets `( )` following the names of these *functions* mean that they don't accept any input variables, and `void` before their names signifies that they don't output anything, either.
+
+As all this code is still basically empty, running it won't change anything — you can try this by pressing the __Play__ button at the top middle of the Unity editor, which will *compile* any scripts you might have changed, switch to the Game view (the view of our main camera), and execute all scripts that are attached to GameObjects within the hierarchy.
+
+
+``` csharp title="Rotating.cs"
+using UnityEngine;
+
+public class Rotating : MonoBehaviour {
     [Tooltip("Units per second")] public float speed; // Set to 180 in editor
     [Tooltip("Axis to rotate around")] public Vector3 axis; // Set to (1,0,0) in editor
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         transform.Rotate(axis, speed * Time.deltaTime);
     }
 }
