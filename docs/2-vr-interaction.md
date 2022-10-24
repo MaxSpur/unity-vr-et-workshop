@@ -59,3 +59,24 @@ Being a prefab, it will appear blue in the hierarchy. Inside it you can find obj
 You can already try running the game to see an empty Unity world in VR. The first time you do, a SteamVR window will appear and ask you to "open the SteamVR Input window" to generate "actions for SteamVR" — do it. Click through this and the next window with __Yes__, and hit __Save and generate__ in the new SteamVR Input window that appears in Unity to generate the default inputs bindings for controls; you can close this window afterwards.
 
 You may see some error messages in the console because these actions were missing — run the game again and they should be gone. The headset should be functioning and showing you an empty, sunny world!
+
+![VR first run](2-vr-interaction/5-running-vr.png "Brave New World")
+
+### Adding objects
+
+Nice as that may be, we want more. Stop the game and start by adding a floor.
+
+As before with the cube, right-click somewhere in the hierarchy, select `3D Object`, and then find `Plane`. This will create a flat surface in the middle of our environment. Make sure it's at the origin (Position: `X=0, Y=0, Z=0`) and not rotated, and adjust its scale to `X=0.3, Y=1, Z=0.3`.
+
+Create a new __cube__ the same way and scale it to `X=0.15, Y=0.15, Z=0.15`. Copy it by right-clicking on it and selecting `Duplicate` — the new one will automatically be named `Cube (1)`, which you can keep or rename to your liking, e.g. `Left Cube` and `Right Cube`.
+
+### Tying objects to VR controllers
+
+Now we want these two cubes to follow the movement of our VR controllers. The easiest way to do this is to simply drag them in the hierarchy to their respective controller objects in the CameraRig, making sure that they end up "inside" them:
+
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-5.1%; margin-bottom:-34%;padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/plumpdistantgull?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+Running the game now you should have a clumsy, white box surrounding the tips of your controllers. If you want, you can adjust the transforms of each cube to offset them from the controllers: `0.15` on the Z-axis should look good enough.
