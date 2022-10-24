@@ -323,11 +323,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#interacting-with-objects-in-vr" class="md-nav__link">
-    Interacting with objects in VR
+  <a href="#interacting-with-objects-part-1" class="md-nav__link">
+    Interacting with objects — Part 1
   </a>
   
-    <nav class="md-nav" aria-label="Interacting with objects in VR">
+    <nav class="md-nav" aria-label="Interacting with objects — Part 1">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -354,6 +354,33 @@
           <li class="md-nav__item">
   <a href="#rigidbody-components" class="md-nav__link">
     Rigidbody Components
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacting-with-objects-part-2" class="md-nav__link">
+    Interacting with objects — Part 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Interacting with objects — Part 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-uses-of-rigidbody" class="md-nav__link">
+    Other uses of Rigidbody
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-array-of-materials" class="md-nav__link">
+    An array of Materials
   </a>
   
 </li>
@@ -467,11 +494,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#interacting-with-objects-in-vr" class="md-nav__link">
-    Interacting with objects in VR
+  <a href="#interacting-with-objects-part-1" class="md-nav__link">
+    Interacting with objects — Part 1
   </a>
   
-    <nav class="md-nav" aria-label="Interacting with objects in VR">
+    <nav class="md-nav" aria-label="Interacting with objects — Part 1">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -498,6 +525,33 @@
           <li class="md-nav__item">
   <a href="#rigidbody-components" class="md-nav__link">
     Rigidbody Components
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacting-with-objects-part-2" class="md-nav__link">
+    Interacting with objects — Part 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Interacting with objects — Part 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-uses-of-rigidbody" class="md-nav__link">
+    Other uses of Rigidbody
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-array-of-materials" class="md-nav__link">
+    An array of Materials
   </a>
   
 </li>
@@ -561,7 +615,7 @@
 <p>You can already try running the game to see an empty Unity world in VR. The first time you do, a SteamVR window will appear and ask you to "open the SteamVR Input window" to generate "actions for SteamVR" — do it. Click through this and the next window with <strong>Yes</strong>, and hit <strong>Save and generate</strong> in the new SteamVR Input window that appears in Unity to generate the default inputs bindings for controls; you can close this window afterwards.</p>
 <p>You may see some error messages in the console because these actions were missing — run the game again and they should be gone. The headset should be functioning and showing you an empty, sunny world!</p>
 <p><img alt="VR first run" src="5-running-vr.png" title="Brave New World" /></p>
-<h2 id="interacting-with-objects-in-vr">Interacting with objects in VR</h2>
+<h2 id="interacting-with-objects-part-1">Interacting with objects — Part 1</h2>
 <p>Nice as that may be, we want more. Let's add some objects to interact with.</p>
 <h3 id="adding-objects">Adding objects</h3>
 <p>Stop the game and start by adding a floor.</p>
@@ -596,6 +650,45 @@
 <div style='overflow: hidden; margin-top:-5.1%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 45% 0)'>
 <iframe src='https://gfycat.com/ifr/shoddyunlinedkingfisher?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
+
+<h2 id="interacting-with-objects-part-2">Interacting with objects — Part 2</h2>
+<h3 id="other-uses-of-rigidbody">Other uses of Rigidbody</h3>
+<p>Sending objects flying is fun, but there are other uses of the Rigidbody component. As mentioned before, there is <a href="https://docs.unity3d.com/Manual/collision-section.html">collision detection</a>. It relies on there being a <em>Collider</em> component present in both objects, and a Rigidbody in at least one of them. We now need to configure this.</p>
+<p>Let's be more gentle to the cylinder and remove its Rigidbody component by clicking on its three dots and selecting <strong>Remove Component</strong>. Make sure it still as its <em>Capsule Collider</em> component.</p>
+<p>Select the two cubes again and inspect their <em>Box Collider</em> components and set a checkmark in the field <code>Is Trigger</code>. We can now be informed about collisions between our cubes and the cylinder in code.</p>
+<h3 id="an-array-of-materials">An array of Materials</h3>
+<p>Create another new folder within Assets, and name it Scripts.</p>
+<p>In it, create a new <code>C# Script</code> called <code>SwitchMaterialOnCollide</code>. We want this script to give our cylinder a number of materials that it will switch between whenever a collision is detected.</p>
+<p>Open the script in the code editor, and add some lines to create a public and a private variable:</p>
+<div class="highlight"><span class="filename">SwitchMaterialOnCollide.cs</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Moving</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="hll"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Material</span><span class="p">[]</span><span class="w"> </span><span class="n">materials</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">MeshRenderer</span><span class="w"> </span><span class="n">_meshRenderer</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>The variable <code>Material</code> is an <a href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Array.html"><em>Array</em></a>, which is set by placing two square brackets right after the variable name declaration. This means it is actually a <em>container</em> of multiple materials, the number of which is not set.</p>
+<p>Save the code file and go back to the Unity editor to attach this code as a component to the cylinder by just dragging the file's icon from the project browser onto the cylinder object in the hierarchy.</p>
+<p>You will now see the a <code>Switch Material On Collide</code> component in the cylinder's inspector, showing only <code>Materials</code> as an editable field — the second variable, <code>_meshRenderer</code>, is private and not visible here.</p>
+<p>Expand this field with its arrow, and add increase the number of <em>Elements</em> this array of materials can hold by either entering <code>2</code> directly where there is currently a <code>0</code>, or by clicking the <code>+</code> button twice. You can now place our red and blue materials in these fields:</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-5%; margin-bottom:-10%;padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 13% 0)'>
+<iframe src='https://gfycat.com/ifr/scentedhelpfulamericanredsquirrel?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<p>Go back to the code editor and add two lines to the <code>Start()</code> function:</p>
+<div class="highlight"><span class="filename">SwitchMaterialOnCollide.cs</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Moving</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Material</span><span class="p">[]</span><span class="w"> </span><span class="n">materials</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">MeshRenderer</span><span class="w"> </span><span class="n">_meshRenderer</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="c1">// Start is called before the first frame update</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="hll"><span class="w">        </span><span class="n">_meshRenderer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MeshRenderer</span><span class="p">&gt;();</span><span class="w"></span>
+</span><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="hll"><span class="w">        </span><span class="n">_meshRenderer</span><span class="p">.</span><span class="n">material</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">materials</span><span class="p">[</span><span class="m">0</span><span class="p">];</span><span class="w"></span>
+</span><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 
 
