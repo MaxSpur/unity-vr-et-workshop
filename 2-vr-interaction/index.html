@@ -385,6 +385,54 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#meshrenderer-and-its-material" class="md-nav__link">
+    MeshRenderer and its Material
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collision-triggers" class="md-nav__link">
+    Collision triggers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switching-colors-of-a-material" class="md-nav__link">
+    Switching colors of a material
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacting-with-objects-part-3" class="md-nav__link">
+    Interacting with objects — Part 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Interacting with objects — Part 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inter-script-interaction" class="md-nav__link">
+    Inter-script interaction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steamvr-actions" class="md-nav__link">
+    SteamVR Actions
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -394,6 +442,21 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-runtime/" class="md-nav__link">
+        3 • Runtime
+      </a>
     </li>
   
 
@@ -556,6 +619,54 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#meshrenderer-and-its-material" class="md-nav__link">
+    MeshRenderer and its Material
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collision-triggers" class="md-nav__link">
+    Collision triggers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switching-colors-of-a-material" class="md-nav__link">
+    Switching colors of a material
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacting-with-objects-part-3" class="md-nav__link">
+    Interacting with objects — Part 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Interacting with objects — Part 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inter-script-interaction" class="md-nav__link">
+    Inter-script interaction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steamvr-actions" class="md-nav__link">
+    SteamVR Actions
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -660,7 +771,7 @@
 <p>Create another new folder within Assets, and name it Scripts.</p>
 <p>In it, create a new <code>C# Script</code> called <code>SwitchMaterialOnCollide</code>. We want this script to give our cylinder a number of materials that it will switch between whenever a collision is detected.</p>
 <p>Open the script in the code editor, and add some lines to create a public and a private variable:</p>
-<div class="highlight"><span class="filename">SwitchMaterialOnCollide.cs</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Moving</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<div class="highlight"><span class="filename">SwitchMaterialOnCollide.cs</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SwitchMaterialOnCollide</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span><span class="w"></span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="hll"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Material</span><span class="p">[]</span><span class="w"> </span><span class="n">materials</span><span class="p">;</span><span class="w"></span>
 </span><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">MeshRenderer</span><span class="w"> </span><span class="n">_meshRenderer</span><span class="p">;</span><span class="w"></span>
@@ -675,8 +786,9 @@
 <iframe src='https://gfycat.com/ifr/scentedhelpfulamericanredsquirrel?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
 
+<h3 id="meshrenderer-and-its-material">MeshRenderer and its Material</h3>
 <p>Go back to the code editor and add two lines to the <code>Start()</code> function:</p>
-<div class="highlight"><span class="filename">SwitchMaterialOnCollide.cs</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Moving</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<div class="highlight"><span class="filename">SwitchMaterialOnCollide.cs</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SwitchMaterialOnCollide</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span><span class="w"></span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Material</span><span class="p">[]</span><span class="w"> </span><span class="n">materials</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">MeshRenderer</span><span class="w"> </span><span class="n">_meshRenderer</span><span class="p">;</span><span class="w"></span>
@@ -689,6 +801,174 @@
 </span><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<p>Here, we assign the <code>_meshRenderer</code> variable declared above with the <code>MeshRenderer</code> component that's already attached to the cylinder. This works because the <code>SwitchMaterialOnCollide</code> script is attached to the cylinder object, and the <code>GetComponent&lt;MeshRenderer&gt;()</code> function searches through all components of the current GameObject and <em>returns</em> the first one that is of the type <code>MeshRenderer</code>. You can find this very component in the cylinder's inspector.</p>
+<p>As its name implies, the MeshRenderer is the component of a GameObject that's responsible to <em>render</em> its mesh, i.e., making the its geometric shape visible on screen. Among its many parameters is the Material it uses, which is always set to <em>Default-Material</em> for any new 3D object you create.</p>
+<p>The second line in our <code>Start()</code> function — <code>_meshRenderer.material = materials[0];</code> now reassigns this default value to whatever we've put in the first place (at index <code>0</code>) of our <code>materials[]</code> array of the <em>Switch Material On Collide</em> component every time we start the game. In the video above that would be the BlueBox material.</p>
+<p>Try it out: the cylinder should now be blue when you run the game! It will revert back to the white Default Material when you stop the game.</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-5.1%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/assuredsilverdassierat?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<h3 id="collision-triggers">Collision triggers</h3>
+<p>Now let's have the cylinder change its material not just on startup, but when we "physically" interact with it in VR. Add two new functions to our <code>SwitchMaterialOnCollide</code> script (outside the scope of <code>Start()</code>, but still inside the <code>MonoBehavior</code>):</p>
+<div class="highlight"><span class="filename">SwitchMaterialOnCollide.cs</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SwitchMaterialOnCollide</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Material</span><span class="p">[]</span><span class="w"> </span><span class="n">materials</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">MeshRenderer</span><span class="w"> </span><span class="n">_meshRenderer</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="c1">// Start is called before the first frame update</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="n">_meshRenderer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MeshRenderer</span><span class="p">&gt;();</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="n">_meshRenderer</span><span class="p">.</span><span class="n">material</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">materials</span><span class="p">[</span><span class="m">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerEnter</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"></span>
+</span><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="hll"><span class="w">    </span><span class="p">{</span><span class="w"></span>
+</span><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="hll"><span class="w">        </span><span class="n">_meshRenderer</span><span class="p">.</span><span class="n">material</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">materials</span><span class="p">[</span><span class="m">1</span><span class="p">];</span><span class="w"></span>
+</span><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="hll"><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</span><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerExit</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"></span>
+</span><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="hll"><span class="w">    </span><span class="p">{</span><span class="w"></span>
+</span><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="hll"><span class="w">        </span><span class="n">_meshRenderer</span><span class="p">.</span><span class="n">material</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">materials</span><span class="p">[</span><span class="m">0</span><span class="p">];</span><span class="w"></span>
+</span><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="hll"><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</span><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>The functions <code>OnTriggerEnter()</code> and <code>OnTriggerLeave()</code> are called when their GameObject <em>collides</em> with another one that has a Rigidbody attached, and a <em>collider</em> which is set to be a <em>Trigger</em> — we already did this with our cubes <a href="#other-uses-of-rigidbody">above</a>.</p>
+<p>Run the game now and you can change the cylinder's material when you hit them with any of the cubes!</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-5.1%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/infantiledensejay?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<h3 id="switching-colors-of-a-material">Switching colors of a material</h3>
+<p>For now we've just switched between different materials to change the color of the cylinder, which could be considered wasteful. Why create a whole new material asset, when all we want to do is just change the color?</p>
+<p>Create a new script called <code>SwitchColorOnCollide</code> and attach it to the cylinder. Remove the old Switch Material On Collide component from it.</p>
+<div class="highlight"><span class="filename">SwitchColorOnCollide.cs</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SwitchColorOnCollide</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="p">[]</span><span class="w"> </span><span class="n">colors</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Material</span><span class="w"> </span><span class="n">_material</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="c1">// Start is called before the first frame update</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">_material</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MeshRenderer</span><span class="p">&gt;().</span><span class="n">material</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="m">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerEnter</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="m">1</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerExit</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="m">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>The basic structure is the same as in <code>SwitchMaterialOnCollide.cs</code>, but note the differences:</p>
+<ul>
+<li>We now store an array of <a href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Color.html"><em>Colors</em></a> in the variable <code>colors</code></li>
+<li>We get the <em>Material</em> from the cylinder's MeshRenderer by calling <code>.material</code> on the output of the <code>GetComponent&lt;&gt;()</code> function</li>
+<li>We assign one of our stored colors to the MeshRenderer's material</li>
+</ul>
+<p>You can now directly set two different colors in the new Switch Material On Collide component (after you've saved the code), the <a href="#materials-and-colors">same way we input colors for the two box materials</a>.</p>
+<p>Run the game again and see how the cylinder now changes its default material's colors to our choice:</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-5.1%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/separateexcitableeland?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<p>Once again, all changes to the default material will be reverted once we end the game.</p>
+<div class="admonition example">
+<p class="admonition-title">Challenge — do it yourself!</p>
+<p>Create two new <em>Sphere</em> 3D objects and <a href="#tying-objects-to-vr-controllers">attach these to the controllers</a> instead of the cubes, which you can remove. Give them the same functionalities as the cubes (Rigidbodies and Colliders with the same parameters).</p>
+<p>Shape and place them using their Transforms to roughly overlap with the controllers: you can do this while the game is running to see your changes, and once you have good values write them down to make them permanent outside of the game. You can copy one component's values to another by clicking its three-dot menu and selecing Copy or Paste.</p>
+<p>Once this works, try disabling the spheres' <code>Sphere (Mesh Filter)</code> and <code>Mesh Renderer</code> components: you will not see the spheres anymore, but they will still work in changing the colors of the cylinder!</p>
+</div>
+<h2 id="interacting-with-objects-part-3">Interacting with objects — Part 3</h2>
+<p>For this last part of object interaction (for now), let's use something other than just the controllers' position to interact with the world. Maybe you've already noticed, but there are a lot of buttons on them — why not try them?</p>
+<h3 id="inter-script-interaction">Inter-script interaction</h3>
+<p>Let's first add another function to our <code>SwitchColorOnCollide</code> script:</p>
+<div class="highlight"><span class="filename">SwitchColorOnCollide.cs</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SwitchColorOnCollide</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="p">[]</span><span class="w"> </span><span class="n">colors</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Material</span><span class="w"> </span><span class="n">_material</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="c1">// Start is called before the first frame update</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="n">_material</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MeshRenderer</span><span class="p">&gt;().</span><span class="n">material</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="m">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerEnter</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="m">1</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerExit</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">        </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="m">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="hll"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetColor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"></span>
+</span><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="hll"><span class="w">    </span><span class="p">{</span><span class="w"></span>
+</span><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="hll"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">||</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">&gt;=</span><span class="w"> </span><span class="n">colors</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+</span><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="hll">
+</span><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="hll"><span class="w">        </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="n">index</span><span class="p">];</span><span class="w"></span>
+</span><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="hll"><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</span><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Being <code>public</code>, the <code>SetColor()</code> function can be called by other outside scripts. In addition, it takes an input parameter <code>(int index)</code>, an <em>integer</em> which it uses to select a color from our array of colors to assign to the main material.</p>
+<p>The line <code class="highlight"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">||</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">&gt;=</span><span class="w"> </span><span class="n">colors</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span></code> is actually three lines shortened to one: an <code>if()</code> statement that checks whether the given index is smaller than zero or larger than our array of colors; if so: do nothing and escape this function <code>{return; }</code>. This is to prevent anything from going wrong if an external script gives it the wrong input — very important!</p>
+<p>Save the file.</p>
+<h3 id="steamvr-actions">SteamVR Actions</h3>
+<p>Let's now write a script that will call this public function. Create a new one named <code>ControllerInput</code> and attach it to the [CameraRig] GameObject:</p>
+<div class="highlight"><span class="filename">ControllerInput.cs</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="hll"><span class="k">using</span><span class="w"> </span><span class="nn">Valve.VR</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ControllerInput</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">SteamVR_Action_Boolean</span><span class="w"> </span><span class="n">Trigger</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">SwitchColorOnCollide</span><span class="w"> </span><span class="n">switchColorOnCollide</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Trigger</span><span class="p">.</span><span class="n">state</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">            </span><span class="n">switchColorOnCollide</span><span class="p">.</span><span class="n">SetColor</span><span class="p">(</span><span class="m">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="k">else</span><span class="w"></span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">            </span><span class="n">switchColorOnCollide</span><span class="p">.</span><span class="n">SetColor</span><span class="p">(</span><span class="m">0</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>We have now also added a new Library to use: <code>Valve.VR</code>, which gives us access to specific functions for our VR devices, such as the <code>SteamVR_Action_Boolean</code> class. We Create a variable <code>Trigger</code> that will listen to <em>actions</em> from our VR hardware, in this case <code>Boolean</code>-type events (on or off).</p>
+<p>Since our previously created <code>SwitchColorOnCollide</code> script is a <code>public class</code>, we can also reference its definition here and create a variable of its class, which we call (lowercase) <code>switchColorOnCollide</code>.</p>
+<p>In the <code>Update()</code> loop (every frame) we now want to check the <code>Trigger</code>'s <code>state</code>: if it's true, we tell our <code>switchColorOnCollide</code> object to set its color to the one it has at index <code>1</code>, and if it's false, to the one at index <code>0</code>. Take a moment to understand this, and feel free to ask if you have questions.</p>
+<p>Save the script and return to Unity. As it is, it will not do anything: neither its <em>Trigger</em> or its <em>Switch Color On Collide</em> parameters are assigned yet. Fix this by giving the Trigger a default value from the SteamVR SDK (<code>\actions\default\in\InteractUI</code>), and the put the cylinder's <em>Switch Color On Collide</em> component in the second field. You can do this by searching for it among the objects in the current scene by clicking the target icon, or by simply dragging the whole cylinder object into it — it's smart enough to only take the relevant component from the cylinder.</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-5.1%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/highinsistentglobefish?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<p>Run the game. Now you can simply press the triggers on you controllers to change the cylinder's color!</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-5.1%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/idolizedvioletborderterrier?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<details class="info">
+<summary>InteractUI and Bindings</summary>
+<p>The way our trigger can interact here is because of the default <em>bindings</em> we are using here, which map the controller's buttons to <em>actions</em> (<a href="https://valvesoftware.github.io/steamvr_unity_plugin/tutorials/SteamVR-Input.html">more info from Valve</a>). If you access the "Old Bindings UI" inside the headset's VR view using the menu button, you can see how the trigger is configured to output the <code>InteractUI</code> action, which itself is interpreted by Unity as a boolean input (<strong>Window → SteamVR Input</strong>). All this is fully configurable, but would exceed the scope of this initial tutorial.</p>
+</details>
+<p>Onwards to more complex — <a href="../3-runtime/">and fully automated</a> — scenes!</p>
 
 
 
@@ -725,13 +1005,13 @@
       
       
         
-        <a href="../page-0/" class="md-footer__link md-footer__link--next" aria-label="Next: Installation and Setup" rel="next">
+        <a href="../3-runtime/" class="md-footer__link md-footer__link--next" aria-label="Next: 3 • Runtime" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Installation and Setup
+              3 • Runtime
             </div>
           </div>
           <div class="md-footer__button md-icon">
