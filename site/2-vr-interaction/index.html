@@ -288,6 +288,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#adding-vr-basics" class="md-nav__link">
+    Adding VR basics
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding VR basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-camera-rig" class="md-nav__link">
+    The Camera Rig
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -357,6 +377,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#adding-vr-basics" class="md-nav__link">
+    Adding VR basics
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding VR basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-camera-rig" class="md-nav__link">
+    The Camera Rig
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -373,9 +413,15 @@
 
 
 <h1 id="interaction-in-vr">Interaction in VR</h1>
-<p>Let's now dig into actually using VR with Unity. For that we need to add some additional packages to Unity which will be specific to the hardware we're using for this tutorial — the HTC Vive Pro Eye.</p>
+<p>Let's now dig into actually using VR with Unity. For that we need to add some additional packages to Unity which will be specific to the hardware we're using for this tutorial — the <em>HTC Vive Pro Eye</em>, using <em>SteamVR.</em> You should verify the proper connection of the headset and the pairing of controllers by opening the Steam application and launching SteamVR. It may ask you to <strong>Update Permissions</strong> on first launch — do it.</p>
+<p>If everything works, you can see the empty VR space and your controller(s) if you put on the headset, and in an optional desktop view of the VR environment you can enable from the menu button in the SteamVR window:</p>
+<p><img alt="Working VR system" src="0-working-vr.png" title="A working VR system" /></p>
 <h2 id="a-new-project">A new project</h2>
 <p>Let's first of all create a new Unity 3D project with the hub, like before. You can close the one from the previous tutorial, we won't be needing it anymore. Set up the new project's window like we did for the first tutorial, or to your own liking.</p>
+<details class="info">
+<summary>Reusing the old project</summary>
+<p>You can also reuse your old project in this case, just delete <strong>both</strong> the new objects and assets you created by right-clicking them in the hierarchy and project browser, respectively, and selecting "delete." Or you can also keep them around, as long they're deactivated in the hierarchy — it's up to you how much clutter you can tolerate vs. how much time you want to save. It can be good to have a working reference around to compare.</p>
+</details>
 <h3 id="installing-and-importing-packages">Installing and importing Packages</h3>
 <p>In the Unity editor's menu bar, go to <strong>Window → Package Manager</strong>, which will open a new floating window. Selecting <em>My Assets</em> from the <strong>Packages</strong> drop-down menu at the top, type in <code>steamvr</code> in the search box and you should have the <em>SteamVR Plugin</em> appear — import it with the <strong>Import</strong> button below. A new window will present itself to let you select parts of the package, but we will just keep everything checked and hit <strong>Import</strong> again.</p>
 <details class="info">
@@ -384,7 +430,11 @@
 </details>
 <p><img alt="Importing SteamVR" src="3-import-combined.png" title="Importing it all" /></p>
 <p>During this, some dialog boxes may appear — just confirm what they want. SteamVR may ask to accept changes to the project's settings — <strong>Accept All</strong> and it will be very happy. You can close the package manager windows now.</p>
-<p>Having the basics for VR installed with the SteamVR package, we now need an additional one for the eye tracker. You could <a href="https://developer.tobii.com/xr/develop/unity/getting-started/vive-pro-eye/#step-3-download-and-import-the-vive-sranipal-sdk">download it from the developer's website</a>, but we have already put it in the folder on your desktop. To import a package (or an <em>asset</em>) that is not listed in the package manager, you need to go to <strong>Assets → Import Package → Custom Package…</strong> in the menu bar. Navigate to the <em>packages</em> folder in the workshop folder and locate <code>Vive-SRanipal-Unity-Plugin.unitypackage</code> under <code>packages → SDK-v1.3.3.0 → SDK → 02_Unity</code>. Confirm with <strong>Open</strong> and you'll be presented with the same interface as before to select only parts of it — again, keep all checked and <strong>Import</strong>.</p>
+<p>Having the basics for VR installed with the SteamVR package, we now need an additional one for the eye tracker. You could <a href="https://developer.tobii.com/xr/develop/unity/getting-started/vive-pro-eye/#step-3-download-and-import-the-vive-sranipal-sdk">download it from the developer's website</a>, but we have already put it in a folder on your desktop.</p>
+<p>To import a package (or an <em>asset</em>) that is not listed in the package manager, you need to go to <strong>Assets → Import Package → Custom Package…</strong> in the menu bar. Navigate to the <em>packages</em> folder in the workshop folder and locate <code>Vive-SRanipal-Unity-Plugin.unitypackage</code> under <code>packages → SDK-v1.3.3.0 → SDK → 02_Unity</code>. Confirm with <strong>Open</strong> and you'll be presented with the same interface as before to select only parts of it — again, keep all checked and <strong>Import</strong>.</p>
+<h2 id="adding-vr-basics">Adding VR basics</h2>
+<p>Now that we have the necessary packages all imported, we can add the bare necessities to our scene for VR to function.</p>
+<h3 id="the-camera-rig">The Camera Rig</h3>
 
 
 
