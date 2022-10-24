@@ -62,13 +62,19 @@ You may see some error messages in the console because these actions were missin
 
 ![VR first run](2-vr-interaction/5-running-vr.png "Brave New World")
 
+## Interacting with objects in VR
+
+Nice as that may be, we want more. Let's add some objects to interact with.
+
 ### Adding objects
 
-Nice as that may be, we want more. Stop the game and start by adding a floor.
+Stop the game and start by adding a floor.
 
-As before with the cube, right-click somewhere in the hierarchy, select `3D Object`, and then find `Plane`. This will create a flat surface in the middle of our environment. Make sure it's at the origin (Position: `X=0, Y=0, Z=0`) and not rotated, and adjust its scale to `X=0.3, Y=1, Z=0.3`.
+As before with the cube, right-click somewhere in the hierarchy, select `3D Object`, and then find `Plane`. This will create a flat surface in the middle of our environment. Make sure it's at the origin (Position: `X=0, Y=0, Z=0`) and not rotated, and adjust its scale to `X=0.5, Y=1, Z=0.5`.
 
-Create a new __cube__ the same way and scale it to `X=0.15, Y=0.15, Z=0.15`. Copy it by right-clicking on it and selecting `Duplicate` — the new one will automatically be named `Cube (1)`, which you can keep or rename to your liking, e.g. `Left Cube` and `Right Cube`.
+Add a __cylinder__ the same way and place it at `X=1.2, Y=0.55, Z=0.5` with a scale of `0.5, 0.5, 0.5`.
+
+Create a new __cube__ and scale it to `0.15, 0.15, 0.15`. Copy it by right-clicking on it and selecting `Duplicate` — the new one will automatically be named `Cube (1)`, which you can keep or rename to your liking, e.g. `Left Cube` and `Right Cube`.
 
 ### Tying objects to VR controllers
 
@@ -79,4 +85,35 @@ Now we want these two cubes to follow the movement of our VR controllers. The ea
 <iframe src='https://gfycat.com/ifr/plumpdistantgull?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
 
-Running the game now you should have a clumsy, white box surrounding the tips of your controllers. If you want, you can adjust the transforms of each cube to offset them from the controllers: `0.15` on the Z-axis should look good enough.
+Running the game now you should have a clumsy, white box surrounding the tips of your controllers, with a cylinder standing close by. If you want, you can adjust the transforms of each cube to offset them from the controllers: `0.15` on the Z-axis should look good enough.
+
+![Cube on controller](2-vr-interaction/6-controller-cube.png "A floating cube, controlled by a controller!")
+
+### Materials and colors
+
+Let's spice this blank world up a bit by adding some color.
+
+Create new folder inside the Assets in the project browser by right-clicking the Assets folder, then __Create → Folder__. Name it `Materials`.
+
+Inside this folder, create two new [*Materials*](https://docs.unity3d.com/Manual/Materials.html): __Create → Material__. Name them `BlueBox` and `RedBox`. Clicking on them you see their properties in the inspector — change the *Albedo* of BlueBox to a blue color, and that of RedBox to a red one by clicking on the white strip. You can see the changes in the preview sphere at the bottom of a material's inspector.
+
+![Colored materials](2-vr-interaction/7-materials.png "Red vs Blue")
+
+You can now assign these materials to the cubes by going to each cube's inspector, expanding the `Materials` property in its `Mesh Renderer` component, and either dragging a material there, or selecting one by clicking the target icon. Choose which cube should be red, and which blue, and make these changes.
+
+![Assigned material](2-vr-interaction/8-blue-cube.png "Blue Box")
+
+### Rigidbody Components
+
+While you can now wave around with colorful boxes, there is not much else going on — the cylinder just stands there, oblivious to anything you do (try it, the cubes and controllers will just intersect it in a ghostly fashion). We can change that by giving the objects in our scene [*Rigidbody*](https://docs.unity3d.com/Manual/class-Rigidbody.html) components, which will add physics and automatic collision detection to them.
+
+In the hierarchy, select our smaller objects (the cylinder and both cubes) by holding CTRL and clicking on each. The inspector now shows properties that are shared for all objects, and allows you to add components in bulk.
+
+Click __Add Component__ with all three objects (and nothing else!) selected, and search for the `Ridgidbody` component.
+
+We want our cubes to still only be controlled by being tied to our controllers and not be affected by gravity, so go to the hierarchy, *de*select the cylinder and select only the two cubes. In their Rigidbody component, uncheck `Use Gravity` and place a checkmark on `Is Kinematic`.
+
+The cylinder on the other hand should behave as a real physical object, so do the inverse for it: make sure `Use Gravity` is on, and `Is Kinematic` is off.
+
+Run the game and observe the changes: the cylinder should now sit flush on the floor, and you can now use the cubes attached to your controllers to whack it! Hit hard enough and it falls off the floor plane and down to the endless abyss.
+
