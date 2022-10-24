@@ -3,11 +3,13 @@ nav:
   - Welcome: index.md
   - 1 • First Unity Project: 1-first-project.md
   - 2 • Interaction in VR: 2-vr-interaction.md
+  - 3 • Runtime: 3-runtime.md
   - Installation and Setup: page-0.md
 
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
+  - pymdownx.inlinehilite
   - pymdownx.superfences
   - admonition
   - pymdownx.details
