@@ -269,6 +269,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#pre-flight-inspection" class="md-nav__link">
+    Pre-flight inspection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#a-new-project" class="md-nav__link">
     A new project
   </a>
@@ -299,6 +306,54 @@
           <li class="md-nav__item">
   <a href="#the-camera-rig" class="md-nav__link">
     The Camera Rig
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-vr-run" class="md-nav__link">
+    First VR run
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacting-with-objects-in-vr" class="md-nav__link">
+    Interacting with objects in VR
+  </a>
+  
+    <nav class="md-nav" aria-label="Interacting with objects in VR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-objects" class="md-nav__link">
+    Adding objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tying-objects-to-vr-controllers" class="md-nav__link">
+    Tying objects to VR controllers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#materials-and-colors" class="md-nav__link">
+    Materials and colors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rigidbody-components" class="md-nav__link">
+    Rigidbody Components
   </a>
   
 </li>
@@ -358,6 +413,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#pre-flight-inspection" class="md-nav__link">
+    Pre-flight inspection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#a-new-project" class="md-nav__link">
     A new project
   </a>
@@ -392,6 +454,54 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#first-vr-run" class="md-nav__link">
+    First VR run
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacting-with-objects-in-vr" class="md-nav__link">
+    Interacting with objects in VR
+  </a>
+  
+    <nav class="md-nav" aria-label="Interacting with objects in VR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-objects" class="md-nav__link">
+    Adding objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tying-objects-to-vr-controllers" class="md-nav__link">
+    Tying objects to VR controllers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#materials-and-colors" class="md-nav__link">
+    Materials and colors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rigidbody-components" class="md-nav__link">
+    Rigidbody Components
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -413,7 +523,9 @@
 
 
 <h1 id="interaction-in-vr">Interaction in VR</h1>
-<p>Let's now dig into actually using VR with Unity. For that we need to add some additional packages to Unity which will be specific to the hardware we're using for this tutorial — the <em>HTC Vive Pro Eye</em>, using <em>SteamVR.</em> You should verify the proper connection of the headset and the pairing of controllers by opening the Steam application and launching SteamVR. It may ask you to <strong>Update Permissions</strong> on first launch — do it.</p>
+<p>Let's now dig into actually using VR with Unity, starting with basic interactions!</p>
+<h2 id="pre-flight-inspection">Pre-flight inspection</h2>
+<p>For that we need to add some additional packages to Unity which will be specific to the hardware we're using for this tutorial — the <em>HTC Vive Pro Eye</em>, using <em>SteamVR.</em> You should verify the proper connection of the headset and the pairing of controllers by opening the Steam application and launching SteamVR. It may ask you to <strong>Update Permissions</strong> on first launch — do it by allowing the changes.</p>
 <p>If everything works, you can see the empty VR space and your controller(s) if you put on the headset, and in an optional desktop view of the VR environment you can enable from the menu button in the SteamVR window:</p>
 <p><img alt="Working VR system" src="0-working-vr.png" title="A working VR system" /></p>
 <h2 id="a-new-project">A new project</h2>
@@ -435,6 +547,55 @@
 <h2 id="adding-vr-basics">Adding VR basics</h2>
 <p>Now that we have the necessary packages all imported, we can add the bare necessities to our scene for VR to function.</p>
 <h3 id="the-camera-rig">The Camera Rig</h3>
+<p>The SteamVR package includes everything we need to run VR in Unity, but to access the functionalities we need to add its assets to our scene/hierarchy. Specifically, we need the <strong>CameraRig</strong> <em>Prefab</em>, which contains pre-configured objects that will correspond with the VR headset and controllers.</p>
+<p>Add it by finding the <code>SteamVR</code> folder in the <code>Assets</code> folder with the Project browser. Inside that, there's a folder called <code>Prefabs</code>, which contains all its… <a href="https://docs.unity3d.com/Manual/Prefabs.html"><em>Prefabs</em></a>, which are "GameObjects complete with all its components, property values, and child GameObjects as […] reusable Asset[s]."</p>
+<p>Locate the <code>[CameraRig]</code> prefab, and simply drag it to an empty are in the hierarchy:</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-5%; margin-bottom:-10%;padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 13% 0)'>
+<iframe src='https://gfycat.com/ifr/leadingdensejapanesebeetle?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<p>Being a prefab, it will appear blue in the hierarchy. Inside it you can find objects named <code>Controller (left)</code>, <code>Controller (right)</code>, and <code>Camera</code> if you expand it by clicking the arrow next to <code>[CameraRig]</code>. This new Camera object will be our main camera from now on, so you can delete the old, default <code>Main Camera</code> object from the hierarchy.</p>
+<p><img alt="New hierarchy" src="4-vr-camera.png" title="New VR hierarchy" /></p>
+<h3 id="first-vr-run">First VR run</h3>
+<p>You can already try running the game to see an empty Unity world in VR. The first time you do, a SteamVR window will appear and ask you to "open the SteamVR Input window" to generate "actions for SteamVR" — do it. Click through this and the next window with <strong>Yes</strong>, and hit <strong>Save and generate</strong> in the new SteamVR Input window that appears in Unity to generate the default inputs bindings for controls; you can close this window afterwards.</p>
+<p>You may see some error messages in the console because these actions were missing — run the game again and they should be gone. The headset should be functioning and showing you an empty, sunny world!</p>
+<p><img alt="VR first run" src="5-running-vr.png" title="Brave New World" /></p>
+<h2 id="interacting-with-objects-in-vr">Interacting with objects in VR</h2>
+<p>Nice as that may be, we want more. Let's add some objects to interact with.</p>
+<h3 id="adding-objects">Adding objects</h3>
+<p>Stop the game and start by adding a floor.</p>
+<p>As before with the cube, right-click somewhere in the hierarchy, select <code>3D Object</code>, and then find <code>Plane</code>. This will create a flat surface in the middle of our environment. Make sure it's at the origin (Position: <code>X=0, Y=0, Z=0</code>) and not rotated, and adjust its scale to <code>X=0.5, Y=1, Z=0.5</code>.</p>
+<p>Add a <strong>cylinder</strong> the same way and place it at <code>X=1.2, Y=0.55, Z=0.5</code> with a scale of <code>0.5, 0.5, 0.5</code>.</p>
+<p>Create a new <strong>cube</strong> and scale it to <code>0.15, 0.15, 0.15</code>. Copy it by right-clicking on it and selecting <code>Duplicate</code> — the new one will automatically be named <code>Cube (1)</code>, which you can keep or rename to your liking, e.g. <code>Left Cube</code> and <code>Right Cube</code>.</p>
+<h3 id="tying-objects-to-vr-controllers">Tying objects to VR controllers</h3>
+<p>Now we want these two cubes to follow the movement of our VR controllers. The easiest way to do this is to simply drag them in the hierarchy to their respective controller objects in the CameraRig, making sure that they end up "inside" them:</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-5.1%; margin-bottom:-34%;padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/plumpdistantgull?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<p>Running the game now you should have a clumsy, white box surrounding the tips of your controllers, with a cylinder standing close by. If you want, you can adjust the transforms of each cube to offset them from the controllers: <code>0.15</code> on the Z-axis should look good enough.</p>
+<p><img alt="Cube on controller" src="6-controller-cube.png" title="A floating cube, controlled by a controller!" /></p>
+<h3 id="materials-and-colors">Materials and colors</h3>
+<p>Let's spice this blank world up a bit by adding some color.</p>
+<p>Create new folder inside the Assets in the project browser by right-clicking the Assets folder, then <strong>Create → Folder</strong>. Name it <code>Materials</code>.</p>
+<p>Inside this folder, create two new <a href="https://docs.unity3d.com/Manual/Materials.html"><em>Materials</em></a>: <strong>Create → Material</strong>. Name them <code>BlueBox</code> and <code>RedBox</code>. Clicking on them you see their properties in the inspector — change the <em>Albedo</em> of BlueBox to a blue color, and that of RedBox to a red one by clicking on the white strip. You can see the changes in the preview sphere at the bottom of a material's inspector.</p>
+<p><img alt="Colored materials" src="7-materials.png" title="Red vs Blue" /></p>
+<p>You can now assign these materials to the cubes by going to each cube's inspector, expanding the <code>Materials</code> property in its <code>Mesh Renderer</code> component, and either dragging a material there, or selecting one by clicking the target icon. Choose which cube should be red, and which blue, and make these changes.</p>
+<p><img alt="Assigned material" src="8-blue-cube.png" title="Blue Box" /></p>
+<h3 id="rigidbody-components">Rigidbody Components</h3>
+<p>While you can now wave around with colorful boxes, there is not much else going on — the cylinder just stands there, oblivious to anything you do (try it, the cubes and controllers will just intersect it in a ghostly fashion). We can change that by giving the objects in our scene <a href="https://docs.unity3d.com/Manual/class-Rigidbody.html"><em>Rigidbody</em></a> components, which will add physics and automatic collision detection to them.</p>
+<p>In the hierarchy, select our smaller objects (the cylinder and both cubes) by holding CTRL and clicking on each. The inspector now shows properties that are shared for all objects, and allows you to add components in bulk.</p>
+<p>Click <strong>Add Component</strong> with all three objects (and nothing else!) selected, and search for the <code>Ridgidbody</code> component.</p>
+<p><img alt="Added rigidbody" src="9-cube-rigidbody.png" title="Added and configured rigidbody" /></p>
+<p>We want our cubes to still only be controlled by being tied to our controllers and not be affected by gravity, so go to the hierarchy, <em>de</em>select the cylinder and select only the two cubes. In their Rigidbody component, uncheck <code>Use Gravity</code> and place a checkmark on <code>Is Kinematic</code>.</p>
+<p>The cylinder on the other hand should behave as a real physical object, so do the inverse for it: make sure <code>Use Gravity</code> is on, and <code>Is Kinematic</code> is off.</p>
+<p>Run the game and observe the changes: the cylinder should now sit flush on the floor, and you can now use the cubes attached to your controllers to whack it! Hit hard enough and it falls off the floor plane and down to the endless abyss.</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-5.1%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/shoddyunlinedkingfisher?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
 
 
 
