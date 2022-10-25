@@ -423,6 +423,36 @@
   
   
     <li class="md-nav__item">
+      <a href="../5-io/" class="md-nav__link">
+        5 • Saving, Loading, Sampling
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-gaze/" class="md-nav__link">
+        6 • Using Gaze Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../page-0/" class="md-nav__link">
         Installation and Setup
       </a>
@@ -583,7 +613,7 @@
 <h1 id="runtime-automated-processes">Runtime: Automated Processes</h1>
 <p>For now, our scenes have only strictly reacted to our inputs. Let's create some automated processes.</p>
 <h2 id="reuse-the-previous-project">Reuse the previous project</h2>
-<p>For this project, let's continue building on our previous one, without having to again import the libraries and creating our cubes or spheres (from the previous <a href="2-vr-interaction.md/#switching-colors-of-a-material">challenge</a>) that trigger collisions.</p>
+<p>For this project, let's continue building on our previous one, without having to again import the libraries and creating our cubes or spheres (from the previous <a href="../2-vr-interaction/#switching-colors-of-a-material">challenge</a>) that trigger collisions.</p>
 <p>Just remove (or deactivate) the cylinder GameObject from the hierarchy and delete the <em>Controller Input (Script)</em> component from our [CameraRig] GameObject.</p>
 <h2 id="shape-of-a-cube-factory">Shape of a cube factory</h2>
 <p>What's a better example for automation than a factory? Let's make a <em>cube factory.</em></p>
@@ -683,7 +713,7 @@
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>The main difference is that it now exposes its <code>isColliding</code> boolean variable to other objects. This variable is set to <code>True</code> whenever it is in collision, and <code>False</code> when not, while at the same time changing colors.</p>
-<p>Save the script and assign two colors of your liking to this component <a href="2-vr-interaction.md/#switching-colors-of-a-material">as we did before</a>.</p>
+<p>Save the script and assign two colors of your liking to this component <a href="../2-vr-interaction/#switching-colors-of-a-material">as we did before</a>.</p>
 <p>Running the game, you can now switch the color of the CubeInteract object by hitting it with your controller, and you'll also see its <em>Is Colliding</em> value change accordingly:</p>
 <div style='border-color: #018281; border-style: solid;'>
 <div style='overflow: hidden; margin-top:-5.1%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 45% 0)'>
@@ -763,7 +793,7 @@
 
 <details class="info">
 <summary>Trouble with UnityEngine.InputSystem?</summary>
-<p>It may be that your code editor and the Unity complain about a missing <code>UnityEngine.InputSystem</code>. This can be easily fixed by going to the <a href="2-vr-interaction.md/#installing-and-importing-packages">package manager</a> and searching for <code>InputSystem</code> in the <em>Unity Registry</em>. Install it, which will also prompt Unity configure some settings and restart the editor, so make sure to save your changes before doing so.</p>
+<p>It may be that your code editor and the Unity complain about a missing <code>UnityEngine.InputSystem</code>. This can be easily fixed by going to the <a href="../2-vr-interaction/#installing-and-importing-packages">package manager</a> and searching for <code>InputSystem</code> in the <em>Unity Registry</em>. Install it, which will also prompt Unity configure some settings and restart the editor, so make sure to save your changes before doing so.</p>
 </details>
 <h3 id="controlling-factory-output">Controlling factory output</h3>
 <p>To avoid a <a href="https://en.wikipedia.org/wiki/The_Trouble_with_Tribbles">Tribbles-type situation</a>, we need to have some control over the factory's cube output.</p>
@@ -786,7 +816,7 @@
 </code></pre></div>
 <p>The And-operator <code>&amp;&amp;</code> can be used to chain logic statements together. You can put everything within the round brackets of the <code>if()</code> statement in one line, but this way we preserve legibility of an otherwise unwieldy, long line.</p>
 <p>Now the <code>if()</code> statement will execute its block if the stopwatch has measured more than <code>cooldown</code>, AND a collision is detected by the CubeInspect object, AND the trigger is pulled. If any one of these conditions is not true, no cubes will be produced. This should keep the factory floor safe.</p>
-<p>Save the code, go back to the editor, and assign the CubeInteract object's <em>Is Colliding Checker</em> component to the cube factory script component (<a href="2-vr-interaction.md/#steamvr-actions">like we did with the cylinder</a>), and set the Trigger again to <em>InteractUI</em> (<a href="2-vr-interaction.md/#steamvr-actions">see cylinder</a>).</p>
+<p>Save the code, go back to the editor, and assign the CubeInteract object's <em>Is Colliding Checker</em> component to the cube factory script component (<a href="../2-vr-interaction/#steamvr-actions">like we did with the cylinder</a>), and set the Trigger again to <em>InteractUI</em> (<a href="../2-vr-interaction/#steamvr-actions">see cylinder</a>).</p>
 <div style='border-color: #018281; border-style: solid;'>
 <div style='overflow: hidden; margin-top:-5.1%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 45% 0)'>
 <iframe src='https://gfycat.com/ifr/affectionateseveraldog?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>

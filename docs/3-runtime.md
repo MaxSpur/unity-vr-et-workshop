@@ -4,7 +4,7 @@ For now, our scenes have only strictly reacted to our inputs. Let's create some 
 
 ## Reuse the previous project
 
-For this project, let's continue building on our previous one, without having to again import the libraries and creating our cubes or spheres (from the previous [challenge](2-vr-interaction.md/#switching-colors-of-a-material)) that trigger collisions.
+For this project, let's continue building on our previous one, without having to again import the libraries and creating our cubes or spheres (from the previous [challenge](2-vr-interaction.md#switching-colors-of-a-material)) that trigger collisions.
 
 Just remove (or deactivate) the cylinder GameObject from the hierarchy and delete the *Controller Input (Script)* component from our \[CameraRig\] GameObject.
 
@@ -104,7 +104,7 @@ public class IsCollidingChecker : MonoBehaviour
 
 The main difference is that it now exposes its `isColliding` boolean variable to other objects. This variable is set to `True` whenever it is in collision, and `False` when not, while at the same time changing colors.
 
-Save the script and assign two colors of your liking to this component [as we did before](2-vr-interaction.md/#switching-colors-of-a-material).
+Save the script and assign two colors of your liking to this component [as we did before](2-vr-interaction.md#switching-colors-of-a-material).
 
 Running the game, you can now switch the color of the CubeInteract object by hitting it with your controller, and you'll also see its *Is Colliding* value change accordingly:
 
@@ -215,7 +215,7 @@ Save the code and see it run: the factory's output is in full swing!
 </div></div>
 
 ??? info "Trouble with UnityEngine.InputSystem?"
-    It may be that your code editor and the Unity complain about a missing `UnityEngine.InputSystem`. This can be easily fixed by going to the [package manager](2-vr-interaction.md/#installing-and-importing-packages) and searching for `InputSystem` in the *Unity Registry*. Install it, which will also prompt Unity configure some settings and restart the editor, so make sure to save your changes before doing so.
+    It may be that your code editor and the Unity complain about a missing `UnityEngine.InputSystem`. This can be easily fixed by going to the [package manager](2-vr-interaction.md#installing-and-importing-packages) and searching for `InputSystem` in the *Unity Registry*. Install it, which will also prompt Unity configure some settings and restart the editor, so make sure to save your changes before doing so.
 
 ### Controlling factory output
 
@@ -245,7 +245,7 @@ The And-operator `&&` can be used to chain logic statements together. You can pu
 
 Now the `if()` statement will execute its block if the stopwatch has measured more than `cooldown`, AND a collision is detected by the CubeInspect object, AND the trigger is pulled. If any one of these conditions is not true, no cubes will be produced. This should keep the factory floor safe.
 
-Save the code, go back to the editor, and assign the CubeInteract object's *Is Colliding Checker* component to the cube factory script component ([like we did with the cylinder](2-vr-interaction.md/#steamvr-actions)), and set the Trigger again to *InteractUI* ([see cylinder](2-vr-interaction.md/#steamvr-actions)).
+Save the code, go back to the editor, and assign the CubeInteract object's *Is Colliding Checker* component to the cube factory script component ([like we did with the cylinder](2-vr-interaction.md#steamvr-actions)), and set the Trigger again to *InteractUI* ([see cylinder](2-vr-interaction.md#steamvr-actions)).
 
 <div style='border-color: #018281; border-style: solid;'>
 <div style='overflow: hidden; margin-top:-5.1%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 45% 0)'>

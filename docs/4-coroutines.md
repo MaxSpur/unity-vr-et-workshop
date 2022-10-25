@@ -22,7 +22,7 @@ Create as children of the floor plane object two new __Plane__ 3D objects and co
     + Position `(0, .001, 0)`
     + Scale `(.1, 1, .1)`
 
-Assign StandingMark our [old *BlueBox* material](2-vr-interaction.md/#materials-and-colors), and the *RedBox* material to OriginMark.
+Assign StandingMark our [old *BlueBox* material](2-vr-interaction.md#materials-and-colors), and the *RedBox* material to OriginMark.
 
 Outside the floor object, at empty spaces in the hierarchy of our scene, create:
 
@@ -105,7 +105,7 @@ public class Rotating : MonoBehaviour
 }
 ```
 
-Very similar to our [first rotation script](1-first-project.md/#editing-the-script--constant-rotation-around-a-fixed-axis), it differs only by having a public boolean called `isRotating` that is checked before performing the rotation — it acts basically as an on/off switch.
+Very similar to our [first rotation script](1-first-project.md#editing-the-script--constant-rotation-around-a-fixed-axis), it differs only by having a public boolean called `isRotating` that is checked before performing the rotation — it acts basically as an on/off switch.
 
 Set the speed to `180` and the rotation axis to `(1, 0, 0)` in the inspector.
 

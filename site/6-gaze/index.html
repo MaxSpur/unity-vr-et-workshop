@@ -1,0 +1,850 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>6 • Using Gaze Data - Unity VR and Eye Tracking Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans Pro";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#using-gaze-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Unity VR and Eye Tracking Workshop" class="md-header__button md-logo" aria-label="Unity VR and Eye Tracking Workshop" data-md-component="logo">
+      
+  <img src="../assets/sfb-x.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Unity VR and Eye Tracking Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6 • Using Gaze Data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to bright mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to bright mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Unity VR and Eye Tracking Workshop" class="md-nav__button md-logo" aria-label="Unity VR and Eye Tracking Workshop" data-md-component="logo">
+      
+  <img src="../assets/sfb-x.png" alt="logo">
+
+    </a>
+    Unity VR and Eye Tracking Workshop
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-first-project/" class="md-nav__link">
+        1 • First Unity Project
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-vr-interaction/" class="md-nav__link">
+        2 • Interaction in VR
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-runtime/" class="md-nav__link">
+        3 • Runtime
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-coroutines/" class="md-nav__link">
+        4 • Coroutines
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-io/" class="md-nav__link">
+        5 • Saving, Loading, Sampling
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          6 • Using Gaze Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        6 • Using Gaze Data
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reuse-or-rebuild" class="md-nav__link">
+    Reuse or Rebuild
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-gaze-tracking" class="md-nav__link">
+    Setting up gaze tracking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualizing-gaze" class="md-nav__link">
+    Visualizing gaze
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualizing gaze">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#animating-cubes" class="md-nav__link">
+    Animating cubes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-cubes-for-gaze-visualization" class="md-nav__link">
+    Creating cubes for gaze visualization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-looks-could-destroy" class="md-nav__link">
+    If looks could destroy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sampling-gaze" class="md-nav__link">
+    Sampling gaze
+  </a>
+  
+    <nav class="md-nav" aria-label="Sampling gaze">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../page-0/" class="md-nav__link">
+        Installation and Setup
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reuse-or-rebuild" class="md-nav__link">
+    Reuse or Rebuild
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-gaze-tracking" class="md-nav__link">
+    Setting up gaze tracking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualizing-gaze" class="md-nav__link">
+    Visualizing gaze
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualizing gaze">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#animating-cubes" class="md-nav__link">
+    Animating cubes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-cubes-for-gaze-visualization" class="md-nav__link">
+    Creating cubes for gaze visualization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-looks-could-destroy" class="md-nav__link">
+    If looks could destroy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sampling-gaze" class="md-nav__link">
+    Sampling gaze
+  </a>
+  
+    <nav class="md-nav" aria-label="Sampling gaze">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="using-gaze-data">Using Gaze Data</h1>
+<p>It's time for the final piece of the puzzle: using actual gaze data provided by the built-in eye tracker in our HTC Vive Pro Eye devices. Look out!</p>
+<div class="admonition info">
+<p class="admonition-title">Complex code, complex concepts</p>
+<p>In this part, we will provide some code that would a bit too complex to fully explain in the time we have.</p>
+<p>You can of course try to understand it (and we encourage that!), but feel free to take this as an exercise in reusing existing solutions to problems that you don't have to reinvent yourself.</p>
+</div>
+<h2 id="reuse-or-rebuild">Reuse or Rebuild</h2>
+<p>Again, we can reuse our previous VR Unity projects to save time, practice the necessary steps to set one up from scratch.</p>
+<p>Make sure that SteamVR and the SRAnipal packages are <a href="../2-vr-interaction/#installing-and-importing-packages">installed and imported</a> into our project, and that we have a <a href="../2-vr-interaction/#the-camera-rig">[CameraRig] object instead of the default MainCamera</a> in our hierarchy.</p>
+<p>Have a Scrips folder in our assets, as well as a Resource folder, which contains the <a href="../3-runtime/#making-it-pop">pop.mp3 audio sample</a> we've used before.</p>
+<p>Have a <a href="../2-vr-interaction/#adding-objects">Plane 3D object as a floor</a> in the scene — name it <code>Floor</code>.</p>
+<h2 id="setting-up-gaze-tracking">Setting up gaze tracking</h2>
+<p>There are a number of procedures necessary to do in code in order to have an eye tracker running and being useful in Unity, and they can be quite lengthy. <strong>Download</strong> this script file and place it in your Scripts folder in the Project browser: <a href="EyeTrackingCtrlr.cs" download>EyeTrackingCtrlr.cs</a>.</p>
+<p>Using the <code>ViveSR.anipal.Eye</code> library, it interfaces directly with the eye tracker inside the Vive Pro Eye — within it's <code>Start()</code> enumerator it waits for the hardware to be ready before continuing.</p>
+<p><code>EyeTrackingCtrlr.cs</code> defines a new class called <code>GazePoint</code> within itself, which holds information about where a user is looking with each eye (as well as a <em>combination</em> of both), and which (if any) objects the gaze <em>rays</em> are colliding with.</p>
+<p>This "camera data" is updated each frame by calling <code>SRanipal_Eye.GetGazeRay()</code> functions that interface with the eye tracker.</p>
+<div class="admonition info">
+<p class="admonition-title">General-purpose script</p>
+<p>Overall, this script is very generalized and can be used for all sorts of projects with minimal alterations.</p>
+<p>The only specialized functionality in this script is that it specifically checks if a gaze collision happens with objects that have <code>CollidableCube</code> in their name, to which it then sends a <code>OnTriggerEnter</code> <a href="https://docs.unity3d.com/ScriptReference/GameObject.SendMessage.html">message</a>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gazePoint</span><span class="p">.</span><span class="n">LeftCollide</span><span class="w"> </span><span class="p">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="p">&amp;&amp;</span><span class="w"> </span><span class="n">gazePoint</span><span class="p">.</span><span class="n">LeftCollide</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;CollidableCube&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="n">gazePoint</span><span class="p">.</span><span class="n">LeftCollide</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="s">&quot;OnTriggerEnter&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Collider</span><span class="p">(),</span><span class="w"> </span><span class="n">SendMessageOptions</span><span class="p">.</span><span class="n">DontRequireReceiver</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>If you want to create your own projects building on this script, this would be the only part you'd really need to change.</p>
+</div>
+<p>Attach this script to the <strong>Floor</strong> object as a component, so that it runs within our scene.</p>
+<h2 id="visualizing-gaze">Visualizing gaze</h2>
+<p>We shall now create cubes that will change their color once we gaze at them.</p>
+<p>This will be done in a similar manner to our <a href="../3-runtime/#factory-scripting">Cube Factory</a>: new cubes will be created and outfitted with the necessary functionality.</p>
+<h3 id="animating-cubes">Animating cubes</h3>
+<p>We don't want cubes to <a href="../3-runtime/#destroyer-script">just disappear</a> for now as we did with the cube factory, but let them instead change colors (suddenly, then gradually).</p>
+<p>Create a new script in the Scripts folder named <code>AnimateOnCollide.cs</code>:</p>
+<div class="highlight"><span class="filename">AnimateOnCollide.cs</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">AnimateOnCollide</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isColliding</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="p">[]</span><span class="w"> </span><span class="n">colors</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Material</span><span class="w"> </span><span class="n">_material</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">_animationDuration</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">.</span><span class="m">25f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">Animate</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="p">{</span><span class="w">   </span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">animationTime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">_animationDuration</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="c1">// Interpolate between color one and two</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">animationTime</span><span class="w"> </span><span class="p">&gt;=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">            </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// Wait one frame</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">            </span><span class="n">animationTime</span><span class="w"> </span><span class="p">-=</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">            </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="m">0</span><span class="p">],</span><span class="m">1</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="n">animationTime</span><span class="w"> </span><span class="p">/</span><span class="w">  </span><span class="n">_animationDuration</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>It is again similar to our previous <code>…OnCollide</code> scripts in structure. The IEnumerator <code>Animate()</code> will count down from the duration given in <code>_animationDuration</code> while steadily <a href="../1-first-project/#interpolation">"lerping"</a>, or interpolating between the first two colors in its <code>colors</code> array, and assign them to the objects's material.</p>
+<p>Give this script now its <code>Start()</code> function to set an initial color, and an <code>OnTriggerEnter()</code> function which will (re)start the <code>Animate()</code> coroutine when a collision is detected:</p>
+<div class="highlight"><span class="filename">AnimateOnCollide.cs</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">_material</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MeshRenderer</span><span class="p">&gt;().</span><span class="n">material</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="m">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">// Now sent by EyeTrackingCtrlr.cs!</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerEnter</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">StopAllCoroutines</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="n">StartCoroutine</span><span class="p">(</span><span class="n">Animate</span><span class="p">());</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="creating-cubes-for-gaze-visualization">Creating cubes for gaze visualization</h3>
+<p>Our floor will now be a kind of cube factory. Create a new script for the floor plane object called <code>ProtocolVisualiseGaze</code>, which for now contains only its library calls, a single private variable (the EyeTrackingCtrlr), and a method for creating new, <em>interactive</em> cubes:</p>
+<div class="highlight"><span class="filename">ProtocolVisualiseGaze.cs</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">using</span><span class="w"> </span><span class="nn">ViveSR.anipal.Eye</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">using</span><span class="w"> </span><span class="nn">Random</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Random</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ProtocolVisualiseGaze</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">EyeTrackingCtrlr</span><span class="w"> </span><span class="n">eyeTrackingCtrlr</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CreateInteractiveCube</span><span class="p">(</span><span class="n">Vector3</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">Quaternion</span><span class="w"> </span><span class="n">rotation</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">col1</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="n">GameObject</span><span class="w"> </span><span class="n">cubeGo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GameObject</span><span class="p">.</span><span class="n">CreatePrimitive</span><span class="p">(</span><span class="n">PrimitiveType</span><span class="p">.</span><span class="n">Cube</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;CollidableCube&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="n">Transform</span><span class="w"> </span><span class="n">cubeTrans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">transform</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">position</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">rotation</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rotation</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">localScale</span><span class="w"> </span><span class="p">*=</span><span class="w"> </span><span class="p">.</span><span class="m">15f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">       </span><span class="n">AnimateOnCollide</span><span class="w"> </span><span class="n">cubeCollChk</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">AnimateOnCollide</span><span class="p">&gt;();</span><span class="w"></span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">       </span><span class="n">cubeCollChk</span><span class="p">.</span><span class="n">colors</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"></span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">       </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">           </span><span class="n">col1</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">           </span><span class="k">new</span><span class="w"> </span><span class="nf">Color</span><span class="w"> </span><span class="p">(</span><span class="m">1f</span><span class="p">-</span><span class="n">col1</span><span class="p">.</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="m">1f</span><span class="p">-</span><span class="n">col1</span><span class="p">.</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="m">1f</span><span class="p">-</span><span class="n">col1</span><span class="p">.</span><span class="n">b</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">       </span><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><code>CreateInteractiveCube()</code> can create cubes with a given <code>position</code>, <code>rotation</code>, and <code>color</code>, and outfits them with our <code>AnimateOnCollide</code> component. It gives them the name "CollidableCube", and assigns their <code>AnimateOnCollide</code> component two colors: one given to the <code>CreateInteractiveCube()</code> function via the <code>col1</code> parameter, and its <em>opposite</em> via the <code>new Color (1f-col1.r, 1f-col1.g, 1f-col1.b)</code> command.</p>
+<p>Now add a <code>Start()</code> IEnumerator to this script to execute cube generation:</p>
+<div class="highlight"><span class="filename">ProtocolVisualiseGaze.cs</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">eyeTrackingCtrlr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">EyeTrackingCtrlr</span><span class="p">.</span><span class="n">instance</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitUntil</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">eyeTrackingCtrlr</span><span class="p">.</span><span class="n">isReady</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="c1">// Calibrate eye tracker once at the start - comment out after first time</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">calibrationSuccess</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(!</span><span class="n">calibrationSuccess</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">calibReturnCode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">SRanipal_Eye_API</span><span class="p">.</span><span class="n">LaunchEyeCalibration</span><span class="p">(</span><span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="s">$&quot;calibReturnCode: {calibReturnCode} == {(int) ViveSR.Error.WORK}&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="n">calibrationSuccess</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">calibReturnCode</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">ViveSR</span><span class="p">.</span><span class="n">Error</span><span class="p">.</span><span class="n">WORK</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="c1">// Create floating cubes in a square formation around the room&#39;s origin</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="n">Vector2</span><span class="p">[]</span><span class="w"> </span><span class="n">moveVec</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"></span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Vector2</span><span class="p">(</span><span class="m">0</span><span class="p">,-</span><span class="m">1</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Vector2</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Vector2</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Vector2</span><span class="p">(-</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">    </span><span class="n">Vector3</span><span class="w"> </span><span class="n">startPos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">1.8f</span><span class="p">,</span><span class="w"> </span><span class="m">1.6f</span><span class="p">,</span><span class="w"> </span><span class="m">1.8f</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">iBorder</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">iBorder</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="m">4</span><span class="p">;</span><span class="w"> </span><span class="n">iBorder</span><span class="p">++)</span><span class="w"></span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">tmpVal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">startPos</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">        </span><span class="n">startPos</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">-</span><span class="n">startPos</span><span class="p">.</span><span class="n">z</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">        </span><span class="n">startPos</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tmpVal</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">iCube</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">iCube</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="m">4</span><span class="p">;</span><span class="w"> </span><span class="n">iCube</span><span class="p">++)</span><span class="w"></span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">            </span><span class="n">Vector3</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">startPos</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">            </span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="n">moveVec</span><span class="p">[</span><span class="n">iBorder</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="p">(</span><span class="m">3.6f</span><span class="p">/</span><span class="m">4f</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">iCube</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">            </span><span class="n">position</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="n">moveVec</span><span class="p">[</span><span class="n">iBorder</span><span class="p">].</span><span class="n">y</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="p">(</span><span class="m">3.6f</span><span class="p">/</span><span class="m">4f</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">iCube</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">            </span><span class="n">CreateInteractiveCube</span><span class="p">(</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">rotation</span><span class="p">,</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">ColorHSV</span><span class="p">());</span><span class="w"></span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">            </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForSeconds</span><span class="p">(.</span><span class="m">1f</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>While this function looks long, it's rather simple in what it does:</p>
+<ul>
+<li>It <em>instantiates</em> a new <code>EyeTrackingCtrlr</code>, thereby getting our <a href="#setting-up-gaze-tracking">code above</a> to run</li>
+<li>It pauses until the eye tracker is ready</li>
+<li>Attempts to <a href="https://developer.vive.com/us/support/sdk/category_howto/how-to-calibrate-eye-tracking.html"><em>calibrate</em> the eye tracker</a>, and finally</li>
+<li>Creates four interactive cubes around the center of the room with random colors and orientations.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Challenge: Add a toggle for calibration</p>
+<p>The block of code responsible for calibrating the eye tracker does not need to run every time, and will be rather annoying if you have to go through it each time you try the script.</p>
+<p>Currently, there is a line that says "comment out after first time" — you can surely do that, and uncomment again whenever you do want run the calibration routine again, but this, too, can get old, fast.</p>
+<p>As a challenge you can try create a new <code>bool calibrate</code> variable that's visible in the inspector, and have it determine whether the calibration block is executed!</p>
+</div>
+<p>Save the code and try it out. See if you can activate cubes by just looking at them:</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-7.5%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(10% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/farflungindeliblealleycat?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<div class="admonition example">
+<p class="admonition-title">Challenge: Fix blinking cubes</p>
+<p>As you can see, the cubes just blink briefly as we graze them with our gaze.</p>
+<p>Do you think you can change <code>AnimateOnCollide</code> in such a way that the cubes stay in their activated color until we look away from them?</p>
+</div>
+<h3 id="if-looks-could-destroy">If looks could destroy</h3>
+<p>Instead of animating our cubes by looking at them, let's destroy them as we did the surplus output from our <a href="../3-runtime/#cube-removal">Cube Factory</a>.</p>
+<p>Create a new script called <code>DestroyOnCollide</code> in our scripts folder:</p>
+<div class="highlight"><span class="filename">DestroyOnCollide.cs</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">DestroyOnCollide</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">AudioSource</span><span class="w"> </span><span class="n">_audioSource</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="n">_audioSource</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">AudioSource</span><span class="p">&gt;();</span><span class="w"></span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="n">_audioSource</span><span class="p">.</span><span class="n">playOnAwake</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="n">_audioSource</span><span class="p">.</span><span class="n">clip</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Resources</span><span class="p">.</span><span class="n">Load</span><span class="p">&lt;</span><span class="n">AudioClip</span><span class="p">&gt;(</span><span class="s">&quot;pop&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerEnter</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="n">StartCoroutine</span><span class="p">(</span><span class="n">PlayAudioThenDestroy</span><span class="p">());</span><span class="w"></span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">PlayAudioThenDestroy</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="s">$&quot;Destoyed {name}&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">        </span><span class="c1">// Hide object</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">        </span><span class="n">Destroy</span><span class="p">(</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MeshRenderer</span><span class="p">&gt;());</span><span class="w"></span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">        </span><span class="c1">// Delete collider component to prevent calling this coroutine twice</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">        </span><span class="n">Destroy</span><span class="p">(</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Rigidbody</span><span class="p">&gt;());</span><span class="w"></span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">        </span><span class="c1">// Play pop sound</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">        </span><span class="n">_audioSource</span><span class="p">.</span><span class="n">Play</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitUntil</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">!</span><span class="n">_audioSource</span><span class="p">.</span><span class="n">isPlaying</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">        </span><span class="c1">// Actually destroy the object now</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">        </span><span class="n">Destroy</span><span class="p">(</span><span class="n">gameObject</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Its structure should be nothing new by now.</p>
+<p>Go back to our <code>ProtocolVisualiseGaze</code> script and change its <code>CreateInteractiveCube()</code> function to look like this:</p>
+<div class="highlight"><span class="filename">ProtocolVisualiseGaze.cs</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CreateInteractiveCube</span><span class="p">(</span><span class="n">Vector3</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">Quaternion</span><span class="w"> </span><span class="n">rotation</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">col1</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">GameObject</span><span class="w"> </span><span class="n">cubeGo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GameObject</span><span class="p">.</span><span class="n">CreatePrimitive</span><span class="p">(</span><span class="n">PrimitiveType</span><span class="p">.</span><span class="n">Cube</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;CollidableCube&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="n">Transform</span><span class="w"> </span><span class="n">cubeTrans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">transform</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">position</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">rotation</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rotation</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">localScale</span><span class="w"> </span><span class="p">*=</span><span class="w"> </span><span class="p">.</span><span class="m">15f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">DestroyOnCollide</span><span class="p">&gt;();</span><span class="w"></span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MeshRenderer</span><span class="p">&gt;().</span><span class="n">material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">col1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Save the code, run the game, and get popping!</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-7.5%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(10% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/foolhardygenuinecod?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<h2 id="sampling-gaze">Sampling gaze</h2>
+<p>While it can be fun to pop some cubes from time to time, we're here to learn about getting some science from all this, so let's actually collect data and save it in external files.</p>
+<h3 id="_1"></h3>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../5-io/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 5 • Saving, Loading, Sampling" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              5 • Saving, Loading, Sampling
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../page-0/" class="md-footer__link md-footer__link--next" aria-label="Next: Installation and Setup" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Installation and Setup
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "navigation.instant", "navigation.indexes", "toc.follow", "header.autohide"], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+    
+  </body>
+</html>
