@@ -408,8 +408,8 @@ private IEnumerator PlayAudioThenDestroy()
 In `OnTriggerEnter()`, we *comment out* our previous line that simply destroys the object (rendering it inert) and instead add a `StartCoroutine()` call on the `IEnumerator` block we declare below.
 
 !!! info "Coroutines"
-    [*Coroutines*](https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Coroutine.html) are a very powerful feature of Unity, which allow delayed execution of code without tying up the whole system — effectively allowing parallel execution of multiple things.
+    [*Coroutines*](https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Coroutine.html) are a very powerful feature of Unity (and overall [computing concept](https://en.wikipedia.org/wiki/Coroutine)), which allow delayed execution of code without tying up the whole system — effectively allowing parallel execution of multiple things.
     
-    This will be explored in more detail in the following tutorial, but feel free to try to understand the `PlayAudioThenDestroy()` function here from its context and comments.
+    This will be explored in more detail in the [following tutorial](4-coroutines.md), but feel free to try to understand the `PlayAudioThenDestroy()` function here from its context and comments.
 
 Save the code, run the game. It pops!
