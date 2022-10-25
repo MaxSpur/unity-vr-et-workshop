@@ -167,7 +167,9 @@ Expand this field with its arrow, and add increase the number of *Elements* this
 
 Go back to the code editor and add two lines to the `Start()` function:
 
-```csharp title="SwitchMaterialOnCollide.cs" hl_lines="9 10"
+```csharp title="SwitchMaterialOnCollide.cs" hl_lines="11 12"
+using UnityEngine;
+
 public class SwitchMaterialOnCollide : MonoBehaviour
 {
     public Material[] materials;
@@ -200,7 +202,9 @@ Try it out: the cylinder should now be blue when you run the game! It will rever
 
 Now let's have the cylinder change its material not just on startup, but when we "physically" interact with it in VR. Add two new functions to our `SwitchMaterialOnCollide` script (outside the scope of `Start()`, but still inside the `MonoBehavior`):
 
-```csharp title="SwitchMaterialOnCollide.cs" hl_lines="13 14 15 16 18 19 20 21"
+```csharp title="SwitchMaterialOnCollide.cs" hl_lines="15 16 17 18 20 21 22 23"
+using UnityEngine;
+
 public class SwitchMaterialOnCollide : MonoBehaviour
 {
     public Material[] materials;
@@ -241,6 +245,8 @@ For now we've just switched between different materials to change the color of t
 Create a new script called `SwitchColorOnCollide` and attach it to the cylinder. Remove the old Switch Material On Collide component from it.
 
 ```csharp title="SwitchColorOnCollide.cs"
+using UnityEngine;
+
 public class SwitchColorOnCollide : MonoBehaviour
 {
     public Color[] colors;
@@ -297,7 +303,9 @@ For this last part of object interaction (for now), let's use something other th
 
 Let's first add another function to our `SwitchColorOnCollide` script:
 
-```csharp title="SwitchColorOnCollide.cs" hl_lines="23 24 25 26 27 28"
+```csharp title="SwitchColorOnCollide.cs" hl_lines="26 27 28 29 30 31"
+using UnityEngine;
+
 public class SwitchColorOnCollide : MonoBehaviour
 {
     public Color[] colors;
