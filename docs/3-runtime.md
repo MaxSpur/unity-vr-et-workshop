@@ -327,7 +327,7 @@ Let's turn the chore of cleaning up cubes into a more fun activity by adding som
 As immersive as VR is, you can heighten this even more by engaging additional senses, such as our hearing. Unity is of course capable of audio playback, so let's have it play a short sample every time we destroy a cube, such a simple "pop" sound.
 
 !!! question "Where to get sound samples?"
-    If you're not inclined to record or [synthesize](https://supercollider.github.io) your own audio, the popular website [freesound.org](https://freesound.org) is a great, free, source of all kinds of audible material.
+    If you're not inclined to [record](https://www.audacityteam.org/) or [synthesize](https://supercollider.github.io) your own audio, the popular website [freesound.org](https://freesound.org) is a great, free, source of all kinds of audible material.
     
     To save you some time for now, you can also download this .mp3 clip and use it: <a href="pop.mp3" download>pop.mp3</a>
 
