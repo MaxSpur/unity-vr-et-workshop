@@ -364,6 +364,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#if-looks-could-destroy" class="md-nav__link">
+    If looks could destroy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sampling-gaze" class="md-nav__link">
+    Sampling gaze
+  </a>
+  
+    <nav class="md-nav" aria-label="Sampling gaze">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -454,6 +481,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#if-looks-could-destroy" class="md-nav__link">
+    If looks could destroy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sampling-gaze" class="md-nav__link">
+    Sampling gaze
+  </a>
+  
+    <nav class="md-nav" aria-label="Sampling gaze">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -483,9 +537,9 @@
 </div>
 <h2 id="reuse-or-rebuild">Reuse or Rebuild</h2>
 <p>Again, we can reuse our previous VR Unity projects to save time, practice the necessary steps to set one up from scratch.</p>
-<p>Make sure that SteamVR and the SRAnipal packages are <a href="2-vr-interaction.md/#installing-and-importing-packages">installed and imported</a> into our project, and that we have a <a href="2-vr-interaction.md/#the-camera-rig">[CameraRig] object instead of the default MainCamera</a> in our hierarchy.</p>
-<p>Have a Scrips folder in our assets, as well as a Resource folder, which contains the <a href="3-runtime.md/#making-it-pop">pop.mp3 audio sample</a> we've used before.</p>
-<p>Have a <a href="2-vr-interaction.md/#adding-objects">Plane 3D object as a floor</a> in the scene — name it <code>Floor</code>.</p>
+<p>Make sure that SteamVR and the SRAnipal packages are <a href="../2-vr-interaction/#installing-and-importing-packages">installed and imported</a> into our project, and that we have a <a href="../2-vr-interaction/#the-camera-rig">[CameraRig] object instead of the default MainCamera</a> in our hierarchy.</p>
+<p>Have a Scrips folder in our assets, as well as a Resource folder, which contains the <a href="../3-runtime/#making-it-pop">pop.mp3 audio sample</a> we've used before.</p>
+<p>Have a <a href="../2-vr-interaction/#adding-objects">Plane 3D object as a floor</a> in the scene — name it <code>Floor</code>.</p>
 <h2 id="setting-up-gaze-tracking">Setting up gaze tracking</h2>
 <p>There are a number of procedures necessary to do in code in order to have an eye tracker running and being useful in Unity, and they can be quite lengthy. <strong>Download</strong> this script file and place it in your Scripts folder in the Project browser: <a href="EyeTrackingCtrlr.cs" download>EyeTrackingCtrlr.cs</a>.</p>
 <p>Using the <code>ViveSR.anipal.Eye</code> library, it interfaces directly with the eye tracker inside the Vive Pro Eye — within it's <code>Start()</code> enumerator it waits for the hardware to be ready before continuing.</p>
@@ -503,9 +557,9 @@
 <p>Attach this script to the <strong>Floor</strong> object as a component, so that it runs within our scene.</p>
 <h2 id="visualizing-gaze">Visualizing gaze</h2>
 <p>We shall now create cubes that will change their color once we gaze at them.</p>
-<p>This will be done in a similar manner to our <a href="3-runtime.md/#factory-scripting">Cube Factory</a>: new cubes will be created and outfitted with the necessary functionality.</p>
+<p>This will be done in a similar manner to our <a href="../3-runtime/#factory-scripting">Cube Factory</a>: new cubes will be created and outfitted with the necessary functionality.</p>
 <h3 id="animating-cubes">Animating cubes</h3>
-<p>We don't want cubes to <a href="3-runtime.md/#destroyer-script">just disappear</a> for now as we did with the cube factory, but let them instead change colors (suddenly, then gradually).</p>
+<p>We don't want cubes to <a href="../3-runtime/#destroyer-script">just disappear</a> for now as we did with the cube factory, but let them instead change colors (suddenly, then gradually).</p>
 <p>Create a new script in the Scripts folder named <code>AnimateOnCollide.cs</code>:</p>
 <div class="highlight"><span class="filename">AnimateOnCollide.cs</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
@@ -535,7 +589,7 @@
 <a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>It is again similar to our previous <code>…OnCollide</code> scripts in structure. The IEnumerator <code>Animate()</code> will count down from the duration given in <code>_animationDuration</code> while steadily <a href="1-first-project.md/#interpolation">"lerping"</a>, or interpolating between the first two colors in its <code>colors</code> array, and assign them to the objects's material.</p>
+<p>It is again similar to our previous <code>…OnCollide</code> scripts in structure. The IEnumerator <code>Animate()</code> will count down from the duration given in <code>_animationDuration</code> while steadily <a href="../1-first-project/#interpolation">"lerping"</a>, or interpolating between the first two colors in its <code>colors</code> array, and assign them to the objects's material.</p>
 <p>Give this script now its <code>Start()</code> function to set an initial color, and an <code>OnTriggerEnter()</code> function which will (re)start the <code>Animate()</code> coroutine when a collision is detected:</p>
 <div class="highlight"><span class="filename">AnimateOnCollide.cs</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span><span class="w"></span>
@@ -627,15 +681,92 @@
 <a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>While this function looks long, it's rather simple in what it does:
-+ It <em>instantiates</em> a new <code>EyeTrackingCtrlr</code>, thereby getting our <a href="#setting-up-gaze-tracking">code above</a> to run
-+ It pauses until the eye tracker is ready
-+ Attempts to <em>calibrate</em> the eye tracker, and finally
-+ Creates four interactive cubes around the center of the room with random colors and orientations.</p>
-<div class="admonition experiment">
-<p class="admonition-title">Comment out, or add a variable for the inspector?</p>
-<p>This</p>
+<p>While this function looks long, it's rather simple in what it does:</p>
+<ul>
+<li>It <em>instantiates</em> a new <code>EyeTrackingCtrlr</code>, thereby getting our <a href="#setting-up-gaze-tracking">code above</a> to run</li>
+<li>It pauses until the eye tracker is ready</li>
+<li>Attempts to <a href="https://developer.vive.com/us/support/sdk/category_howto/how-to-calibrate-eye-tracking.html"><em>calibrate</em> the eye tracker</a>, and finally</li>
+<li>Creates four interactive cubes around the center of the room with random colors and orientations.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Challenge: Add a toggle for calibration</p>
+<p>The block of code responsible for calibrating the eye tracker does not need to run every time, and will be rather annoying if you have to go through it each time you try the script.</p>
+<p>Currently, there is a line that says "comment out after first time" — you can surely do that, and uncomment again whenever you do want run the calibration routine again, but this, too, can get old, fast.</p>
+<p>As a challenge you can try create a new <code>bool calibrate</code> variable that's visible in the inspector, and have it determine whether the calibration block is executed!</p>
 </div>
+<p>Save the code and try it out. See if you can activate cubes by just looking at them:</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-7.5%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(10% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/farflungindeliblealleycat?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<div class="admonition example">
+<p class="admonition-title">Challenge: Fix blinking cubes</p>
+<p>As you can see, the cubes just blink briefly as we graze them with our gaze.</p>
+<p>Do you think you can change <code>AnimateOnCollide</code> in such a way that the cubes stay in their activated color until we look away from them?</p>
+</div>
+<h3 id="if-looks-could-destroy">If looks could destroy</h3>
+<p>Instead of animating our cubes by looking at them, let's destroy them as we did the surplus output from our <a href="../3-runtime/#cube-removal">Cube Factory</a>.</p>
+<p>Create a new script called <code>DestroyOnCollide</code> in our scripts folder:</p>
+<div class="highlight"><span class="filename">DestroyOnCollide.cs</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">DestroyOnCollide</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">AudioSource</span><span class="w"> </span><span class="n">_audioSource</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="n">_audioSource</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">AudioSource</span><span class="p">&gt;();</span><span class="w"></span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="n">_audioSource</span><span class="p">.</span><span class="n">playOnAwake</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="n">_audioSource</span><span class="p">.</span><span class="n">clip</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Resources</span><span class="p">.</span><span class="n">Load</span><span class="p">&lt;</span><span class="n">AudioClip</span><span class="p">&gt;(</span><span class="s">&quot;pop&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerEnter</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="n">StartCoroutine</span><span class="p">(</span><span class="n">PlayAudioThenDestroy</span><span class="p">());</span><span class="w"></span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">PlayAudioThenDestroy</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="s">$&quot;Destoyed {name}&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">        </span><span class="c1">// Hide object</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">        </span><span class="n">Destroy</span><span class="p">(</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MeshRenderer</span><span class="p">&gt;());</span><span class="w"></span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">        </span><span class="c1">// Delete collider component to prevent calling this coroutine twice</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">        </span><span class="n">Destroy</span><span class="p">(</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Rigidbody</span><span class="p">&gt;());</span><span class="w"></span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">        </span><span class="c1">// Play pop sound</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">        </span><span class="n">_audioSource</span><span class="p">.</span><span class="n">Play</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitUntil</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">!</span><span class="n">_audioSource</span><span class="p">.</span><span class="n">isPlaying</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">        </span><span class="c1">// Actually destroy the object now</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">        </span><span class="n">Destroy</span><span class="p">(</span><span class="n">gameObject</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Its structure should be nothing new by now.</p>
+<p>Go back to our <code>ProtocolVisualiseGaze</code> script and change its <code>CreateInteractiveCube()</code> function to look like this:</p>
+<div class="highlight"><span class="filename">ProtocolVisualiseGaze.cs</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CreateInteractiveCube</span><span class="p">(</span><span class="n">Vector3</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">Quaternion</span><span class="w"> </span><span class="n">rotation</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">col1</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">GameObject</span><span class="w"> </span><span class="n">cubeGo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GameObject</span><span class="p">.</span><span class="n">CreatePrimitive</span><span class="p">(</span><span class="n">PrimitiveType</span><span class="p">.</span><span class="n">Cube</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;CollidableCube&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="n">Transform</span><span class="w"> </span><span class="n">cubeTrans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">transform</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">position</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">rotation</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rotation</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">localScale</span><span class="w"> </span><span class="p">*=</span><span class="w"> </span><span class="p">.</span><span class="m">15f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">DestroyOnCollide</span><span class="p">&gt;();</span><span class="w"></span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MeshRenderer</span><span class="p">&gt;().</span><span class="n">material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">col1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Save the code, run the game, and get popping!</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-7.5%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(10% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/foolhardygenuinecod?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<h2 id="sampling-gaze">Sampling gaze</h2>
+<p>While it can be fun to pop some cubes from time to time, we're here to learn about getting some science from all this, so let's actually collect data and save it in external files.</p>
+<h3 id="_1"></h3>
 
 
 
