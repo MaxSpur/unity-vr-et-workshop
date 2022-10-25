@@ -385,8 +385,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
+  <a href="#gaze-sampler-script" class="md-nav__link">
+    Gaze sampler script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-protocol-script" class="md-nav__link">
+    New protocol script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#popping-cubes-for-science" class="md-nav__link">
+    Popping cubes for science
   </a>
   
 </li>
@@ -502,8 +516,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
+  <a href="#gaze-sampler-script" class="md-nav__link">
+    Gaze sampler script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-protocol-script" class="md-nav__link">
+    New protocol script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#popping-cubes-for-science" class="md-nav__link">
+    Popping cubes for science
   </a>
   
 </li>
@@ -544,7 +572,7 @@
 <p>There are a number of procedures necessary to do in code in order to have an eye tracker running and being useful in Unity, and they can be quite lengthy. <strong>Download</strong> this script file and place it in your Scripts folder in the Project browser: <a href="EyeTrackingCtrlr.cs" download>EyeTrackingCtrlr.cs</a>.</p>
 <p>Using the <code>ViveSR.anipal.Eye</code> library, it interfaces directly with the eye tracker inside the Vive Pro Eye — within it's <code>Start()</code> enumerator it waits for the hardware to be ready before continuing.</p>
 <p><code>EyeTrackingCtrlr.cs</code> defines a new class called <code>GazePoint</code> within itself, which holds information about where a user is looking with each eye (as well as a <em>combination</em> of both), and which (if any) objects the gaze <em>rays</em> are colliding with.</p>
-<p>This "camera data" is updated each frame by calling <code>SRanipal_Eye.GetGazeRay()</code> functions that interface with the eye tracker.</p>
+<p>This "camera data" is updated each frame by calling <code>SRanipal_Eye.GetGazeRay()</code> functions that interface with the eye tracker, while "Eye data" is gathered when the function <code>EyeCallback()</code> is called directly by the eye tracker via a <em>callback</em>.</p>
 <div class="admonition info">
 <p class="admonition-title">General-purpose script</p>
 <p>Overall, this script is very generalized and can be used for all sorts of projects with minimal alterations.</p>
@@ -766,7 +794,130 @@
 
 <h2 id="sampling-gaze">Sampling gaze</h2>
 <p>While it can be fun to pop some cubes from time to time, we're here to learn about getting some science from all this, so let's actually collect data and save it in external files.</p>
-<h3 id="_1"></h3>
+<h3 id="gaze-sampler-script">Gaze sampler script</h3>
+<p><a href="EyeTrackingSmplr.cs" download>Download</a> a modified version of our <code>EyeTrackingCtrlr</code> here, now called <a href="EyeTrackingSmplr.cs" download>EyeTrackingSmplr.cs</a> and put in the Scripts folder.</p>
+<p>It is very similar to our previous <code>EyeTrackingCtrlr.cs</code> script, differing only in its inclusion of a <code>StreamWriter</code> which it will use to record data to a file, and its <code>EyeCallback()</code> method, which will now use that StreamWriter to add new entries to our recording every time the eye tracker updates its data.</p>
+<p>You can see how it does that in its <code>EyeCallback()</code> method, but here is its part that determines the format of its output:</p>
+<div class="highlight"><span class="filename">EyeTrackingSmplr.cs</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">instance</span><span class="p">.</span><span class="n">writer</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="s">$&quot;{gazePoint.data.timestamp},{instance.UnityTimeStamp},&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="s">$&quot;{instance.cameraPosition.x},{instance.cameraPosition.y},{instance.cameraPosition.z},&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="s">$&quot;{instance.cameraQuaternion.x},{instance.cameraQuaternion.y},&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="s">$&quot;{instance.cameraQuaternion.z},{instance.cameraQuaternion.w},&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="s">$&quot;{meanBasePoint.x},{meanBasePoint.y},{meanBasePoint.z},&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="s">$&quot;{meanGazeDirection.x},{meanGazeDirection.y},{meanGazeDirection.z},&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="s">$&quot;{leftBasePoint.x},{leftBasePoint.y},{leftBasePoint.z},&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="s">$&quot;{leftGazeDirection.x},{leftGazeDirection.y},{leftGazeDirection.z},&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="s">$&quot;{rightBasePoint.x},{rightBasePoint.y},{rightBasePoint.z},&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="s">$&quot;{rightGazeDirection.x},{rightGazeDirection.y},{rightGazeDirection.z},&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="s">$&quot;{letPupilDiam},{rightPupilDiam},&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="s">$&quot;{valC},{valL},{valR}&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="w"></span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>Looking a bit ungainly, you should still be able to decipher it. The <code>+</code> signs at the end of each line except the last are needed to keep it all one string, and the <code>$</code> signs at the beginnings of blocks within <code>""</code> quotation marks lets Unity convert all the variables (e.g., rightPupilDiam) to plain text for the writer (and us).</p>
+<p>Replace the <em>EyeTracking Ctrlr</em> component in our floor object with the new EyeTrackingSmplr.cs script (or keep both the old one but deactivate it).</p>
+<h3 id="new-protocol-script">New protocol script</h3>
+<p>To conduct a repeatable experiment we need a new protocol.</p>
+<p><a href="CubeSequenceSampling.cs" download>Download</a> a new version of <code>ProtocolVisualiseGaze.cs</code>, now called <a href="CubeSequenceSampling.cs" download>CubeSequenceSampling.cs</a>. You can of course update the ProtocolVisualiseGaze script manually with the changes you see in ProtocolVisualiseGaze.</p>
+<p>There are now a few more variables, which we will need to tell the script where to write data to, and a <em>container</em> which will hold our generated cubes to keep the organization a bit more tidy.</p>
+<div class="highlight"><span class="filename">CubeSequenceSampling.cs</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CubeSequenceSampling</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">EyeTrackingSmplr</span><span class="w"> </span><span class="n">eyeTrackingSmplr</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">dirpathname</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;subjData/&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">dirpath</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">CubeContainerTrans</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Within its <code>Start()</code> function, it now creates a new file path to store our data:</p>
+<div class="highlight"><span class="filename">CubeSequenceSampling.cs</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">dirpath</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Directory</span><span class="p">.</span><span class="n">GetParent</span><span class="p">(</span><span class="n">Application</span><span class="p">.</span><span class="n">dataPath</span><span class="p">).</span><span class="n">ToString</span><span class="p">()</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">Path</span><span class="p">.</span><span class="n">DirectorySeparatorChar</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">dirpathname</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">Directory</span><span class="p">.</span><span class="n">CreateDirectory</span><span class="p">(</span><span class="s">$&quot;{dirpath}&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">eyeTrackingSmplr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">EyeTrackingSmplr</span><span class="p">.</span><span class="n">instance</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitUntil</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">eyeTrackingSmplr</span><span class="p">.</span><span class="n">isReady</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>When creating our randomly-colored cubes, we now store them inside the (so far empty) <code>CubeContainerTrans</code> GameObject, and promptly <em>deactivate</em> them.</p>
+<div class="highlight"><span class="filename">CubeSequenceSampling.cs</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">CubeContainerTrans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GameObject</span><span class="p">(</span><span class="s">&quot;CubeContainer&quot;</span><span class="p">).</span><span class="n">transform</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">Vector3</span><span class="w"> </span><span class="n">startPos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="m">1.8f</span><span class="p">,</span><span class="w"> </span><span class="m">1.6f</span><span class="p">,</span><span class="w"> </span><span class="m">1.8f</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">iBorder</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">iBorder</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="m">4</span><span class="p">;</span><span class="w"> </span><span class="n">iBorder</span><span class="p">++)</span><span class="w"></span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">tmpVal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">startPos</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="n">startPos</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">-</span><span class="n">startPos</span><span class="p">.</span><span class="n">z</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="n">startPos</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tmpVal</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">iCube</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">iCube</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="m">4</span><span class="p">;</span><span class="w"> </span><span class="n">iCube</span><span class="p">++)</span><span class="w"></span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="n">Vector3</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">startPos</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">        </span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="n">moveVec</span><span class="p">[</span><span class="n">iBorder</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="p">(</span><span class="m">3.6f</span><span class="p">/</span><span class="m">4f</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">iCube</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">        </span><span class="n">position</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="n">moveVec</span><span class="p">[</span><span class="n">iBorder</span><span class="p">].</span><span class="n">y</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="p">(</span><span class="m">3.6f</span><span class="p">/</span><span class="m">4f</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">iCube</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">        </span><span class="n">GameObject</span><span class="w"> </span><span class="n">cube</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">CreateInteractiveCube</span><span class="p">(</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">rotation</span><span class="p">,</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">ColorHSV</span><span class="p">());</span><span class="w"></span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="hll"><span class="w">        </span><span class="n">cube</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span><span class="w"></span>
+</span><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>This storing happens in the modified <code>CreateInteractiveCube()</code> method, where the new cube gets a <em>parent</em> assigned — our CubeContainerTrans:</p>
+<div class="highlight"><span class="filename">CubeSequenceSampling.cs</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">private</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="nf">CreateInteractiveCube</span><span class="p">(</span><span class="n">Vector3</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">Quaternion</span><span class="w"> </span><span class="n">rotation</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">col1</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">GameObject</span><span class="w"> </span><span class="n">cubeGo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GameObject</span><span class="p">.</span><span class="n">CreatePrimitive</span><span class="p">(</span><span class="n">PrimitiveType</span><span class="p">.</span><span class="n">Cube</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;CollidableCube&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="n">Transform</span><span class="w"> </span><span class="n">cubeTrans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">transform</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">position</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">rotation</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rotation</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">localScale</span><span class="w"> </span><span class="p">*=</span><span class="w"> </span><span class="p">.</span><span class="m">15f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="c1">// Assign this cube as a child of &quot;CubeContainer&quot; GameObject</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="hll"><span class="w">    </span><span class="n">cubeTrans</span><span class="p">.</span><span class="n">SetParent</span><span class="p">(</span><span class="n">CubeContainerTrans</span><span class="p">);</span><span class="w"></span>
+</span><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">DestroyOnCollide</span><span class="p">&gt;();</span><span class="w"></span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="n">cubeGo</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">MeshRenderer</span><span class="p">&gt;().</span><span class="n">material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">col1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cubeGo</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="popping-cubes-for-science">Popping cubes for science</h3>
+<p>Coming back to its <code>Start()</code> function, its last part now randomly reactivates cubes. This makes them susceptible to being destroyed by a gaze from the participant, which the code is waiting for before reacting the next one in line until they are all gone. A variable <code>itrial</code> keeps track of which cube we're currently at, by being incremented (<code>itrial++</code>) in each iteration of the <code>while()</code> loop.</p>
+<div class="highlight"><span class="filename">CubeSequenceSampling.cs</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">itrial</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">CubeContainerTrans</span><span class="p">.</span><span class="n">childCount</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">iCube</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">Random</span><span class="p">.</span><span class="k">value</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">CubeContainerTrans</span><span class="p">.</span><span class="n">childCount</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="n">GameObject</span><span class="w"> </span><span class="n">cubeGO</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">CubeContainerTrans</span><span class="p">.</span><span class="n">GetChild</span><span class="p">(</span><span class="n">iCube</span><span class="p">).</span><span class="n">gameObject</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">    </span><span class="c1">// Show cube</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="n">cubeGO</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="hll"><span class="w">    </span><span class="n">eyeTrackingSmplr</span><span class="p">.</span><span class="n">writer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StreamWriter</span><span class="p">(</span><span class="s">$&quot;{dirpath}/Cube_{itrial++}.csv&quot;</span><span class="p">);</span><span class="w"></span>
+</span><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">    </span><span class="n">eyeTrackingSmplr</span><span class="p">.</span><span class="n">isSampling</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">    </span><span class="c1">// Wait for cube to be destroyed</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitUntil</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">cubeGO</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="k">null</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">    </span><span class="n">eyeTrackingSmplr</span><span class="p">.</span><span class="n">isSampling</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">    </span><span class="n">eyeTrackingSmplr</span><span class="p">.</span><span class="n">writer</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>It also creates a new <code>writer</code> within its <code>eyeTrackingSmplr</code>, so that it can pass a new file name for each cube. The <code>eyeTrackingSmplr</code> is turned on by setting its <code>isSampling</code> value to <code>true</code> until the cube is popped, which is also when we close the existing writer.</p>
+<p>With each iteration we thus create one new recording and decrease the count of remaining cubes by one, until the <code class="highlight"><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">CubeContainerTrans</span><span class="p">.</span><span class="n">childCount</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"></span></code> loop exits.</p>
+<p>And that's it! Replace the old ProtocolVisualiseGaze component of our floor object with this new script (or just deactivate it before adding the new one), and give it a go. You can see the resulting recordings in the automatically created <em>SubjData</em> folder, which you can find in the project's main folder, <em>outside</em> Assets.</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-7.5%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(10% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/selfishrewardingarkshell?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<div class="admonition example">
+<p class="admonition-title">Challenge: Signal the start and end of a session</p>
+<p>Can you think of a way to signal to the participant in VR that all cubes are popped and their quest is over?</p>
+<p>What about a count down at the beginning, so that the data for the first popped cube is more consistent, i.e. waiting with the recording of the first trial until some interaction or visible event occuring?</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Challenge: New folders for each participant</p>
+<p>Right now, all files are written when you restart the game. Can you think of way to e.g., enter a participant's number, so that a new folder is created for each run?</p>
+</div>
 
 
 
@@ -840,7 +991,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "navigation.instant", "navigation.indexes", "toc.follow", "header.autohide"], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "navigation.indexes", "toc.follow", "header.autohide"], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.078830c0.min.js"></script>
