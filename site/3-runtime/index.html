@@ -408,6 +408,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../4-coroutines/" class="md-nav__link">
+        4 • Coroutines
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../page-0/" class="md-nav__link">
         Installation and Setup
       </a>
@@ -837,7 +852,7 @@ Now the <em>only</em> condition necessary to trigger the production of the next 
 <p>As immersive as VR is, you can heighten this even more by engaging additional senses, such as our hearing. Unity is of course capable of audio playback, so let's have it play a short sample every time we destroy a cube, such a simple "pop" sound.</p>
 <div class="admonition question">
 <p class="admonition-title">Where to get sound samples?</p>
-<p>If you're not inclined to record or <a href="https://supercollider.github.io">synthesize</a> your own audio, the popular website <a href="https://freesound.org">freesound.org</a> is a great, free, source of all kinds of audible material.</p>
+<p>If you're not inclined to <a href="https://www.audacityteam.org/">record</a> or <a href="https://supercollider.github.io">synthesize</a> your own audio, the popular website <a href="https://freesound.org">freesound.org</a> is a great, free, source of all kinds of audible material.</p>
 <p>To save you some time for now, you can also download this .mp3 clip and use it: <a href="pop.mp3" download>pop.mp3</a></p>
 </div>
 <p>Create a new folder in Assets called <code>Resources</code>, and store your audio sample there and rename it <code>pop.mp3</code>, if it's not already called that.</p>
@@ -905,8 +920,8 @@ Now the <em>only</em> condition necessary to trigger the production of the next 
 <p>In <code>OnTriggerEnter()</code>, we <em>comment out</em> our previous line that simply destroys the object (rendering it inert) and instead add a <code>StartCoroutine()</code> call on the <code>IEnumerator</code> block we declare below.</p>
 <div class="admonition info">
 <p class="admonition-title">Coroutines</p>
-<p><a href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Coroutine.html"><em>Coroutines</em></a> are a very powerful feature of Unity, which allow delayed execution of code without tying up the whole system — effectively allowing parallel execution of multiple things.</p>
-<p>This will be explored in more detail in the following tutorial, but feel free to try to understand the <code>PlayAudioThenDestroy()</code> function here from its context and comments.</p>
+<p><a href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Coroutine.html"><em>Coroutines</em></a> are a very powerful feature of Unity (and overall <a href="https://en.wikipedia.org/wiki/Coroutine">computing concept</a>), which allow delayed execution of code without tying up the whole system — effectively allowing parallel execution of multiple things.</p>
+<p>This will be explored in more detail in the <a href="../4-coroutines/">following tutorial</a>, but feel free to try to understand the <code>PlayAudioThenDestroy()</code> function here from its context and comments.</p>
 </div>
 <p>Save the code, run the game. It pops!</p>
 
@@ -945,13 +960,13 @@ Now the <em>only</em> condition necessary to trigger the production of the next 
       
       
         
-        <a href="../page-0/" class="md-footer__link md-footer__link--next" aria-label="Next: Installation and Setup" rel="next">
+        <a href="../4-coroutines/" class="md-footer__link md-footer__link--next" aria-label="Next: 4 • Coroutines" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Installation and Setup
+              4 • Coroutines
             </div>
           </div>
           <div class="md-footer__button md-icon">
