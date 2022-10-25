@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#coroutines-parallel-execution-and-experiment-protocols" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -266,10 +271,91 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4 • Coroutines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         4 • Coroutines
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reuse-previous-unity-project" class="md-nav__link">
+    Reuse previous Unity project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-the-scene" class="md-nav__link">
+    Setting the scene
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-objects-in-motion" class="md-nav__link">
+    Setting objects in motion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripting-a-protocol" class="md-nav__link">
+    Scripting a protocol
+  </a>
+  
+    <nav class="md-nav" aria-label="Scripting a protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables-and-assignments" class="md-nav__link">
+    Variables and assignments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interaction-functions" class="md-nav__link">
+    Interaction functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripted-flow" class="md-nav__link">
+    Scripted flow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -307,6 +393,71 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reuse-previous-unity-project" class="md-nav__link">
+    Reuse previous Unity project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-the-scene" class="md-nav__link">
+    Setting the scene
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-objects-in-motion" class="md-nav__link">
+    Setting objects in motion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripting-a-protocol" class="md-nav__link">
+    Scripting a protocol
+  </a>
+  
+    <nav class="md-nav" aria-label="Scripting a protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables-and-assignments" class="md-nav__link">
+    Variables and assignments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interaction-functions" class="md-nav__link">
+    Interaction functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripted-flow" class="md-nav__link">
+    Scripted flow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -321,9 +472,220 @@
                   
 
 
-  <h1>4 • Coroutines</h1>
+<h1 id="coroutines-parallel-execution-and-experiment-protocols">Coroutines: Parallel Execution and Experiment Protocols</h1>
+<p>We have mastered automated, simple events with the Cube Factory. Now let's create more complex flows and dive deeper into <a href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Coroutine.html">coroutines</a>!</p>
+<h2 id="reuse-previous-unity-project">Reuse previous Unity project</h2>
+<p>We can once again save some time by continuing to use the previous project. Just make sure to delete or deactivate the CubeFactory object and you should be good to go.</p>
+<details class="info">
+<summary>Archiving and copying Unity projects</summary>
+<p>Another way to continue work without sacrificing previously finished projects is to making a copy of a whole Unity project in your file explorer, e.g., by going to the Unity hub, right-clicking your project to "Show in Finder/Explorer" and copying its whole folder. You can rename the copied folder to anything you want, then go back to the Hub and clicking <strong>Open</strong> instead of new <strong>New Project</strong>, then point it to your newly copied folder.</p>
+</details>
+<h2 id="setting-the-scene">Setting the scene</h2>
+<p>We create again a few new objects.</p>
+<p>Create as children of the floor plane object two new <strong>Plane</strong> 3D objects and configure them like this:</p>
+<ul>
+<li>"StandingMark"<ul>
+<li>Position: <code>(-2.333, .001, -2.333)</code></li>
+<li>Scale: <code>(.1, 1, .1)</code></li>
+</ul>
+</li>
+<li>"OriginMark"<ul>
+<li>Position <code>(0, .001, 0)</code></li>
+<li>Scale <code>(.1, 1, .1)</code></li>
+</ul>
+</li>
+</ul>
+<p>Assign StandingMark our <a href="2-vr-interaction.md/#materials-and-colors">old <em>BlueBox</em> material</a>, and the <em>RedBox</em> material to OriginMark.</p>
+<p>Outside the floor object, at empty spaces in the hierarchy of our scene, create:</p>
+<ul>
+<li>A <strong>Sphere</strong> 3D object and name it "Zeppelin":<ul>
+<li>Position <code>(-1, 1.5, -1)</code></li>
+<li>Rotation <code>(0, 90, 0)</code></li>
+<li>Scale <code>(.5, .2, .2)</code></li>
+</ul>
+</li>
+<li>A new <strong>Cube</strong>:<ul>
+<li>Position <code>(0, 1.5, 1)</code></li>
+<li>Scale <code>(.2, .1, .2)</code></li>
+</ul>
+</li>
+</ul>
+<p>Attach to the new Sphere (Zeppelin) and the new cube our existing <code>IsCollidingChecker</code> script as a component: Click <strong>Add Component</strong> and start typing in its name.</p>
+<p>Give the <em>Is Colliding Checker</em> components you've just attached to the Cube and Zeppelin two new colors of your choosing. They can be different to spice it up a bit!</p>
+<h2 id="setting-objects-in-motion">Setting objects in motion</h2>
+<p>Now should have the two last objects simply hovering in the air. Let's write new scripts to get them moving.</p>
+<p>Create a script called <code>Moving</code> and attach it to the Zeppelin object:</p>
+<div class="highlight"><span class="filename">Moving.cs</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Moving</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Units per second&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Start position in 3D space&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">startPoint</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="na">[Tooltip(&quot;End position in 3D space&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">endPoint</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">interpolator</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">1f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isDone</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">interpolator</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="p">.</span><span class="m">999f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="n">isDone</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isDone</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="n">interpolator</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">startPoint</span><span class="p">,</span><span class="w"> </span><span class="n">endPoint</span><span class="p">,</span><span class="w"> </span><span class="n">interpolator</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>It takes <code>speed</code> and two Vector3 variables for its moving speed (<a href="../1-first-project/#interpolation">via interpolation</a>) and for start and end points of its journey.</p>
+<div class="admonition info">
+<p class="admonition-title">isDone?</p>
+<p>The expression <code class="highlight"><span class="n">isDone</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">interpolator</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="p">.</span><span class="m">999f</span><span class="w"></span></code> is a handy shortcut: the <code>=&gt;</code> operator assigns to <code>isDone</code> the result of evaluating <code>interpolator &gt; .999f</code>, similar to how an <code>if</code> statement would do. You can read more about this at the <a href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members">C# documentation</a>.</p>
+<p>What this effectively does is to constantly check if the <code>interpolator</code> is greater than <code>.999f</code>, and setting <code>isDone</code> to <code>true</code> if so, and <code>false</code> if not.</p>
+<p><code>interpolator</code> being already <code>1</code> at the beginning will set <code>isDone</code> to <code>true</code>, thus aborting the execution of <code>Update()</code>. It will need to be set to a smaller value to get it going.</p>
+</div>
+<p>This function also outputs the state of <code>isDone</code> to the <em>Console</em> at each update using the <code>print()</code> command: you can see it when the program is running, as it will be filling up the console with printouts quickly and keep scrolling down.</p>
+<div class="admonition info">
+<p class="admonition-title">Printing to console</p>
+<p>It can be a good practice to output the state of variables to the console to have a clear understanding of what is going on. Doing it as above (printing at each <code>Update()</code>) is one way, but usually it is used only at specific events, like when a variable is changed. Using <code>print()</code> — or the Unity equivalent <a href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Debug.Log.html"><code>Debug.Log()</code></a> — well is a powerful helper to understanding and <em>debugging</em> your code, so feel free to try it on other variables and other positions in your code by yourself!</p>
+</div>
+<p>Set <code>speed</code> in the inspector to <code>0.25</code>, and give <code>(-1, 1.5, -1)</code> as the start point and <code>(-1, 1.5, 1)</code> as the end point for its trajectory.</p>
+<p>Now create a script called <code>Rotating</code> for the new cube object:</p>
+<div class="highlight"><span class="filename">Rotating.cs</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Rotating</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Units per second&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="na">[Tooltip(&quot;Axis to rotate around&quot;)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">axis</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="hll"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isRotating</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="hll"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(!</span><span class="n">isRotating</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Very similar to our <a href="1-first-project.md/#editing-the-script--constant-rotation-around-a-fixed-axis">first rotation script</a>, it differs only by having a public boolean called <code>isRotating</code> that is checked before performing the rotation — it acts basically as an on/off switch.</p>
+<p>Set the speed to <code>180</code> and the rotation axis to <code>(1, 0, 0)</code> in the inspector.</p>
+<p>If you run the game now, only the the cube object should be rotating, and then only if you set its <code>isRotating</code> parameter to true in its Rotating component in the inspector. Try it out, and play around with the parameters in the inspector to see their effects:</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-7.5%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(10% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/paltrymildavocet?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
 
+<h2 id="scripting-a-protocol">Scripting a protocol</h2>
+<p>With the two moving objects and two areas to step on have set the stage to introduce more complex flows, such as might be needed for actual experiments (or even games).</p>
+<h3 id="variables-and-assignments">Variables and assignments</h3>
+<p>Create a new script for the [CameraRig] object and name it <code>Protocol</code>:</p>
+<div class="highlight"><span class="filename">Protocol.cs</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">using</span><span class="w"> </span><span class="nn">Valve.VR</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Protocol</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">SteamVR_Action_Boolean</span><span class="w"> </span><span class="n">Trigger</span><span class="p">;</span><span class="w"> </span><span class="c1">// Set to \actions\default\in\InteractUI in editor</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Moving</span><span class="w"> </span><span class="n">movingComp</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Rotating</span><span class="w"> </span><span class="n">rotatingComp</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">IsCollidingChecker</span><span class="w"> </span><span class="n">zeppelinColliderChecker</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">IsCollidingChecker</span><span class="w"> </span><span class="n">cubeColliderChecker</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">headCamera</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">standingMark</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">positionTolerance</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0.15f</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isRunning</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>At this point, nothing in this first part of the declaration should be unfamiliar: <code>Protocol.cs</code> holds a number of public variables to store a SteamVR action, four components from other objects, two transforms, a floating point number, and a boolean.</p>
+<p><strong>Save</strong> the script as it is so far, and make sure it's attached to our [CameraRig]. Go back to the Unity editor to assign the unfilled variables in the inspector.</p>
+<div class="admonition tip">
+<p class="admonition-title">Challenge: assign it yourself!</p>
+<p>Can you figure out yourself how to fill the fields in the inspector for the [CameraRig]'s Protocol component correctly?</p>
+<p>The names and expected types should make this easy. As for the Trigger assignment, try to remember what you did the two previous times.</p>
+<p><strong>Continue only after you're confident you set it up correctly.</strong> Don't hesistate to ask if you're having trouble here.</p>
+</div>
+<h3 id="interaction-functions">Interaction functions</h3>
+<p>Let's give us the ability to interact with <code>Protocol.cs</code> within the VR world. Add these functions:</p>
+<div class="highlight"><span class="filename">Protocol.cs</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Trigger</span><span class="p">.</span><span class="n">state</span><span class="w"> </span><span class="p">&amp;&amp;</span><span class="w"> </span><span class="n">isRunning</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">isRunning</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsStandingOnTarget</span><span class="p">(</span><span class="n">Vector2</span><span class="w"> </span><span class="n">targetPos</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="n">Vector3</span><span class="w"> </span><span class="n">pos3D</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">headCamera</span><span class="p">.</span><span class="n">position</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="n">Vector2</span><span class="w"> </span><span class="n">standingPos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector2</span><span class="p">(</span><span class="n">pos3D</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pos3D</span><span class="p">.</span><span class="n">z</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Vector2</span><span class="p">.</span><span class="n">Distance</span><span class="p">(</span><span class="n">standingPos</span><span class="p">,</span><span class="w"> </span><span class="n">targetPos</span><span class="p">)</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="n">positionTolerance</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>The <code>Update()</code> loop should be clear: if the trigger is pressed AND <code>isRunning</code> is already true, THEN turn the variable <code>isRunning</code> to false.</p>
+<p><code>IsStandingOnTarget(Vector2 targetPos)</code> takes a given target position (a 2D vector) and measures its distance to a 2D projection of the <code>headCamera</code> — if it's below the <code>positionTolerance</code>, it return true, otherwise false.</p>
+<h3 id="scripted-flow">Scripted flow</h3>
+<p>Let's now put these variables and functions to work.</p>
+<p>We will use the <code>Start()</code> call for that, but first change it from a basic <code>private void</code> type function, we will turn it into an <code>IEnumerator</code> — this way, it acts as a coroutine and we can stop and continue its execution using <a href="https://docs.unity3d.com/ScriptReference/WaitWhile.html"><code>WaitWhile()</code></a>, <a href="https://docs.unity3d.com/ScriptReference/WaitUntil.html"><code>WaitUntil()</code></a>, and <a href="https://docs.unity3d.com/ScriptReference/WaitForSecondsRealtime.html"><code>WaitForSecondsRealtime()</code></a> commands.</p>
+<p>Replace the current <code>Start()</code> function with this:</p>
+<div class="highlight"><span class="filename">Protocol.cs</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">isRunning</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="c1">// Wait until user has moved onto square on the floor</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="n">Vector3</span><span class="w"> </span><span class="n">standingMarkPos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">standingMark</span><span class="p">.</span><span class="n">position</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitWhile</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">!</span><span class="n">IsStandingOnTarget</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Vector2</span><span class="p">(</span><span class="n">standingMarkPos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">standingMarkPos</span><span class="p">.</span><span class="n">z</span><span class="p">)));</span><span class="w"></span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Stepped on the first square&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="n">standingMark</span><span class="p">.</span><span class="n">gameObject</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span><span class="w"> </span><span class="c1">// Hide</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="c1">// Wait until user has touched the zeppelin</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitUntil</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">zeppelinColliderChckr</span><span class="p">.</span><span class="n">isColliding</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Touched the Zeppelin&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="n">movingComp</span><span class="p">.</span><span class="n">interp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// This triggers the start of Zeppelin&#39;s animation</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="c1">// Wait for moving animation to end</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitUntil</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">movingComp</span><span class="p">.</span><span class="n">isDone</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Zeppelin&#39;s animation is done&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">        </span><span class="c1">// Move to center of the room</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitWhile</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">!</span><span class="n">IsStandingOnTarget</span><span class="p">(</span><span class="n">Vector2</span><span class="p">.</span><span class="n">zero</span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Stepped on the center square&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">        </span><span class="c1">// Wait until user has touched the cube</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitUntil</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">cubeColliderChckr</span><span class="p">.</span><span class="n">isColliding</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="n">rotatingComp</span><span class="p">.</span><span class="n">isRotating</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Start rotating cube</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Touched the cube&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">        </span><span class="c1">// Wait one second while it rotates</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForSecondsRealtime</span><span class="p">(</span><span class="m">1f</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">        </span><span class="n">rotatingComp</span><span class="p">.</span><span class="n">isRotating</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// Stop rotating cube</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;One second has passed&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">        </span><span class="c1">// RESET everything</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">        </span><span class="n">standingMark</span><span class="p">.</span><span class="n">gameObject</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// Show</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">        </span><span class="n">movingComp</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">movingComp</span><span class="p">.</span><span class="n">startPoint</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="w">        </span><span class="n">rotatingComp</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Quaternion</span><span class="p">.</span><span class="n">identity</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Everything&#39;s reset!&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>You should be able to read this script and understand what it's doing. The various <code>yield return new</code> lines halt the execution of the function (stopping the advancement to the next lines) until their <code>Wait</code> clauses are fulfilled, as explained in the comments for every line.</p>
+<p>Save the script, go back to Unity, and make sure the cube is not set to rotate already.</p>
+<p>Run the game, and try to advance through the different steps as you can see in the protocol! The console will print updates on the user's progress through the steps.</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-7.5%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(10% 0 45% 0)'>
+<iframe src='https://gfycat.com/ifr/tartcornygrunion?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
 
+<div class="admonition example">
+<p class="admonition-title">Challenge: more triggering</p>
+<p>For now, the controller's trigger isn't actually doing much other than interrupting the flow. Can you think of a way to use it more creatively here?</p>
+</div>
 
 
 
