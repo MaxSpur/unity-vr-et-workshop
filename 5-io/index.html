@@ -289,9 +289,81 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          5 • Saving, Loading, Sampling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         5 • Saving, Loading, Sampling
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#new-project" class="md-nav__link">
+    New project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-the-scene" class="md-nav__link">
+    Set the scene
+  </a>
+  
+    <nav class="md-nav" aria-label="Set the scene">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-signpost" class="md-nav__link">
+    A signpost
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefabs" class="md-nav__link">
+    Prefabs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-files-texts-and-textures" class="md-nav__link">
+    Reading files: texts and textures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instantiating-a-prefab" class="md-nav__link">
+    Instantiating a prefab
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -347,6 +419,62 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#new-project" class="md-nav__link">
+    New project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-the-scene" class="md-nav__link">
+    Set the scene
+  </a>
+  
+    <nav class="md-nav" aria-label="Set the scene">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-signpost" class="md-nav__link">
+    A signpost
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefabs" class="md-nav__link">
+    Prefabs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-files-texts-and-textures" class="md-nav__link">
+    Reading files: texts and textures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instantiating-a-prefab" class="md-nav__link">
+    Instantiating a prefab
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -361,6 +489,178 @@
 
 
 <h1 id="saving-loading-and-sampling">Saving, Loading, and Sampling</h1>
+<p>We've seen how Unity can <a href="../3-runtime/#making-it-pop">load an audio file</a> and use it. Now let's see how we can make it create new files by itself, like we would like it to for recording results from experiments.</p>
+<h2 id="new-project">New project</h2>
+<p>Let's make a new Unity project for this part, as we won't be needing VR for it. Go back to the <a href="../1-first-project/#create-a-first-project-using-the-unity-hub">Unity Hub and do so</a>.</p>
+<p>We're going to need the functionality of accessing a user's input, so we need to install the <em>Input System</em> package from the <a href="../2-vr-interaction/#installing-and-importing-packages">Package Manager</a>:</p>
+<p><img alt="Installing the Input System Package" src="../4-io/1-inputsystem.png" title="Install it" /></p>
+<p>This may trigger a warning and a prompt to restart the Unity Editor. Allow it:</p>
+<p><img alt="Warning" src="../4-io/2-warning.png" title="Yes" /></p>
+<p>We should now be all set to get going with this new project!</p>
+<h2 id="set-the-scene">Set the scene</h2>
+<p>Let's add some objects to the scene.</p>
+<h3 id="a-signpost">A signpost</h3>
+<p>Create an empty GameObject and name it "Signpost", making sure it sits at the world origin (Position =<code>(0,0,0)</code>).</p>
+<p>Right-clicking on this object, create two new cubes as its <em>children</em> with the following parameters:</p>
+<ul>
+<li>First cube:<ul>
+<li>Name = "Post"</li>
+<li>Position = <code>(0,.5,0)</code></li>
+<li>Scale = <code>(.09,1,.09)</code></li>
+</ul>
+</li>
+<li>Second cube:<ul>
+<li>Name = "Sign"</li>
+<li>Position = <code>(0,1.3,0)</code></li>
+<li>Scale = <code>(.1,.7,1)</code></li>
+</ul>
+</li>
+</ul>
+<p>Now add a <em>Text - TextMeshPro</em> object as a child to sign object in the hierarchy and give it the following parameters:</p>
+<ul>
+<li>Width = 40, height = 30</li>
+<li>Position = <code>(0,0,0)</code></li>
+<li>Rotation = <code>(0,-90,0)</code></li>
+<li>Scale = <code>(.02,.02,1)</code></li>
+<li>Give its text a centered alignment</li>
+</ul>
+<p><img alt="Signpost object" src="../4-io/3-signpost.png" title="The signpost" /></p>
+<h3 id="prefabs">Prefabs</h3>
+<p>Let's now turn this signpost into a <em>Prefab</em> — a reusable, preset object that can be easily re-created by Unity.</p>
+<p>Make a new <code>Resources</code> folder  within our assets, and simply drag our whole Signpost GameObject from the hierarchy directly in it — a prefab with its parameters is created, giving our Signpost a blue icon!</p>
+<p><img alt="Signpost prefab" src="../4-io/4-prefab.png" title="The signpost as a prefab" /></p>
+<p>Remove the Signpost now from our hierarchy — we will use its prefab later.</p>
+<h3 id="reading-files-texts-and-textures">Reading files: texts and textures</h3>
+<p>Let's get Unity to read some external files to work with in our project — in our case to spice up the appearance of our signpost.</p>
+<p>Create a text file inside the Resources folder: right-click it (or within it) in the project browser to open in in Finder/Explorer, and use any old text editor for the next steps.</p>
+<p>Name it <code>SignpostData.txt</code>, and give it the following contents:</p>
+<div class="highlight"><span class="filename">SignpostData.txt</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pos:-2,0,-1
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>col1:.9,.67,.42
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>col2:1,1,1
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>txt:&lt;i&gt;NOTICE&lt;/i&gt;&lt;br&gt;Some text&lt;br&gt;To display&lt;br&gt;for information
+</code></pre></div>
+<p>As you may guess, we will use this to put text on the signpost and adjust its position.</p>
+<p>To give it some texture instead of the elegant but simple white, <a href="https://www.freepik.com/free-photo/oak-wooden-textured-design-background_18835065.htm#query=wood%20texture&position=0&from_view=keyword" download>download this image</a> and also place it into Resources, renaming it <code>SignpostTexture.jpg</code> in the process.</p>
+<p>Create a Scripts folder inside Assets (there shouldn't be one there yet), make a new script there called <code>LoadFromResources</code> and attach it to our Floor object as a component:</p>
+<div class="highlight"><span class="filename">LoadFromResources.cs</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">using</span><span class="w"> </span><span class="nn">TMPro</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LoadFromResources</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="c1">// Start is called before the first frame update</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="c1">// Fill this next!</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>For now it doesn't do anything, so let's give is some functionality — all <strong>within</strong> its <code>Start()</code> method, step by step.</p>
+<p>Create variables that can hold a GameObject, a string, and a <a href="https://docs.unity3d.com/ScriptReference/Texture2D.html">Texture2D</a>:</p>
+<div class="highlight"><span class="filename">LoadFromResources.cs</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">GameObject</span><span class="w"> </span><span class="n">signpostPrefab</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Resources</span><span class="p">.</span><span class="n">Load</span><span class="p">&lt;</span><span class="n">GameObject</span><span class="p">&gt;(</span><span class="s">&quot;Signpost&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">string</span><span class="w"> </span><span class="n">signpostData</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Resources</span><span class="p">.</span><span class="n">Load</span><span class="p">&lt;</span><span class="n">TextAsset</span><span class="p">&gt;(</span><span class="s">&quot;SignpostData&quot;</span><span class="p">).</span><span class="n">text</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">Texture2D</span><span class="w"> </span><span class="n">signpostTexture</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Resources</span><span class="p">.</span><span class="n">Load</span><span class="p">&lt;</span><span class="n">Texture2D</span><span class="p">&gt;(</span><span class="s">&quot;SignpostTexture&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>These variables are immediately assigned the output of their respective <a href="https://docs.unity3d.com/ScriptReference/Resources.Load.html"><code>Resources.Load&lt;Type&gt;("File name")</code></a> methods, which look for files with a specific name within the <em>Resources</em> folder we created before, <em>reads</em> them, and converts them into the specified <em>type</em>: a <em>GameObject</em> fashioned after the Signpost <em>prefab</em>, a <em>Texture2D</em> from our supplied picture, and a <em>string</em> from our SignpostData.txt file.</p>
+<p>This last variable, the <code>signpostData</code> string is still somehow vague in its use, so let's change that with a <em>parsing</em> function. Add it right after the previous code block, still inside <code>Start()</code>:</p>
+<div class="highlight"><span class="filename">LoadFromResources.cs</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Parse text file to get custom signpost data</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">&gt;</span><span class="w"> </span><span class="n">SPdataParsed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">&gt;();</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">signpostData</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">))</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">Length</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="c1">// Split each line by key:value and store in dictionary</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">lineSplit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;:&#39;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="n">SPdataParsed</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lineSplit</span><span class="p">[</span><span class="m">0</span><span class="p">],</span><span class="w"> </span><span class="n">lineSplit</span><span class="p">[</span><span class="m">1</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>This creates a <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-7.0"><code>Dictionary</code></a> from our text file, taking the colon (:) as a separator for each line: the left part of a line before it (e.g., <code>pos</code>) becomes a <em>key</em> and the right part (e.g., <code>-2,0,-1</code>) the <em>value.</em></p>
+<h3 id="instantiating-a-prefab">Instantiating a prefab</h3>
+<p>We can now use the information gotten from our signpostData.txt file to <a href="https://docs.unity3d.com/ScriptReference/Object.Instantiate.html"><em>instantiate</em></a> Signpost objects from the Signpost prefab and assign to them parameters that we store in our <code>SPdataParsed</code> dictionary:</p>
+<div class="highlight"><span class="filename">LoadFromResources.cs</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Instantiate prefab as a new gameobject</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">GameObject</span><span class="w"> </span><span class="n">signpostGo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">GameObject</span><span class="p">.</span><span class="n">Instantiate</span><span class="p">(</span><span class="n">signpostPrefab</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">Transform</span><span class="w"> </span><span class="n">signpostTrans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">signpostGo</span><span class="p">.</span><span class="n">transform</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">// Set signpost world position</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="hll"><span class="kt">float</span><span class="p">[]</span><span class="w"> </span><span class="n">posRaw</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">SPdataParsed</span><span class="p">[</span><span class="s">&quot;pos&quot;</span><span class="p">].</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;,&#39;</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="kt">float</span><span class="p">.</span><span class="n">Parse</span><span class="p">).</span><span class="n">ToArray</span><span class="p">();</span><span class="w"></span>
+</span><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">signpostTrans</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="n">posRaw</span><span class="p">[</span><span class="m">0</span><span class="p">],</span><span class="w"> </span><span class="n">posRaw</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">posRaw</span><span class="p">[</span><span class="m">2</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">MeshRenderer</span><span class="p">[]</span><span class="w"> </span><span class="n">meshRenderers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">signpostGo</span><span class="p">.</span><span class="n">GetComponentsInChildren</span><span class="p">&lt;</span><span class="n">MeshRenderer</span><span class="p">&gt;();</span><span class="w"></span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1">// Set colour of first child in signpost object (post) </span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="hll"><span class="kt">float</span><span class="p">[]</span><span class="w"> </span><span class="n">col1Raw</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">SPdataParsed</span><span class="p">[</span><span class="s">&quot;col1&quot;</span><span class="p">].</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;,&#39;</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="kt">float</span><span class="p">.</span><span class="n">Parse</span><span class="p">).</span><span class="n">ToArray</span><span class="p">();</span><span class="w"></span>
+</span><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">meshRenderers</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="n">col1Raw</span><span class="p">[</span><span class="m">0</span><span class="p">],</span><span class="w"> </span><span class="n">col1Raw</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">col1Raw</span><span class="p">[</span><span class="m">2</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="c1">// Set colour of second child in signpost object (sign)</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="hll"><span class="kt">float</span><span class="p">[]</span><span class="w"> </span><span class="n">col2Raw</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">SPdataParsed</span><span class="p">[</span><span class="s">&quot;col2&quot;</span><span class="p">].</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;,&#39;</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="kt">float</span><span class="p">.</span><span class="n">Parse</span><span class="p">).</span><span class="n">ToArray</span><span class="p">();</span><span class="w"></span>
+</span><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="n">meshRenderers</span><span class="p">[</span><span class="m">1</span><span class="p">].</span><span class="n">material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="n">col2Raw</span><span class="p">[</span><span class="m">0</span><span class="p">],</span><span class="w"> </span><span class="n">col2Raw</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">col2Raw</span><span class="p">[</span><span class="m">2</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="n">meshRenderers</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">material</span><span class="p">.</span><span class="n">mainTexture</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">signpostTexture</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="n">meshRenderers</span><span class="p">[</span><span class="m">1</span><span class="p">].</span><span class="n">material</span><span class="p">.</span><span class="n">mainTexture</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">signpostTexture</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="c1">// Set text</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="n">TextMeshPro</span><span class="w"> </span><span class="n">signpostTMP</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">signpostGo</span><span class="p">.</span><span class="n">GetComponentInChildren</span><span class="p">&lt;</span><span class="n">TextMeshPro</span><span class="p">&gt;();</span><span class="w"></span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="n">signpostTMP</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">SPdataParsed</span><span class="p">[</span><span class="s">&quot;txt&quot;</span><span class="p">];</span><span class="w"></span>
+</code></pre></div>
+<p>These last lines of the <code>Start()</code> function should mostly speak for themselves, even the highlighted operations performed the string values from in the dictionary, though they might contain so far unseen methods like <a href="https://learn.microsoft.com/en-us/dotnet/api/system.string.split?view=net-7.0"><code>Split()</code></a> and <a href="https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.select?view=net-7.0"><code>Select()</code></a> — try to understand what they do (the links should help).</p>
+<!-- 
+<div class="highlight"><span class="filename">LoadFromResources.cs</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.IO</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEditor</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LoadFromExternalFolder</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Texture2D</span><span class="w"> </span><span class="nf">LoadImageAsTexture</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">filePath</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="c1">// Load raw data from file</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">fileData</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="n">ReadAllBytes</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="hll"><span class="w">        </span><span class="n">Texture2D</span><span class="w"> </span><span class="n">tmpTex</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Texture2D</span><span class="p">(</span><span class="m">1920</span><span class="p">,</span><span class="w"> </span><span class="m">1080</span><span class="p">,</span><span class="w"> </span><span class="n">TextureFormat</span><span class="p">.</span><span class="n">RGB24</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span><span class="w"></span>
+</span><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="hll"><span class="w">        </span><span class="n">tmpTex</span><span class="p">.</span><span class="n">LoadImage</span><span class="p">(</span><span class="n">fileData</span><span class="p">);</span><span class="w"></span>
+</span><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tmpTex</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+`LoadImageAsTexture(string filePath)` takes a file path `string` and attempts to load anything it can find at this location into a `byte` array called `fileData`.
+
+Because we promise to only use this function in accordance to its name and only load images with it, we can force the loaded byte array into a [`Texture2D`](https://docs.unity3d.com/ScriptReference/Texture2D.html) variable with the highlighted lines. The resulting texture is returned.
+
+??? info "Assumptions"
+    The `LoadImageAsTexture()` function makes a lot of assumptions here. First, we assume that there is a valid file path stored in `filePath` at all, and not just gibberish. Then we further assume that the data at that location is an image that can be loaded in a texture, even with the specific dimensions `1920, 1080` and in `RGB24` color format.
+
+    While getting the dimensions and color format wrong wouldn't cause that much trouble other than a potentially garbled image, trying to read a file that's not there can cause the game to crash!
+
+    Ususally, you would *guard* agains this by first checking if the file exists at all, and wouldn't you know it, there's a fuction for that: [`File.Exists()`](https://docs.unity3d.com/ScriptReference/Windows.File.Exists.html).
+
+    To be on the safe side, you can check the result of `File.Exists(filePath)` in an `if()` statement and only proceed with loading if it's positive. Keep in mind that you still have to return *some* `Texture2D` and can't just return from you function with nothing to show for…
+
+    All this to say: Playing it safe is not for lazy people, but it can sure give you a feeling of security (and save you from some crashes).
+
+Let's do something with the texture we hopefully load here — assign it to the signpost! Add some variables and the `Start()` IEnumerator to our script:
+
+
+```csharp title="LoadFromResources.cs" hl_lines="14 15"
+
+public static string dirpathname = "ExternalData";
+public static string dirpath;
+
+public MeshRenderer displayQuadMR;
+private Material displayQaudMat;
+
+IEnumerator Start()
+{
+    displayQaudMat = displayQuadMR.material;
+
+    dirpath = Directory.GetParent(Application.dataPath).ToString() + Path.DirectorySeparatorChar + dirpathname;
+
+    displayQaudMat.mainTexture = LoadImageAsTexture($"{dirpath}/images/img_{iImg:D2}.jpg");
+}
+``` -->
 
 
 
