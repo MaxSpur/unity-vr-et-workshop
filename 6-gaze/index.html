@@ -642,11 +642,11 @@
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="c1">// Interpolate between color one and two</span>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">animationTime</span><span class="w"> </span><span class="p">&gt;=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"></span>
 <a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">            </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// Wait one frame</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">            </span><span class="n">animationTime</span><span class="w"> </span><span class="p">-=</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">            </span><span class="n">animationTime</span><span class="w"> </span><span class="p">-=</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">            </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="m">0</span><span class="p">],</span><span class="m">1</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="n">animationTime</span><span class="w"> </span><span class="p">/</span><span class="w">  </span><span class="n">_animationDuration</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">            </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="m">0</span><span class="p">],</span><span class="m">1</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="n">animationTime</span><span class="w"> </span><span class="p">/</span><span class="w">  </span><span class="n">_animationDuration</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">            </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// Wait one frame</span>
 <a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="p">}</span><span class="w"></span>
@@ -762,11 +762,12 @@
 <iframe src='https://gfycat.com/ifr/farflungindeliblealleycat?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
 
-<div class="admonition example">
-<p class="admonition-title">Challenge: Fix blinking cubes</p>
-<p>As you can see, the cubes just blink briefly as we graze them with our gaze.</p>
-<p>Do you think you can change <code>AnimateOnCollide</code> in such a way that the cubes stay in their activated color until we look away from them?</p>
-</div>
+<!-- 
+!!! example "Challenge: Fix blinking cubes"
+    As you can see, the cubes just blink briefly as we graze them with our gaze.
+
+    Do you think you can change `AnimateOnCollide` in such a way that the cubes stay in their activated color until we look away from them? -->
+
 <h3 id="if-looks-could-destroy">If looks could destroy</h3>
 <p>Instead of animating our cubes by looking at them, let's destroy them as we did the surplus output from our <a href="../3-runtime/#cube-removal">Cube Factory</a>.</p>
 <p>Create a new script called <code>DestroyOnCollide</code> in our scripts folder:</p>
