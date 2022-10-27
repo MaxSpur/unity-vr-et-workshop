@@ -594,10 +594,11 @@
 </div>
 <h2 id="reuse-or-rebuild">Reuse or Rebuild</h2>
 <p>Again, we can reuse our previous VR Unity projects to save time, practice the necessary steps to set one up from scratch.</p>
-<p>Make sure that SteamVR and the SRAnipal packages are <a href="../2-vr-interaction/#installing-and-importing-packages">installed and imported</a> into our project, and that we have a <a href="../2-vr-interaction/#the-camera-rig">[CameraRig] object instead of the default MainCamera</a> in our hierarchy.</p>
 <p>Have a Scrips folder in our assets, as well as a Resource folder, which contains the <a href="../3-runtime/#making-it-pop">pop.mp3 audio sample</a> we've used before.</p>
 <p>Have a <a href="../2-vr-interaction/#adding-objects">Plane 3D object as a floor</a> in the scene — name it <code>Floor</code>.</p>
 <h2 id="setting-up-gaze-tracking">Setting up gaze tracking</h2>
+<p>Make sure that SteamVR and the SRAnipal packages are <a href="../2-vr-interaction/#installing-and-importing-packages">installed and imported</a> into our project, and that we have a <a href="../2-vr-interaction/#the-camera-rig">[CameraRig] object instead of the default MainCamera</a> in our hierarchy.</p>
+<p>From the <code>ViveSR/Prefabs</code> folder in the projects folder, drag the <strong>SRanipal Eye Tracking Framework</strong> into your scene's hierarchy — anything will do.</p>
 <p>There are a number of procedures necessary to do in code in order to have an eye tracker running and being useful in Unity, and they can be quite lengthy. <strong>Download</strong> this script file and place it in your Scripts folder in the Project browser: <a href="EyeTrackingCtrlr.cs" download>EyeTrackingCtrlr.cs</a>.</p>
 <p>Using the <code>ViveSR.anipal.Eye</code> library, it interfaces directly with the eye tracker inside the Vive Pro Eye — within it's <code>Start()</code> enumerator it waits for the hardware to be ready before continuing.</p>
 <p><code>EyeTrackingCtrlr.cs</code> defines a new class called <code>GazePoint</code> within itself, which holds information about where a user is looking with each eye (as well as a <em>combination</em> of both), and which (if any) objects the gaze <em>rays</em> are colliding with.</p>
