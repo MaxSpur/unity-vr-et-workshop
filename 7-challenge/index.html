@@ -384,6 +384,47 @@
 <li>Reading and using external resources and recording things that happened during the game to external files</li>
 <li>Utilizing eye tracking in your application for interaction and data gathering</li>
 </ul>
+<p>All these things together should enable you to create a simple version of something like Beat Saber:</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-7.5%; margin-bottom:-15%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(10% 0 20% 0)'>
+<iframe src='https://gfycat.com/ifr/totalscrawnyhalicore?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<p>We encourage you to distill it to its essentials and add an eye-tracking twist:</p>
+<ul>
+<li>Have a coroutine that creates cubes coming towards you to destroy</li>
+<li>Have the cubes appear with specific intervals, with some options to try out:<ul>
+<li>Fixed (like the cube factory)</li>
+<li>Variable/random</li>
+<li>Scripted/sequenced, with playlists of intervals read from an external file</li>
+<li>Increasing in frequency as time goes on</li>
+</ul>
+</li>
+<li>Impart parameters on each cube (random or scripted):<ul>
+<li>Color (or texture)</li>
+<li>Initial position</li>
+<li>Velocity (increasing over time?)</li>
+</ul>
+</li>
+<li>Have colliders (your controllers or a additional saber-like object, e.g., cylinders) to destroy the cubes on contact, with playback of a sound<ul>
+<li>Allow any collider to destroy them or do like Beat Saber, where only the red saber cuts red cubes, etc</li>
+</ul>
+</li>
+<li>Allow cube destruction through gaze:<ul>
+<li>Immediate, as in the previous tutorial (too easy)</li>
+<li>Requiring a fixation for minimum time before destruction (would require each cube object to keep track of how much time it has been gazed on)</li>
+</ul>
+</li>
+<li>Record player performance<ul>
+<li>Success rate (e.g., how many cubes were destroyed vs. passed behind the player)</li>
+<li>Timing (e.g., how long did a cube survive on average before being destroyed)</li>
+<li>Preference (e.g., did the user prefer to cut cubes or to stare them down)</li>
+<li>Accuracy (e.g., were cubes "cleanly" fixated on, or did the player switch gaze from cube to cube without finishing them off)</li>
+</ul>
+</li>
+</ul>
+<p>There is a lot of freedom to express yourself in designing this simple game! Something that could be particularly fun is to balance the minimum time it takes to "stare down" a cube before it disappears, so that the difficulty of continuously looking at it is about equal to that of cutting it — this is of course highly dependent on the number, speed, and frequency of incoming cubes!</p>
+<p>We're excited to see what you can come up with. Have fun!</p>
 
 
 
