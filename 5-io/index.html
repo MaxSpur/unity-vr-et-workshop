@@ -815,9 +815,10 @@ You need to include another library that your script <em>uses</em>: <code class=
 <p>Save the script, make sure its attached as a component to our floor, and assign our Quad to the appropriate field.</p>
 <p>It will now cycle through the images it loads in the given sequence read from the playlists file, which we can specify in the components inspector with the <em>Subj_index</em> field (starting with 0), and then quit the game!</p>
 <details class="info">
-<summary>Preprocessor Directives — Unity Macros</summary>
-<p>There are specially highlighted lines in the code snipped above which start with 
-Macros #if #endif</p>
+<summary>Preprocessor Directives — Conditional Compilation in Unity</summary>
+<p>There are specially highlighted lines in the code snipped above which start with the number sign <code>#</code>, called <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives"><em>Preprocessor Directives</em></a> in C#.</p>
+<p>They are used for <a href="https://docs.unity3d.com/Manual/PlatformDependentCompilation.html"><em>Conditional Compilation</em></a> — typical uses are to let Unity check if the game is running in the editor or as a compiled standalone application, or what the current operating system is. This is important for dertain functions which may behave differently in different conditions, and using these directives you can choose which blocks of code to use for which scenario.</p>
+<p>Here, we issue the command <code class="highlight">EditorApplication.isPlaying = false</code> only if we run it inside the editor to end the game — this wouldn't work in a standalone application, where <code>#!Application.Quit()</code> would be required for the same.</p>
 </details>
 <div style='border-color: #018281; border-style: solid;'>
 <div style='overflow: hidden; position:relative; margin-top:-5%; margin-bottom:-10%;padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 13% 0)'>
