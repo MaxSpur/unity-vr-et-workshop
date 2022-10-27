@@ -13,7 +13,7 @@
     
     
       
-        <title>5 • Saving, Loading, Sampling - Unity VR and Eye Tracking Workshop</title>
+        <title>5 • Saving, Loading, Writing - Unity VR and Eye Tracking Workshop</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#saving-loading-and-sampling" class="md-skip">
+        <a href="#saving-loading-and-writing" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5 • Saving, Loading, Sampling
+              5 • Saving, Loading, Writing
             
           </span>
         </div>
@@ -290,12 +290,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          5 • Saving, Loading, Sampling
+          5 • Saving, Loading, Writing
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        5 • Saving, Loading, Sampling
+        5 • Saving, Loading, Writing
       </a>
       
         
@@ -568,7 +568,7 @@
                   
 
 
-<h1 id="saving-loading-and-sampling">Saving, Loading, and Sampling</h1>
+<h1 id="saving-loading-and-writing">Saving, Loading, and Writing</h1>
 <p>We've seen how Unity can <a href="../3-runtime/#making-it-pop">load an audio file</a> and use it. Now let's see how we can make it create new files by itself, like we would like it to for recording results from experiments.</p>
 <h2 id="new-project">New project</h2>
 <p>Let's make a new Unity project for this part, as we won't be needing VR for it. Go back to the <a href="../1-first-project/#create-a-first-project-using-the-unity-hub">Unity Hub and do so</a>.</p>
@@ -784,14 +784,18 @@
 <a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForSeconds</span><span class="p">(</span><span class="m">2f</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>
-<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">    </span><span class="n">Application</span><span class="p">.</span><span class="n">Quit</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="cp">#if UNITY_EDITOR</span><span class="w"></span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="hll"><span class="w">    </span><span class="n">Application</span><span class="p">.</span><span class="n">Quit</span><span class="p">();</span><span class="w"></span>
+</span><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="cp">#if UNITY_EDITOR</span><span class="w"></span>
 <a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="w">    </span><span class="n">EditorApplication</span><span class="p">.</span><span class="n">isPlaying</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="cp">#endif</span><span class="w"></span>
 <a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Save the script, make sure its attached as a component to our floor, and assign our Quad to the appropriate field.</p>
-<p>It will now cycle through the images it loads in the given sequence read from the playlists file, which we can specify in the components inspector with the <em>Subj_index</em> field (starting with 0):</p>
+<p>It will now cycle through the images it loads in the given sequence read from the playlists file, which we can specify in the components inspector with the <em>Subj_index</em> field (starting with 0), and then quit the game!</p>
+<details class="info">
+<summary>Preprocessor Directives — Unity Macros</summary>
+<p>Macros #if #endif</p>
+</details>
 <div style='border-color: #018281; border-style: solid;'>
 <div style='overflow: hidden; position:relative; margin-top:-5%; margin-bottom:-10%;padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 13% 0)'>
 <iframe src='https://gfycat.com/ifr/perfectsmartcoypu?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
@@ -827,6 +831,10 @@
 <a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<p>For now it only contains the now-familiar variables to hold the names of file paths and subject index, as well as a <a href="https://learn.microsoft.com/en-us/dotnet/api/system.io.streamwriter?view=net-6.0"><code>StreamWriter</code></a> and a simple <em>getter</em> method that returns a <em>time stamp</em> using the <a href="https://learn.microsoft.com/en-us/dotnet/api/system.datetimeoffset.now?view=net-6.0"><code>DateTimeOffset</code></a> structure.</p>
+<p>There is now also a method called <code>OnApplicationQuit()</code> — similar to how <code>Start()</code> is automatically executed by Unity when you press the Play button, this one runs just as stop the game, be it by pressing the play button again or quitting the whole Unity editor (or the final, built <a href="https://docs.unity3d.com/Manual/WindowsStandaloneBinaries.html">binary executable</a>).</p>
+<p>This is important if you're writing to external files: the <code>Flush()</code> and <code>Close()</code> commands make sure that all potentially unwritten contents of the StreamWriter are <em>flushed out</em> to the file, and that the file is then properly closed — this is just basic file system hygiene, perhaps not too dissimilar from the one you practice yourself.</p>
+<p>Let's put these things together in a <code>Start()</code> IEnumerator:</p>
 <div class="highlight"><span class="filename">SaveToExternalFolder.cs</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="p">{</span><span class="w"></span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">dirpath</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Directory</span><span class="p">.</span><span class="n">GetParent</span><span class="p">(</span><span class="n">Application</span><span class="p">.</span><span class="n">dataPath</span><span class="p">).</span><span class="n">ToString</span><span class="p">()</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">Path</span><span class="p">.</span><span class="n">DirectorySeparatorChar</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">dirpathname</span><span class="p">;</span><span class="w"></span>
@@ -840,9 +848,9 @@
 <a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitUntil</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">Keyboard</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="n">anyKey</span><span class="p">.</span><span class="n">wasReleasedThisFrame</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
 <a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">ik</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">ik</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="n">Keyboard</span><span class="p">.</span><span class="n">KeyCount</span><span class="p">;</span><span class="w"> </span><span class="n">ik</span><span class="p">++)</span><span class="w"></span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="hll"><span class="w">        </span><span class="p">{</span><span class="w"></span>
-</span><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="hll"><span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="n">keyName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Keyboard</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="n">allKeys</span><span class="p">[</span><span class="n">ik</span><span class="p">].</span><span class="n">ToString</span><span class="p">();</span><span class="w"></span>
-</span><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="n">keyState</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Keyboard</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="n">allKeys</span><span class="p">[</span><span class="n">ik</span><span class="p">].</span><span class="n">wasReleasedThisFrame</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="n">keyName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Keyboard</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="n">allKeys</span><span class="p">[</span><span class="n">ik</span><span class="p">].</span><span class="n">ToString</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="n">keyState</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Keyboard</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="n">allKeys</span><span class="p">[</span><span class="n">ik</span><span class="p">].</span><span class="n">wasReleasedThisFrame</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>
 <a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(!</span><span class="n">keyState</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>
@@ -853,6 +861,8 @@
 <a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<p>First, it <a href="https://learn.microsoft.com/en-us/dotnet/api/system.io.directory.createdirectory?view=net-6.0">creates a new directory</a> at the constructed <code>dirpath</code> if it doesn't exist yet, then instantiates a new <code>StreamWriter</code> with a new file, which itself is constructed from the <code>dirpath</code> and the <code>subj_index</code> using <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated"><em>String Interpolation</em></a> (the <code>$</code> sign). Try to understand how the final file name and directory are being assembled!</p>
+<p>Then an endless loop (<code>while (true)</code>) is being run that keeps waiting for the user to hit (or rather <em>release</em> after hitting) keys on the keyboard using <code>WaitUntil</code> and the new <a href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/QuickStartGuide.html"><em>Unity Input System</em></a> in the shape of <code>Keyboard.current.anyKey.wasReleasedThisFrame</code>.</p>
 <!-- 
 <div class="highlight"><span class="filename">LoadFromResources.cs</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.IO</span><span class="p">;</span><span class="w"></span>
