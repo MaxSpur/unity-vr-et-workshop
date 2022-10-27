@@ -207,7 +207,7 @@ While this function looks long, it's rather simple in what it does:
 Save the code and try it out. See if you can activate cubes by just looking at them:
 
 <div style='border-color: #018281; border-style: solid;'>
-<div style='overflow: hidden; margin-top:-7.5%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(10% 0 45% 0)'>
+<div style='overflow: hidden; margin-top:-7%; margin-bottom:-32%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(9% 0 42% 0)'>
 <iframe src='https://gfycat.com/ifr/farflungindeliblealleycat?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
 
@@ -282,7 +282,7 @@ private static void CreateInteractiveCube(Vector3 position, Quaternion rotation,
 Save the code, run the game, and get popping!
 
 <div style='border-color: #018281; border-style: solid;'>
-<div style='overflow: hidden; margin-top:-7.5%; margin-bottom:-34%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(10% 0 45% 0)'>
+<div style='overflow: hidden; margin-top:-7%; margin-bottom:-32%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(9% 0 42% 0)'>
 <iframe src='https://gfycat.com/ifr/foolhardygenuinecod?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
 
@@ -398,6 +398,8 @@ private GameObject CreateInteractiveCube(Vector3 position, Quaternion rotation, 
 }
 ```
 
+### Popping cubes for science
+
 Coming back to its `Start()` function, its last part now randomly reactivates cubes. This makes them susceptible to being destroyed by a gaze from the participant, which the code is waiting for before reacting the next one in line until they are all gone. A variable `itrial` keeps track of which cube we're currently at, by being incremented (`itrial++`) in each iteration of the `while()` loop.
 
 ```csharp title="CubeSequenceSampling.cs" hl_lines="11"
@@ -426,4 +428,31 @@ It also creates a new `writer` within its `eyeTrackingSmplr`, so that it can pas
 
 With each iteration we thus create one new recording and decrease the count of remaining cubes by one, until the `#!csharp while (CubeContainerTrans.childCount > 0)` loop exits.
 
-And that's it! Replace the old ProtocolVisualiseGaze component of our floor object with this new script (or just deactivate it before adding the new one), and give it a go. You can see the resulting recordings in the automatically created *SubjData* folder.
+And that's it! Replace the old ProtocolVisualiseGaze component of our floor object with this new script (or just deactivate it before adding the new one), and give it a go. You can see the resulting recordings in the automatically created *SubjData* folder, which you can find in the project's main folder, *outside* Assets.
+
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; margin-top:-7%; margin-bottom:-32%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(9% 0 42% 0)'>
+<iframe src='https://gfycat.com/ifr/selfishrewardingarkshell?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+That wasn't so hard, was it ;-)
+
+## Challenges
+
+
+Here are some suggestions to practice what you've hopefully learned here:
+
+!!! example "Challenge: Analyze the data!"
+    Have a look at the generated .csv files. What can you see from them?
+
+    Also, we currently only store the raw values and nothing else. Can you let our game create a __header__ for the files that tells software like *R* or *Numbers* what each column means?
+
+!!! example "Challenge: Signal the start and end of a session?"
+    Can you think of a way to signal to the participant in VR that all cubes are popped and their quest is over?
+
+    What about a count down at the beginning, so that the data for the first popped cube is more consistent, i.e. waiting with the recording of the first trial until some interaction or visible event occuring?
+
+!!! example "Challenge: New folders for each participant?"
+    Right now, all files are written when you restart the game. Can you think of way to e.g., enter a participant's number, so that a new folder is created for each run?
+
+More formally, we would ask you to apply all you've learned from these tutorials up to now to a [final challenge on the next page](7-challenge.md), which may also challenge your creativity!

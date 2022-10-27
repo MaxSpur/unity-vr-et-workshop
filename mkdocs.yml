@@ -5,8 +5,9 @@ nav:
   - 2 • Interaction in VR: 2-vr-interaction.md
   - 3 • Runtime: 3-runtime.md
   - 4 • Coroutines: 4-coroutines.md
-  - 5 • Saving, Loading, Sampling: 5-io.md
+  - 5 • Saving, Loading, Writing: 5-io.md
   - 6 • Using Gaze Data: 6-gaze.md
+  - 7 • Final Challenge: 7-challenge.md
   - Installation and Setup: page-0.md
 
 markdown_extensions:
