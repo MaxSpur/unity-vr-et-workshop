@@ -122,6 +122,18 @@ foreach (string line in signpostData.Split('\n'))
 
 This creates a [`Dictionary`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-7.0) from our text file, taking the colon (:) as a separator for each line: the left part of a line before it (e.g., `pos`) becomes a *key* and the right part (e.g., `-2,0,-1`) the *value.*
 
+!!! Warning "Parsing issues"
+    Depending on your operating system's language settings, the parser may mess up this format: in some languages, a comma is used in place of the decimal point in mixed numbers, etc. — this can cause problems when parsing strings.
+
+    A possible solution is to set the `CultureInfo.InvariantCulture` *default,* as explained in [this Stack Overflow entry](https://stackoverflow.com/questions/12729922/how-to-set-cultureinfo-invariantculture-default).
+    You need to include another library that your script *uses*: `#!csharp using System.Threading;`, which will allow you to add this line to the beginning of your `Start()` function:
+    
+    `#!csharp Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;`
+
+
+
+
+
 ### Instantiating a prefab
 
 We can now use the information gotten from our signpostData.txt file to [*instantiate*](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html) Signpost objects from the Signpost prefab and assign to them parameters that we store in our `SPdataParsed` dictionary:
@@ -178,7 +190,7 @@ Create a new folder *ouside* the Assets folder (besides it) called `ExternalData
 5,4,3,2,1,0
 ```
 
-!!! info
+!!! info "Form vs content"
     The *format* is important here, meaning the number of items in one line, them being separated by commas, etc.
 
     You can change the order of the numbers, add more lines in the same format, etc. — this flexibility is the whole point of creating a simple playlist file format like this!
@@ -282,9 +294,12 @@ Save the script, make sure its attached as a component to our floor, and assign 
 
 It will now cycle through the images it loads in the given sequence read from the playlists file, which we can specify in the components inspector with the *Subj_index* field (starting with 0), and then quit the game!
 
-??? info "Preprocessor Directives — Unity Macros"
-    Macros #if #endif
+??? info "Preprocessor Directives — Conditional Compilation in Unity"
+    There are specially highlighted lines in the code snipped above which start with the number sign `#`, called [*Preprocessor Directives*](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives) in C#.
 
+    They are used for [*Conditional Compilation*](https://docs.unity3d.com/Manual/PlatformDependentCompilation.html) — typical uses are to let Unity check if the game is running in the editor or as a compiled standalone application, or what the current operating system is. This is important for dertain functions which may behave differently in different conditions, and using these directives you can choose which blocks of code to use for which scenario.
+
+    Here, we issue the command `#!charp EditorApplication.isPlaying = false` only if we run it inside the editor to end the game — this wouldn't work in a standalone application, where `#!Application.Quit()` would be required for the same.
 
 <div style='border-color: #018281; border-style: solid;'>
 <div style='overflow: hidden; position:relative; margin-top:-5%; margin-bottom:-10%;padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 13% 0)'>

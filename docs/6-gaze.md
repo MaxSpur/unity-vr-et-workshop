@@ -11,13 +11,18 @@ It's time for the final piece of the puzzle: using actual gaze data provided by 
 
 Again, we can reuse our previous VR Unity projects to save time, practice the necessary steps to set one up from scratch.
 
-Make sure that SteamVR and the SRAnipal packages are [installed and imported](2-vr-interaction.md#installing-and-importing-packages) into our project, and that we have a [\[CameraRig\] object instead of the default MainCamera](2-vr-interaction.md#the-camera-rig) in our hierarchy.
-
 Have a Scrips folder in our assets, as well as a Resource folder, which contains the [pop.mp3 audio sample](3-runtime.md#making-it-pop) we've used before.
 
 Have a [Plane 3D object as a floor](2-vr-interaction.md#adding-objects) in the scene — name it `Floor`.
 
 ## Setting up gaze tracking
+
+Make sure that SteamVR and the SRAnipal packages are [installed and imported](2-vr-interaction.md#installing-and-importing-packages) into our project, and that we have a [\[CameraRig\] object instead of the default MainCamera](2-vr-interaction.md#the-camera-rig) in our hierarchy.
+
+From the `ViveSR/Prefabs` folder in the projects folder, drag the __SRanipal Eye Tracking Framework__ into your scene's hierarchy — anything will do.
+
+!!! warning "Potential issues with this prefab"
+    Normally this should be all that you need to do, but if the console throws errors when you're starting the eye tracker, go to the __SRanipal Eye Tracking Framework__ object in your scene, and change its *Enable Eye Version* parameter to `2`.
 
 There are a number of procedures necessary to do in code in order to have an eye tracker running and being useful in Unity, and they can be quite lengthy. __Download__ this script file and place it in your Scripts folder in the Project browser: <a href="EyeTrackingCtrlr.cs" download>EyeTrackingCtrlr.cs</a>.
 
@@ -76,11 +81,11 @@ public class AnimateOnCollide : MonoBehaviour
         // Interpolate between color one and two
         while (animationTime >= 0)
         {
-            yield return null; // Wait one frame
-            
             animationTime -= Time.deltaTime;
             
             _material.color = Color.Lerp(colors[1], colors[0],1 - animationTime /  _animationDuration );
+
+            yield return null; // Wait one frame
         }
     }
 }
@@ -211,11 +216,11 @@ Save the code and try it out. See if you can activate cubes by just looking at t
 <iframe src='https://gfycat.com/ifr/farflungindeliblealleycat?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
 
-
+<!-- 
 !!! example "Challenge: Fix blinking cubes"
     As you can see, the cubes just blink briefly as we graze them with our gaze.
 
-    Do you think you can change `AnimateOnCollide` in such a way that the cubes stay in their activated color until we look away from them?
+    Do you think you can change `AnimateOnCollide` in such a way that the cubes stay in their activated color until we look away from them? -->
 
 ### If looks could destroy
 
@@ -456,3 +461,10 @@ Here are some suggestions to practice what you've hopefully learned here:
     Right now, all files are written when you restart the game. Can you think of way to e.g., enter a participant's number, so that a new folder is created for each run?
 
 More formally, we would ask you to apply all you've learned from these tutorials up to now to a [final challenge on the next page](7-challenge.md), which may also challenge your creativity!
+
+!!! question "Give us your feedback!"
+    At the end of this workshop we would appreciate your feedback — did it work for you? Suggestions? Criticism?
+
+    Please fill out this form just before you leave, or shortly after — a fresh memory would be best ;-)
+
+    [https://sgl.uni-frankfurt.de/GiessenWorkshopFeedback/](https://sgl.uni-frankfurt.de/GiessenWorkshopFeedback/)

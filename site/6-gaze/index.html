@@ -594,10 +594,15 @@
 </div>
 <h2 id="reuse-or-rebuild">Reuse or Rebuild</h2>
 <p>Again, we can reuse our previous VR Unity projects to save time, practice the necessary steps to set one up from scratch.</p>
-<p>Make sure that SteamVR and the SRAnipal packages are <a href="../2-vr-interaction/#installing-and-importing-packages">installed and imported</a> into our project, and that we have a <a href="../2-vr-interaction/#the-camera-rig">[CameraRig] object instead of the default MainCamera</a> in our hierarchy.</p>
 <p>Have a Scrips folder in our assets, as well as a Resource folder, which contains the <a href="../3-runtime/#making-it-pop">pop.mp3 audio sample</a> we've used before.</p>
 <p>Have a <a href="../2-vr-interaction/#adding-objects">Plane 3D object as a floor</a> in the scene — name it <code>Floor</code>.</p>
 <h2 id="setting-up-gaze-tracking">Setting up gaze tracking</h2>
+<p>Make sure that SteamVR and the SRAnipal packages are <a href="../2-vr-interaction/#installing-and-importing-packages">installed and imported</a> into our project, and that we have a <a href="../2-vr-interaction/#the-camera-rig">[CameraRig] object instead of the default MainCamera</a> in our hierarchy.</p>
+<p>From the <code>ViveSR/Prefabs</code> folder in the projects folder, drag the <strong>SRanipal Eye Tracking Framework</strong> into your scene's hierarchy — anything will do.</p>
+<div class="admonition warning">
+<p class="admonition-title">Potential issues with this prefab</p>
+<p>Normally this should be all that you need to do, but if the console throws errors when you're starting the eye tracker, go to the <strong>SRanipal Eye Tracking Framework</strong> object in your scene, and change its <em>Enable Eye Version</em> parameter to <code>2</code>.</p>
+</div>
 <p>There are a number of procedures necessary to do in code in order to have an eye tracker running and being useful in Unity, and they can be quite lengthy. <strong>Download</strong> this script file and place it in your Scripts folder in the Project browser: <a href="EyeTrackingCtrlr.cs" download>EyeTrackingCtrlr.cs</a>.</p>
 <p>Using the <code>ViveSR.anipal.Eye</code> library, it interfaces directly with the eye tracker inside the Vive Pro Eye — within it's <code>Start()</code> enumerator it waits for the hardware to be ready before continuing.</p>
 <p><code>EyeTrackingCtrlr.cs</code> defines a new class called <code>GazePoint</code> within itself, which holds information about where a user is looking with each eye (as well as a <em>combination</em> of both), and which (if any) objects the gaze <em>rays</em> are colliding with.</p>
@@ -637,11 +642,11 @@
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="c1">// Interpolate between color one and two</span>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">animationTime</span><span class="w"> </span><span class="p">&gt;=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"></span>
 <a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">            </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// Wait one frame</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">            </span><span class="n">animationTime</span><span class="w"> </span><span class="p">-=</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">            </span><span class="n">animationTime</span><span class="w"> </span><span class="p">-=</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">            </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="m">0</span><span class="p">],</span><span class="m">1</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="n">animationTime</span><span class="w"> </span><span class="p">/</span><span class="w">  </span><span class="n">_animationDuration</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">            </span><span class="n">_material</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="m">0</span><span class="p">],</span><span class="m">1</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="n">animationTime</span><span class="w"> </span><span class="p">/</span><span class="w">  </span><span class="n">_animationDuration</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">            </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// Wait one frame</span>
 <a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="p">}</span><span class="w"></span>
@@ -757,11 +762,12 @@
 <iframe src='https://gfycat.com/ifr/farflungindeliblealleycat?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
 
-<div class="admonition example">
-<p class="admonition-title">Challenge: Fix blinking cubes</p>
-<p>As you can see, the cubes just blink briefly as we graze them with our gaze.</p>
-<p>Do you think you can change <code>AnimateOnCollide</code> in such a way that the cubes stay in their activated color until we look away from them?</p>
-</div>
+<!-- 
+!!! example "Challenge: Fix blinking cubes"
+    As you can see, the cubes just blink briefly as we graze them with our gaze.
+
+    Do you think you can change `AnimateOnCollide` in such a way that the cubes stay in their activated color until we look away from them? -->
+
 <h3 id="if-looks-could-destroy">If looks could destroy</h3>
 <p>Instead of animating our cubes by looking at them, let's destroy them as we did the surplus output from our <a href="../3-runtime/#cube-removal">Cube Factory</a>.</p>
 <p>Create a new script called <code>DestroyOnCollide</code> in our scripts folder:</p>
@@ -956,6 +962,12 @@
 <p>Right now, all files are written when you restart the game. Can you think of way to e.g., enter a participant's number, so that a new folder is created for each run?</p>
 </div>
 <p>More formally, we would ask you to apply all you've learned from these tutorials up to now to a <a href="../7-challenge/">final challenge on the next page</a>, which may also challenge your creativity!</p>
+<div class="admonition question">
+<p class="admonition-title">Give us your feedback!</p>
+<p>At the end of this workshop we would appreciate your feedback — did it work for you? Suggestions? Criticism?</p>
+<p>Please fill out this form just before you leave, or shortly after — a fresh memory would be best ;-)</p>
+<p><a href="https://sgl.uni-frankfurt.de/GiessenWorkshopFeedback/">https://sgl.uni-frankfurt.de/GiessenWorkshopFeedback/</a></p>
+</div>
 
 
 

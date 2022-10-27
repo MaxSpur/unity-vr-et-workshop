@@ -46,3 +46,10 @@ We're excited to see what you can come up with. Have fun!
 <div style='overflow: hidden; margin-top:-13%; margin-bottom:-20%; position:relative; padding-bottom:calc(70.80% + 33px); clip-path: inset(17.5% 0 27% 0)'>
 <iframe src='https://gfycat.com/ifr/foolishfoolishjavalina?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
 </div></div>
+
+!!! question "Feedback reminder"
+    At the end of this workshop we would appreciate your feedback — did it work for you? Suggestions? Criticism?
+
+    Please fill out this form just before you leave, or shortly after — a fresh memory would be best ;-)
+
+    [https://sgl.uni-frankfurt.de/GiessenWorkshopFeedback/](https://sgl.uni-frankfurt.de/GiessenWorkshopFeedback/)

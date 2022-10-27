@@ -672,6 +672,13 @@
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>This creates a <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-7.0"><code>Dictionary</code></a> from our text file, taking the colon (:) as a separator for each line: the left part of a line before it (e.g., <code>pos</code>) becomes a <em>key</em> and the right part (e.g., <code>-2,0,-1</code>) the <em>value.</em></p>
+<div class="admonition warning">
+<p class="admonition-title">Parsing issues</p>
+<p>Depending on your operating system's language settings, the parser may mess up this format: in some languages, a comma is used in place of the decimal point in mixed numbers, etc. — this can cause problems when parsing strings.</p>
+<p>A possible solution is to set the <code>CultureInfo.InvariantCulture</code> <em>default,</em> as explained in <a href="https://stackoverflow.com/questions/12729922/how-to-set-cultureinfo-invariantculture-default">this Stack Overflow entry</a>.
+You need to include another library that your script <em>uses</em>: <code class="highlight"><span class="k">using</span><span class="w"> </span><span class="nn">System.Threading</span><span class="p">;</span><span class="w"></span></code>, which will allow you to add this line to the beginning of your <code>Start()</code> function:</p>
+<p><code class="highlight"><span class="n">Thread</span><span class="p">.</span><span class="n">CurrentThread</span><span class="p">.</span><span class="n">CurrentCulture</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Globalization</span><span class="p">.</span><span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">;</span><span class="w"></span></code></p>
+</div>
 <h3 id="instantiating-a-prefab">Instantiating a prefab</h3>
 <p>We can now use the information gotten from our signpostData.txt file to <a href="https://docs.unity3d.com/ScriptReference/Object.Instantiate.html"><em>instantiate</em></a> Signpost objects from the Signpost prefab and assign to them parameters that we store in our <code>SPdataParsed</code> dictionary:</p>
 <div class="highlight"><span class="filename">LoadFromResources.cs</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Instantiate prefab as a new gameobject</span>
@@ -715,7 +722,7 @@
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>5,4,3,2,1,0
 </code></pre></div>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
+<p class="admonition-title">Form vs content</p>
 <p>The <em>format</em> is important here, meaning the number of items in one line, them being separated by commas, etc.</p>
 <p>You can change the order of the numbers, add more lines in the same format, etc. — this flexibility is the whole point of creating a simple playlist file format like this!</p>
 </div>
@@ -808,8 +815,10 @@
 <p>Save the script, make sure its attached as a component to our floor, and assign our Quad to the appropriate field.</p>
 <p>It will now cycle through the images it loads in the given sequence read from the playlists file, which we can specify in the components inspector with the <em>Subj_index</em> field (starting with 0), and then quit the game!</p>
 <details class="info">
-<summary>Preprocessor Directives — Unity Macros</summary>
-<p>Macros #if #endif</p>
+<summary>Preprocessor Directives — Conditional Compilation in Unity</summary>
+<p>There are specially highlighted lines in the code snipped above which start with the number sign <code>#</code>, called <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives"><em>Preprocessor Directives</em></a> in C#.</p>
+<p>They are used for <a href="https://docs.unity3d.com/Manual/PlatformDependentCompilation.html"><em>Conditional Compilation</em></a> — typical uses are to let Unity check if the game is running in the editor or as a compiled standalone application, or what the current operating system is. This is important for dertain functions which may behave differently in different conditions, and using these directives you can choose which blocks of code to use for which scenario.</p>
+<p>Here, we issue the command <code class="highlight">EditorApplication.isPlaying = false</code> only if we run it inside the editor to end the game — this wouldn't work in a standalone application, where <code>#!Application.Quit()</code> would be required for the same.</p>
 </details>
 <div style='border-color: #018281; border-style: solid;'>
 <div style='overflow: hidden; position:relative; margin-top:-5%; margin-bottom:-10%;padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 13% 0)'>
