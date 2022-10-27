@@ -342,12 +342,18 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reading-files-texts-and-textures" class="md-nav__link">
     Reading files: texts and textures
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Reading files: texts and textures">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#instantiating-a-prefab" class="md-nav__link">
@@ -358,6 +364,40 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playlists" class="md-nav__link">
+    Playlists
+  </a>
+  
+    <nav class="md-nav" aria-label="Playlists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#placing-external-resources" class="md-nav__link">
+    Placing external resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parsing-and-playing-playlists" class="md-nav__link">
+    Parsing and playing playlists
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-to-files" class="md-nav__link">
+    Writing to files
+  </a>
   
 </li>
       
@@ -454,12 +494,18 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reading-files-texts-and-textures" class="md-nav__link">
     Reading files: texts and textures
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Reading files: texts and textures">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#instantiating-a-prefab" class="md-nav__link">
@@ -470,6 +516,40 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playlists" class="md-nav__link">
+    Playlists
+  </a>
+  
+    <nav class="md-nav" aria-label="Playlists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#placing-external-resources" class="md-nav__link">
+    Placing external resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parsing-and-playing-playlists" class="md-nav__link">
+    Parsing and playing playlists
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-to-files" class="md-nav__link">
+    Writing to files
+  </a>
   
 </li>
       
@@ -493,9 +573,9 @@
 <h2 id="new-project">New project</h2>
 <p>Let's make a new Unity project for this part, as we won't be needing VR for it. Go back to the <a href="../1-first-project/#create-a-first-project-using-the-unity-hub">Unity Hub and do so</a>.</p>
 <p>We're going to need the functionality of accessing a user's input, so we need to install the <em>Input System</em> package from the <a href="../2-vr-interaction/#installing-and-importing-packages">Package Manager</a>:</p>
-<p><img alt="Installing the Input System Package" src="../4-io/1-inputsystem.png" title="Install it" /></p>
+<p><img alt="Installing the Input System Package" src="1-inputsystem.png" title="Install it" /></p>
 <p>This may trigger a warning and a prompt to restart the Unity Editor. Allow it:</p>
-<p><img alt="Warning" src="../4-io/2-warning.png" title="Yes" /></p>
+<p><img alt="Warning" src="2-warning.png" title="Yes" /></p>
 <p>We should now be all set to get going with this new project!</p>
 <h2 id="set-the-scene">Set the scene</h2>
 <p>Let's add some objects to the scene.</p>
@@ -519,18 +599,18 @@
 <p>Now add a <em>Text - TextMeshPro</em> object as a child to sign object in the hierarchy and give it the following parameters:</p>
 <ul>
 <li>Width = 40, height = 30</li>
-<li>Position = <code>(0,0,0)</code></li>
+<li>Position = <code>(0.55,0,0)</code></li>
 <li>Rotation = <code>(0,-90,0)</code></li>
 <li>Scale = <code>(.02,.02,1)</code></li>
 <li>Give its text a centered alignment</li>
 </ul>
-<p><img alt="Signpost object" src="../4-io/3-signpost.png" title="The signpost" /></p>
+<p><img alt="Signpost object" src="3-signpost.png" title="The signpost" /></p>
 <h3 id="prefabs">Prefabs</h3>
 <p>Let's now turn this signpost into a <em>Prefab</em> — a reusable, preset object that can be easily re-created by Unity.</p>
 <p>Make a new <code>Resources</code> folder  within our assets, and simply drag our whole Signpost GameObject from the hierarchy directly in it — a prefab with its parameters is created, giving our Signpost a blue icon!</p>
-<p><img alt="Signpost prefab" src="../4-io/4-prefab.png" title="The signpost as a prefab" /></p>
+<p><img alt="Signpost prefab" src="4-prefab.png" title="The signpost as a prefab" /></p>
 <p>Remove the Signpost now from our hierarchy — we will use its prefab later.</p>
-<h3 id="reading-files-texts-and-textures">Reading files: texts and textures</h3>
+<h2 id="reading-files-texts-and-textures">Reading files: texts and textures</h2>
 <p>Let's get Unity to read some external files to work with in our project — in our case to spice up the appearance of our signpost.</p>
 <p>Create a text file inside the Resources folder: right-click it (or within it) in the project browser to open in in Finder/Explorer, and use any old text editor for the next steps.</p>
 <p>Name it <code>SignpostData.txt</code>, and give it the following contents:</p>
@@ -604,42 +684,202 @@
 <a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="n">signpostTMP</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">SPdataParsed</span><span class="p">[</span><span class="s">&quot;txt&quot;</span><span class="p">];</span><span class="w"></span>
 </code></pre></div>
 <p>These last lines of the <code>Start()</code> function should mostly speak for themselves, even the highlighted operations performed the string values from in the dictionary, though they might contain so far unseen methods like <a href="https://learn.microsoft.com/en-us/dotnet/api/system.string.split?view=net-7.0"><code>Split()</code></a> and <a href="https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.select?view=net-7.0"><code>Select()</code></a> — try to understand what they do (the links should help).</p>
+<p>Save the now completed LoadFromResources script, and run the game — you will see a now wooden signpost with some text on it appear at the coordinates given in the text file! It even changed the colors of the different parts of the post, making it even more realistic. You may need to move the camera bit too see it well, though:</p>
+<p><img alt="Wooden signpost" src="5-wooden.png" /></p>
+<div class="admonition example">
+<p class="admonition-title">Challenge: moving the camera, too</p>
+<p>Can you apply the same method to also move the camera to a new different position?</p>
+<p>You would need to add a new line to the text file, and amend your <em>parser</em> to turn this instruction into action.</p>
+</div>
+<h2 id="playlists">Playlists</h2>
+<p>Our <code>LoadFromResources</code> script has done its job — disable or remove it from the Floor object.</p>
+<p>Lets get a bit more fancy and create a playlist to sequence events; in this case we want a number of images to load and show up on the scene, one after another.</p>
+<h3 id="placing-external-resources">Placing external resources</h3>
+<p>Create a new folder <em>ouside</em> the Assets folder (besides it) called <code>ExternalData</code>. Within that new folder, place a new text file called <code>playlists.txt</code> with exactly the following content:</p>
+<div class="highlight"><span class="filename">playlists.txt</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>0,1,2,3,4,5
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>5,4,3,2,1,0
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The <em>format</em> is important here, meaning the number of items in one line, them being separated by commas, etc.</p>
+<p>You can change the order of the numbers, add more lines in the same format, etc. — this flexibility is the whole point of creating a simple playlist file format like this!</p>
+</div>
+<p>Within the ExternalData folder, create a new folder called <code>images</code>. Download the six images from here (<a href="external/img_00.jpg" download>1</a>, <a href="external/img_01.jpg" download>2</a>, <a href="external/img_02.jpg" download>3</a>, <a href="external/img_03.jpg" download>4</a>, <a href="external/img_04.jpg" download>4</a>, <a href="external/img_05.jpg" download>6</a>) and place them inside <code>images</code> in the project browser — make sure to keep their filenames intact (<code>img_00.jpg</code>, etc.).</p>
+<h3 id="parsing-and-playing-playlists">Parsing and playing playlists</h3>
+<p>We want these images to displayed on a <em>Quad</em> 3D object in the scene, so create one in the hierarchy with the following parameters:</p>
+<ul>
+<li>Name = <code>DisplayQuad</code></li>
+<li>Position = <code>(-1.5,1.3,0)</code></li>
+<li>Rotation = <code>(0,-90,0)</code></li>
+<li>Scale = <code>(1.92,1.08,1)</code><ul>
+<li>1.92 and 1.08 — multiply by 1,000 and you get 1920 and 1080. Looks familiar?</li>
+</ul>
+</li>
+</ul>
+<p>Create a new script for the floor named <code>LoadFromExternalFolder</code> to put them into action:</p>
+<div class="highlight"><span class="filename">LoadFromExternalFolder.cs</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.IO</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEditor</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LoadFromExternalFolder</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">dirpathname</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;ExternalData&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">dirpath</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="hll"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">MeshRenderer</span><span class="w"> </span><span class="n">displayQuadMR</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Material</span><span class="w"> </span><span class="n">displayQaudMat</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="hll"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">subj_index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">playlist</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Texture2D</span><span class="w"> </span><span class="nf">LoadImageAsTexture</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">filePath</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">        </span><span class="c1">// Load raw data from file</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">        </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">fileData</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="n">ReadAllBytes</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">        </span><span class="n">Texture2D</span><span class="w"> </span><span class="n">tmpTex</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Texture2D</span><span class="p">(</span><span class="m">1920</span><span class="p">,</span><span class="w"> </span><span class="m">1080</span><span class="p">,</span><span class="w"> </span><span class="n">TextureFormat</span><span class="p">.</span><span class="n">RGB24</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">        </span><span class="n">tmpTex</span><span class="p">.</span><span class="n">LoadImage</span><span class="p">(</span><span class="n">fileData</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tmpTex</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<details class="info">
+<summary>Assumptions</summary>
+<p>The <code>LoadImageAsTexture()</code> function makes a lot of assumptions here. First, we assume that there is a valid file path stored in <code>filePath</code> at all, and not just gibberish. Then we further assume that the data at that location is an image that can be loaded in a texture, even with the specific dimensions <code>1920, 1080</code> and in <code>RGB24</code> color format.</p>
+<p>While getting the dimensions and color format wrong wouldn't cause that much trouble other than a potentially garbled image, trying to read a file that's not there can cause the game to crash!</p>
+<p>Ususally, you would <em>guard</em> agains this by first checking if the file exists at all, and wouldn't you know it, there's a fuction for that: <a href="https://docs.unity3d.com/ScriptReference/Windows.File.Exists.html"><code>File.Exists()</code></a>.</p>
+<p>To be on the safe side, you can check the result of <code>File.Exists(filePath)</code> in an <code>if()</code> statement and only proceed with loading if it's positive. Keep in mind that you still have to return <em>some</em> <code>Texture2D</code> and can't just return from you function with nothing to show for…</p>
+<p>All this to say: Playing it safe is not for lazy people, but it can sure give you a feeling of security (and save you from some crashes).</p>
+</details>
+<p>Being very similar in structure to our previous script, it should be quite clear what it does. The difference so far are the variables to hold our Quad's MeshRenderer and Material, and and index to keep track of our subject. Let's use these in the <code>Start()</code> method:</p>
+<div class="highlight"><span class="filename">LoadFromExternalFolder.cs</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">displayQaudMat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">displayQuadMR</span><span class="p">.</span><span class="n">material</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="n">dirpath</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Directory</span><span class="p">.</span><span class="n">GetParent</span><span class="p">(</span><span class="n">Application</span><span class="p">.</span><span class="n">dataPath</span><span class="p">).</span><span class="n">ToString</span><span class="p">()</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">Path</span><span class="p">.</span><span class="n">DirectorySeparatorChar</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">dirpathname</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="c1">// image order playlist</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="c1">//    A line represent the order to display images</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="c1">//    There is one line per subject</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="c1">// Load entire image order playlist file segmened by line return</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="n">playlist</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="n">ReadAllLines</span><span class="p">(</span><span class="s">$&quot;{dirpath}/playlists.txt&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">        </span><span class="c1">// Skip all lines to go to the one we want</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">        </span><span class="p">.</span><span class="n">Skip</span><span class="p">(</span><span class="n">subj_index</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="c1">// Get one line</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="p">.</span><span class="n">Take</span><span class="p">(</span><span class="m">1</span><span class="p">).</span><span class="n">First</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="c1">// Split line by comma</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">        </span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;,&#39;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">        </span><span class="c1">// Convert string to int</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">        </span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">).</span><span class="n">ToArray</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">ipl</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">ipl</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="n">playlist</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">ipl</span><span class="p">++)</span><span class="w"></span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">iImg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">playlist</span><span class="p">[</span><span class="n">ipl</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">        </span><span class="n">displayQaudMat</span><span class="p">.</span><span class="n">mainTexture</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">LoadImageAsTexture</span><span class="p">(</span><span class="s">$&quot;{dirpath}/images/img_{iImg:D2}.jpg&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForSeconds</span><span class="p">(</span><span class="m">2f</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">    </span><span class="n">Application</span><span class="p">.</span><span class="n">Quit</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="cp">#if UNITY_EDITOR</span><span class="w"></span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="w">    </span><span class="n">EditorApplication</span><span class="p">.</span><span class="n">isPlaying</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="cp">#endif</span><span class="w"></span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Save the script, make sure its attached as a component to our floor, and assign our Quad to the appropriate field.</p>
+<p>It will now cycle through the images it loads in the given sequence read from the playlists file, which we can specify in the components inspector with the <em>Subj_index</em> field (starting with 0):</p>
+<div style='border-color: #018281; border-style: solid;'>
+<div style='overflow: hidden; position:relative; margin-top:-5%; margin-bottom:-10%;padding-bottom:calc(70.80% + 33px); clip-path: inset(6.7% 0 13% 0)'>
+<iframe src='https://gfycat.com/ifr/perfectsmartcoypu?controls=0&hd=1' frameborder='0' scrolling='no'' width='100%' height='100%' style='position:absolute;top:0;left:0;'></iframe>
+</div></div>
+
+<h2 id="writing-to-files">Writing to files</h2>
+<p>Let's now turn the tables on our file system and <em>write</em> something to it, instead of only reading!</p>
+<p>Deactivate the display Quad, deactivate the LoadFromExternalFolder component from our Floor, and create yet another new script for it. Call it <code>SaveToExternalFolder</code>:</p>
+<div class="highlight"><span class="filename">SaveToExternalFolder.cs</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.IO</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine.InputSystem</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SaveToExternalFolder</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">dirpathname</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;ExternalData/subjData/&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">dirpath</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">subj_index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">StreamWriter</span><span class="w"> </span><span class="n">expeDataWriter</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">GetTimestamp</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">DateTimeOffset</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToUnixTimeMilliseconds</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnApplicationQuit</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">        </span><span class="n">expeDataWriter</span><span class="p">.</span><span class="n">Flush</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w">        </span><span class="n">expeDataWriter</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><span class="filename">SaveToExternalFolder.cs</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">dirpath</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Directory</span><span class="p">.</span><span class="n">GetParent</span><span class="p">(</span><span class="n">Application</span><span class="p">.</span><span class="n">dataPath</span><span class="p">).</span><span class="n">ToString</span><span class="p">()</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">Path</span><span class="p">.</span><span class="n">DirectorySeparatorChar</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">dirpathname</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="n">Directory</span><span class="p">.</span><span class="n">CreateDirectory</span><span class="p">(</span><span class="s">$&quot;{dirpath}&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="n">expeDataWriter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StreamWriter</span><span class="p">(</span><span class="s">$&quot;{dirpath}/subj_{subj_index}.txt&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">true</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitUntil</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">Keyboard</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="n">anyKey</span><span class="p">.</span><span class="n">wasReleasedThisFrame</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">ik</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">ik</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="n">Keyboard</span><span class="p">.</span><span class="n">KeyCount</span><span class="p">;</span><span class="w"> </span><span class="n">ik</span><span class="p">++)</span><span class="w"></span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="hll"><span class="w">        </span><span class="p">{</span><span class="w"></span>
+</span><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="hll"><span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="n">keyName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Keyboard</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="n">allKeys</span><span class="p">[</span><span class="n">ik</span><span class="p">].</span><span class="n">ToString</span><span class="p">();</span><span class="w"></span>
+</span><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="n">keyState</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Keyboard</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="n">allKeys</span><span class="p">[</span><span class="n">ik</span><span class="p">].</span><span class="n">wasReleasedThisFrame</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(!</span><span class="n">keyState</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">$&quot;{GetTimestamp()}: user released \&quot;{keyName}\&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">            </span><span class="n">expeDataWriter</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">message</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">            </span><span class="n">print</span><span class="p">(</span><span class="n">message</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 <!-- 
-<div class="highlight"><span class="filename">LoadFromResources.cs</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.IO</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEditor</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LoadFromExternalFolder</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Texture2D</span><span class="w"> </span><span class="nf">LoadImageAsTexture</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">filePath</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="c1">// Load raw data from file</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">fileData</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="n">ReadAllBytes</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="hll"><span class="w">        </span><span class="n">Texture2D</span><span class="w"> </span><span class="n">tmpTex</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Texture2D</span><span class="p">(</span><span class="m">1920</span><span class="p">,</span><span class="w"> </span><span class="m">1080</span><span class="p">,</span><span class="w"> </span><span class="n">TextureFormat</span><span class="p">.</span><span class="n">RGB24</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span><span class="w"></span>
-</span><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="hll"><span class="w">        </span><span class="n">tmpTex</span><span class="p">.</span><span class="n">LoadImage</span><span class="p">(</span><span class="n">fileData</span><span class="p">);</span><span class="w"></span>
-</span><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tmpTex</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">LoadFromResources.cs</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.IO</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEditor</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LoadFromExternalFolder</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="w"></span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Texture2D</span><span class="w"> </span><span class="nf">LoadImageAsTexture</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">filePath</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">        </span><span class="c1">// Load raw data from file</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">fileData</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="n">ReadAllBytes</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="hll"><span class="w">        </span><span class="n">Texture2D</span><span class="w"> </span><span class="n">tmpTex</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Texture2D</span><span class="p">(</span><span class="m">1920</span><span class="p">,</span><span class="w"> </span><span class="m">1080</span><span class="p">,</span><span class="w"> </span><span class="n">TextureFormat</span><span class="p">.</span><span class="n">RGB24</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span><span class="w"></span>
+</span><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="hll"><span class="w">        </span><span class="n">tmpTex</span><span class="p">.</span><span class="n">LoadImage</span><span class="p">(</span><span class="n">fileData</span><span class="p">);</span><span class="w"></span>
+</span><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tmpTex</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 `LoadImageAsTexture(string filePath)` takes a file path `string` and attempts to load anything it can find at this location into a `byte` array called `fileData`.
 
 Because we promise to only use this function in accordance to its name and only load images with it, we can force the loaded byte array into a [`Texture2D`](https://docs.unity3d.com/ScriptReference/Texture2D.html) variable with the highlighted lines. The resulting texture is returned.
 
-??? info "Assumptions"
-    The `LoadImageAsTexture()` function makes a lot of assumptions here. First, we assume that there is a valid file path stored in `filePath` at all, and not just gibberish. Then we further assume that the data at that location is an image that can be loaded in a texture, even with the specific dimensions `1920, 1080` and in `RGB24` color format.
 
-    While getting the dimensions and color format wrong wouldn't cause that much trouble other than a potentially garbled image, trying to read a file that's not there can cause the game to crash!
-
-    Ususally, you would *guard* agains this by first checking if the file exists at all, and wouldn't you know it, there's a fuction for that: [`File.Exists()`](https://docs.unity3d.com/ScriptReference/Windows.File.Exists.html).
-
-    To be on the safe side, you can check the result of `File.Exists(filePath)` in an `if()` statement and only proceed with loading if it's positive. Keep in mind that you still have to return *some* `Texture2D` and can't just return from you function with nothing to show for…
-
-    All this to say: Playing it safe is not for lazy people, but it can sure give you a feeling of security (and save you from some crashes).
 
 Let's do something with the texture we hopefully load here — assign it to the signpost! Add some variables and the `Start()` IEnumerator to our script:
 
