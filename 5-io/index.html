@@ -863,6 +863,17 @@
 </code></pre></div>
 <p>First, it <a href="https://learn.microsoft.com/en-us/dotnet/api/system.io.directory.createdirectory?view=net-6.0">creates a new directory</a> at the constructed <code>dirpath</code> if it doesn't exist yet, then instantiates a new <code>StreamWriter</code> with a new file, which itself is constructed from the <code>dirpath</code> and the <code>subj_index</code> using <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated"><em>String Interpolation</em></a> (the <code>$</code> sign). Try to understand how the final file name and directory are being assembled!</p>
 <p>Then an endless loop (<code>while (true)</code>) is being run that keeps waiting for the user to hit (or rather <em>release</em> after hitting) keys on the keyboard using <code>WaitUntil</code> and the new <a href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/QuickStartGuide.html"><em>Unity Input System</em></a> in the shape of <code>Keyboard.current.anyKey.wasReleasedThisFrame</code>.</p>
+<p>It then looks at which keys were being pressed and puts their names in a string. As we can't easily access the exact key that was pressed, we just write down all current keys (<code>Keyboard.current.allKeys</code>). We then check if one of these current keys was just released in the last frame — if not, we exit this loop with the <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/jump-statements"><code>continue</code> jump statement</a>.</p>
+<p>If the key <em>was</em> just released, we formulate a message including its name and the current time stamp (from our <code>GetTimeStamp()</code> method), and hand it over to the <code>expeDataWriter</code> to write a line in our external file using <code>WriteLine()</code>. Additionally, we <code>print</code> this message to the console.</p>
+<p>And that's it for external files! Now let's finally try out interacting with gaze data in Unity in the next tutorial.</p>
+<div class="admonition example">
+<p class="admonition-title">Challenge: elapsed time</p>
+<p>Instead of writing the time stamp (the absolute, real-world time), how about writing down the time that has elapsed between two key releases? To calculate that, you would need to keep track of the time the last key was pressed and subtract that from the current time. Give it a try if you want!</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Challenge: slide show</p>
+<p>Can you combine the functionality of our last script with the previous one to have the user manually advance the images shown in on the signpost?</p>
+</div>
 <!-- 
 <div class="highlight"><span class="filename">LoadFromResources.cs</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.IO</span><span class="p">;</span><span class="w"></span>
